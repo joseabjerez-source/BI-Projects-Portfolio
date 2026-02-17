@@ -96,8 +96,6 @@ All projects follow best practices:
 
 ## 📷 Sample Dashboard Preview
 
-(Screenshots available inside each project folder)
-
 ---
 
 ## 🚀 Professional Focus
