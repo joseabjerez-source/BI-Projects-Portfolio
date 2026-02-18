@@ -27,6 +27,13 @@ table _Calculations
 
 		changedProperty = FormatString
 
+	measure TotalSales_w_increase =
+			
+			VAR increase = 0.05
+			RETURN [TotalSales] + [TotalSales]*increase
+		formatString: 0.00
+		lineageTag: 72e7816d-3ddb-4b61-b366-abee6a1a7cd2
+
 	column Column
 		formatString: 0
 		lineageTag: 5547fdec-08d6-4e89-81e1-1f252b0d5a92
