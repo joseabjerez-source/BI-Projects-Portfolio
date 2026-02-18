@@ -13,6 +13,15 @@ table _Calculations
 		formatString: 0
 		lineageTag: d3d24ae2-3e87-4555-9c4c-762d9b94adc0
 
+	measure TotalProfit = SUM(Sales[_Profit])
+		lineageTag: 25724a01-8ee1-43bc-ba72-8a9fc68660c8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure ProfitMarginRatio = DIVIDE([TotalProfit],[TotalSales])
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: eff30e88-7e79-4542-9909-b20af208a944
+
 	column Column
 		formatString: 0
 		lineageTag: 5547fdec-08d6-4e89-81e1-1f252b0d5a92
