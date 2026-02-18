@@ -1,0 +1,28 @@
+table _Calculations
+	lineageTag: 9a0c1318-e8bb-4a39-b648-16d152204f66
+
+	measure TotalSales = SUM(Sales[LinePrice])
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 571d2a44-25b5-4725-8691-f601bb8c7698
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column Column
+		formatString: 0
+		lineageTag: 5547fdec-08d6-4e89-81e1-1f252b0d5a92
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Calculations-3a53e6fe-27b0-464b-8845-7297598d4eac = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = d24361272b95492b8f96ba92bbdc25e5
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+
