@@ -9,6 +9,10 @@ table _Calculations
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
+	measure SalesCount = DISTINCTCOUNT(Sales[SalesOrderLineKey])
+		formatString: 0
+		lineageTag: d3d24ae2-3e87-4555-9c4c-762d9b94adc0
+
 	column Column
 		formatString: 0
 		lineageTag: 5547fdec-08d6-4e89-81e1-1f252b0d5a92
