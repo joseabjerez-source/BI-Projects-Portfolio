@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "51fbee50fa55b5a04995",
+  "position": {
+    "x": 239.78436657681939,
+    "y": 70.7277628032345,
+    "z": 1,
+    "height": 280.32345013477089,
+    "width": 279.46091644204853,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Sales"
+                    }
+                  },
+                  "Property": "2018_Bikes_Revenue"
+                }
+              },
+              "queryRef": "Sales.2018_Bikes_Revenue",
+              "nativeQueryRef": "2018_Bikes_Revenue"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

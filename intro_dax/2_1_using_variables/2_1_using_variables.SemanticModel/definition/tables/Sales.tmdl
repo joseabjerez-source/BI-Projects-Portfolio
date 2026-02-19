@@ -6,6 +6,16 @@ table Sales
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure 2018_Bikes_Revenue =
+			CALCULATE(
+			    SUM(Sales[LinePrice]),
+			    Sales[ProductCategory] = "Bikes",
+			    YEAR(Sales[OrderDate]) = 2018
+			)
+		lineageTag: c9c00422-b2c1-4c2b-826d-b4ea514e3a6f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column OrderNo
 		dataType: string
 		lineageTag: 31875c3e-d6e3-4d95-ba55-f0c481496cfe
