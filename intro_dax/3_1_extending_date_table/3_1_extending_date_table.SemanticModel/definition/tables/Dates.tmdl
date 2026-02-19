@@ -1,0 +1,47 @@
+table Dates
+	lineageTag: 7d8dc18f-bb4e-4094-8e31-fe7e8ed2680a
+
+	column Date
+		formatString: Short Date
+		lineageTag: bbb6038e-344a-4111-ae9b-a174b5c565d5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: d5cf621c-d993-4f52-96f4-47b68e8973b5
+			defaultHierarchy: LocalDateTable_1df46022-d322-4686-8e6b-87c6c5390326.'Date Hierarchy'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year = YEAR(Dates[Date])
+		formatString: 0
+		lineageTag: e7d8a696-2a14-42d8-84a4-366d693d6941
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthNo = ```
+			MONTH(Dates[Date]) 
+			```
+		formatString: 0
+		lineageTag: 59d0d680-fb1c-491d-97ab-f3d802499595
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthShortName = FORMAT(Dates[Date], "MMM")
+		lineageTag: 0ea55793-f7e9-4c6d-92e9-ab5f7c9a30be
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dates-1894ba1b-dd1d-46b5-9f4f-bd5fc2855cf1 = calculated
+		mode: import
+		source = CALENDAR(MIN(Sales[OrderDate]), MAX(Sales[OrderDate]))
+
+	annotation PBI_Id = b9cdd7de87d043cda699a2dace7e133c
+

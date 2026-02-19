@@ -1,0 +1,206 @@
+table Sales
+	lineageTag: c303d3e3-f4a8-4f7c-85f0-162f2292afe8
+
+	column OrderNo
+		dataType: string
+		lineageTag: 31875c3e-d6e3-4d95-ba55-f0c481496cfe
+		summarizeBy: none
+		sourceColumn: OrderNo
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesOrderLineKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 8aefc27d-8dcb-4737-8fda-8d6ae463b98a
+		summarizeBy: count
+		sourceColumn: SalesOrderLineKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderQuantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 4ea707d5-7996-4241-81e0-47516f9c2cca
+		summarizeBy: sum
+		sourceColumn: OrderQuantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column ItemCost
+		dataType: double
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: dc942052-a3a6-4f21-b077-e1d3dae9290e
+		summarizeBy: sum
+		sourceColumn: ItemCost
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column ItemPrice
+		dataType: double
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 02f002ee-9c31-441b-abd5-c2168e41b07f
+		summarizeBy: sum
+		sourceColumn: ItemPrice
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column OrderDate
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: b197a800-e680-4be8-a239-593d3e0dc527
+		summarizeBy: none
+		sourceColumn: OrderDate
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DeliveryDueDate
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: e7b2b14f-1ffd-46d1-b478-b6ea064ef1dd
+		summarizeBy: none
+		sourceColumn: DeliveryDueDate
+
+		variation Variation
+			isDefault
+			relationship: c6a8a059-d67f-42a2-9d34-524a4f166356
+			defaultHierarchy: LocalDateTable_7146caaa-cd32-40b4-a0e4-7fe6c3dffd46.'Date Hierarchy'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CustomerName
+		dataType: string
+		lineageTag: 8ef11aa5-7c63-44f2-b72e-d8850f2b2bac
+		summarizeBy: none
+		sourceColumn: CustomerName
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerCity
+		dataType: string
+		lineageTag: 461dee42-37a2-4664-9dc3-5f436ddae6d1
+		summarizeBy: none
+		sourceColumn: CustomerCity
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerState
+		dataType: string
+		lineageTag: 27869f9c-ef87-4bdc-a9c7-d982c5021521
+		summarizeBy: none
+		sourceColumn: CustomerState
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerCountry
+		dataType: string
+		lineageTag: 84e15049-cf99-450e-94e6-b7df060d9ac3
+		summarizeBy: none
+		sourceColumn: CustomerCountry
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductCategory
+		dataType: string
+		lineageTag: 7fdcfc97-9318-4a3f-bde6-88359ec8f74f
+		summarizeBy: none
+		sourceColumn: ProductCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductSubcategory
+		dataType: string
+		lineageTag: d4c10a98-5c91-4d2b-8af8-e7e8e6cc8537
+		summarizeBy: none
+		sourceColumn: ProductSubcategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product
+		dataType: string
+		lineageTag: 3946dd00-ea8b-43c7-beb7-2935042a34ac
+		summarizeBy: none
+		sourceColumn: Product
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductColor
+		dataType: string
+		lineageTag: 2b035f51-509d-4c82-9f1c-2a3417be0a34
+		summarizeBy: none
+		sourceColumn: ProductColor
+
+		annotation SummarizationSetBy = Automatic
+
+	column Model
+		dataType: string
+		lineageTag: ac9cd1a5-99f7-4d17-a8ae-6fc0965009f6
+		summarizeBy: none
+		sourceColumn: Model
+
+		annotation SummarizationSetBy = Automatic
+
+	column LinePrice = Sales[ItemPrice] * Sales[OrderQuantity]
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 88481570-8801-4e04-b5c2-6a0a0c3cd381
+		summarizeBy: sum
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column LineCost = Sales[ItemCost] * Sales[OrderQuantity]
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: d4fa0243-0d0f-4681-8e9f-6243a358f9ca
+		summarizeBy: sum
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column Profit = Sales[LinePrice] - Sales[LineCost]
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 2ad5dc5c-99a8-488f-9fe1-dee7fc750fea
+		summarizeBy: sum
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	partition Sales-fee0f73f-2a7a-4504-ad02-f4c8bf3cf37b = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(Web.Contents("https://assets.datacamp.com/production/repositories/5998/datasets/beabfa7b8e69731802df1885ae7816fc8df19ae1/Sales.xlsx"), null, true),
+				    Sales_Sheet = Source{[Item="Sales",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Sales_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"OrderNo", type text}, {"SalesOrderLineKey", Int64.Type}, {"OrderQuantity", Int64.Type}, {"ItemCost", type number}, {"ItemPrice", type number}, {"OrderDate", type date}, {"DeliveryDueDate", type date}, {"CustomerName", type text}, {"CustomerCity", type text}, {"CustomerState", type text}, {"CustomerCountry", type text}, {"ProductCategory", type text}, {"ProductSubcategory", type text}, {"Product", type text}, {"ProductColor", type text}, {"Model", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
