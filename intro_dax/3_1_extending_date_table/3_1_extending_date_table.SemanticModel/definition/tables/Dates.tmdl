@@ -39,6 +39,19 @@ table Dates
 
 		annotation SummarizationSetBy = Automatic
 
+	column DayNo = DAY(Dates[Date])
+		formatString: 0
+		lineageTag: 8a13090d-e801-4343-9b65-95b5c60be31a
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayShortName = FORMAT(Dates[Date],("ddd"))
+		lineageTag: 2d137879-a5e5-4b09-a1d5-95bf42335406
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
 	partition Dates-1894ba1b-dd1d-46b5-9f4f-bd5fc2855cf1 = calculated
 		mode: import
 		source = CALENDAR(MIN(Sales[OrderDate]), MAX(Sales[OrderDate]))
