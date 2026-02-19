@@ -189,6 +189,13 @@ table Sales
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
+	column Order2Delivery = DATEDIFF(Sales[OrderDate], Sales[DeliveryDueDate],DAY)
+		formatString: 0
+		lineageTag: 3f1a6bb9-50c4-4363-a32d-45b8a106fe25
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
 	partition Sales-fee0f73f-2a7a-4504-ad02-f4c8bf3cf37b = m
 		mode: import
 		source =
