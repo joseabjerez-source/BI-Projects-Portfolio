@@ -34,7 +34,19 @@ table _Calculations
 		formatString: 0.00
 		lineageTag: 72e7816d-3ddb-4b61-b366-abee6a1a7cd2
 
+	measure AvgProfit = AVERAGE(Sales[Profit])
+		formatString: #,0
+		lineageTag: 5fad0cb1-3e10-4198-a089-baa20955d630
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure AvgProfit_x = AVERAGEX(_Calculations,[TotalProfit])
+		lineageTag: b65bf7c7-55e1-4b41-9e18-1dc86d1f7f5c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column Column
+		isHidden
 		formatString: 0
 		lineageTag: 5547fdec-08d6-4e89-81e1-1f252b0d5a92
 		summarizeBy: sum

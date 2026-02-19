@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "775547a523b7067d7cad",
+  "name": "89cc98d5c5df5e827cc9",
   "position": {
-    "x": 351.91374663072776,
-    "y": 58.652291105121293,
-    "z": 1000,
+    "x": 23.28840970350404,
+    "y": 175.09433962264151,
+    "z": 0,
     "height": 280.32345013477089,
     "width": 279.46091644204853,
-    "tabOrder": 1000
+    "tabOrder": 0
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,11 +23,11 @@
                       "Entity": "_Calculations"
                     }
                   },
-                  "Property": "TotalSales_w_increase"
+                  "Property": "AvgProfit"
                 }
               },
-              "queryRef": "_Calculations.TotalSales_w_increase",
-              "nativeQueryRef": "TotalSales_w_increase"
+              "queryRef": "_Calculations.AvgProfit",
+              "nativeQueryRef": "AvgProfit"
             }
           ]
         }
@@ -42,7 +42,7 @@
                     "Entity": "_Calculations"
                   }
                 },
-                "Property": "TotalSales_w_increase"
+                "Property": "AvgProfit"
               }
             },
             "direction": "Descending"
@@ -52,5 +52,23 @@
       }
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "0f787e37cf88d6f5aa4f",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Calculations"
+              }
+            },
+            "Property": "AvgProfit"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

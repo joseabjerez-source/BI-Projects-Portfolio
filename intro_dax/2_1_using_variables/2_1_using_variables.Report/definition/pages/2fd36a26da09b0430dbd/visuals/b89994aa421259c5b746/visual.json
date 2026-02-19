@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "775547a523b7067d7cad",
+  "name": "b89994aa421259c5b746",
   "position": {
-    "x": 351.91374663072776,
-    "y": 58.652291105121293,
-    "z": 1000,
+    "x": 788.35579514824792,
+    "y": 359.67654986522911,
+    "z": 1002,
     "height": 280.32345013477089,
     "width": 279.46091644204853,
-    "tabOrder": 1000
+    "tabOrder": 1002
   },
   "visual": {
     "visualType": "cardVisual",
@@ -20,14 +20,14 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "_Calculations"
+                      "Entity": "Sales"
                     }
                   },
-                  "Property": "TotalSales_w_increase"
+                  "Property": "AvgPro"
                 }
               },
-              "queryRef": "_Calculations.TotalSales_w_increase",
-              "nativeQueryRef": "TotalSales_w_increase"
+              "queryRef": "Sales.AvgPro",
+              "nativeQueryRef": "AvgPro"
             }
           ]
         }
@@ -39,10 +39,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "_Calculations"
+                    "Entity": "Sales"
                   }
                 },
-                "Property": "TotalSales_w_increase"
+                "Property": "AvgPro"
               }
             },
             "direction": "Descending"

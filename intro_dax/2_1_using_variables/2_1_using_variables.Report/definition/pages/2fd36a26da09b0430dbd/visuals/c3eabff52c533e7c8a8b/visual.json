@@ -1,19 +1,19 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "775547a523b7067d7cad",
+  "name": "c3eabff52c533e7c8a8b",
   "position": {
-    "x": 351.91374663072776,
-    "y": 58.652291105121293,
-    "z": 1000,
-    "height": 280.32345013477089,
-    "width": 279.46091644204853,
-    "tabOrder": 1000
+    "x": 390.7277628032345,
+    "y": 359.67654986522911,
+    "z": 1003,
+    "height": 158.70619946091642,
+    "width": 278.59838274932616,
+    "tabOrder": 1003
   },
   "visual": {
-    "visualType": "cardVisual",
+    "visualType": "clusteredColumnChart",
     "query": {
       "queryState": {
-        "Data": {
+        "Y": {
           "projections": [
             {
               "field": {
@@ -23,11 +23,25 @@
                       "Entity": "_Calculations"
                     }
                   },
-                  "Property": "TotalSales_w_increase"
+                  "Property": "AvgProfit"
                 }
               },
-              "queryRef": "_Calculations.TotalSales_w_increase",
-              "nativeQueryRef": "TotalSales_w_increase"
+              "queryRef": "_Calculations.AvgProfit",
+              "nativeQueryRef": "AvgProfit"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Sales"
+                    }
+                  },
+                  "Property": "AvgPro"
+                }
+              },
+              "queryRef": "Sales.AvgPro",
+              "nativeQueryRef": "AvgPro"
             }
           ]
         }
@@ -42,7 +56,7 @@
                     "Entity": "_Calculations"
                   }
                 },
-                "Property": "TotalSales_w_increase"
+                "Property": "AvgProfit"
               }
             },
             "direction": "Descending"

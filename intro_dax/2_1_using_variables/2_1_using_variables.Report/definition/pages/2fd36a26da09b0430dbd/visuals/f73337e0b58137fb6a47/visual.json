@@ -1,9 +1,9 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
-  "name": "775547a523b7067d7cad",
+  "name": "f73337e0b58137fb6a47",
   "position": {
-    "x": 351.91374663072776,
-    "y": 58.652291105121293,
+    "x": 794.39353099730454,
+    "y": 15.525606469002694,
     "z": 1000,
     "height": 280.32345013477089,
     "width": 279.46091644204853,
@@ -23,11 +23,11 @@
                       "Entity": "_Calculations"
                     }
                   },
-                  "Property": "TotalSales_w_increase"
+                  "Property": "TotalProfit"
                 }
               },
-              "queryRef": "_Calculations.TotalSales_w_increase",
-              "nativeQueryRef": "TotalSales_w_increase"
+              "queryRef": "_Calculations.TotalProfit",
+              "nativeQueryRef": "TotalProfit"
             }
           ]
         }
@@ -42,7 +42,7 @@
                     "Entity": "_Calculations"
                   }
                 },
-                "Property": "TotalSales_w_increase"
+                "Property": "TotalProfit"
               }
             },
             "direction": "Descending"

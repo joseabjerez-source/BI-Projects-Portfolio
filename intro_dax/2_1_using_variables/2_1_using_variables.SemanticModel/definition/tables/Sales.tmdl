@@ -1,6 +1,11 @@
 table Sales
 	lineageTag: c303d3e3-f4a8-4f7c-85f0-162f2292afe8
 
+	measure AvgPro = AVERAGEX(Sales, Sales[LinePrice]-Sales[LineCost])
+		lineageTag: 02da2ff3-41c5-479d-98fd-e96a9cbabe33
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column OrderNo
 		dataType: string
 		lineageTag: 31875c3e-d6e3-4d95-ba55-f0c481496cfe
