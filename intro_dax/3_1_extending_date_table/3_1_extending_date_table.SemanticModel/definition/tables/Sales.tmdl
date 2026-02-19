@@ -1,6 +1,26 @@
 table Sales
 	lineageTag: c303d3e3-f4a8-4f7c-85f0-162f2292afe8
 
+	measure 'TotalSales QoQ%' =
+			
+			IF(
+				ISFILTERED('Dates'[Date]),
+				ERROR("Time intelligence quick measures can only be grouped or filtered by the Power BI-provided date hierarchy or primary date column."),
+				VAR __PREV_QUARTER = CALCULATE([TotalSales], DATEADD('Dates'[Date].[Date], -1, QUARTER))
+				RETURN
+					DIVIDE([TotalSales] - __PREV_QUARTER, __PREV_QUARTER)
+			)
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: 3c62bfcf-c1b1-443c-b75c-ac4f21824890
+
+		extendedProperty MeasureTemplate =
+				{
+				  "version": 0,
+				  "daxTemplateName": "QuarterOverQuarter"
+				}
+
+		changedProperty = FormatString
+
 	column OrderNo
 		dataType: string
 		lineageTag: 31875c3e-d6e3-4d95-ba55-f0c481496cfe

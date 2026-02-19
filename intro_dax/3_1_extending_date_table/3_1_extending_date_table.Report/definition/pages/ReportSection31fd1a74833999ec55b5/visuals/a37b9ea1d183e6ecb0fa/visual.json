@@ -65,23 +65,5 @@
       }
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "77fad42e6f5ba4e890cd",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dates"
-              }
-            },
-            "Property": "DayShortName"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }
