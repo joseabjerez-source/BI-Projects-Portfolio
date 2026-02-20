@@ -40,9 +40,10 @@ Each project includes:
 
 ### 📌 1. Learn Journey with DataCamp
 **Track:** Data Analyst in Power BI | gain the Power BI skills you need to prepare, model, and visualize data for the PL-300 Data Analyst Certification.
-1- Introduction to Power BI
-2- Introduction to DAX
-3- Data Visualization in Power BI
+- Introduction to Power BI
+- Introduction to DAX
+- Data Visualization in Power BI
+---
 
 ## 🧠 Data Modeling Approach
 
