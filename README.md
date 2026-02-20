@@ -38,37 +38,11 @@ Each project includes:
 
 ## 📂 Projects
 
-### 📌 1. Sales Analytics Dashboard
-**Objective:** Analyze revenue performance, customer behavior, and product profitability.
-
-**Highlights:**
-- FactSales + DimDate + DimCustomer + DimProduct
-- YoY Growth calculations
-- KPI performance tracking
-- Interactive drill-through analysis
-
----
-
-### 📌 2. Financial Performance Dashboard
-**Objective:** Monitor financial KPIs and budget variance analysis.
-
-**Highlights:**
-- Variance % calculations
-- Profitability analysis
-- Time intelligence measures
-- Executive-level dashboard design
-
----
-
-### 📌 3. HR Attrition Analysis
-**Objective:** Identify employee churn patterns and risk factors.
-
-**Highlights:**
-- Attrition rate modeling
-- Department-level analysis
-- Predictive indicators
-
----
+### 📌 1. Learn Journey with DataCamp
+**Track:** Data Analyst in Power BI | gain the Power BI skills you need to prepare, model, and visualize data for the PL-300 Data Analyst Certification.
+1- Introduction to Power BI
+2- Introduction to DAX
+3- Data Visualization in Power BI
 
 ## 🧠 Data Modeling Approach
 
