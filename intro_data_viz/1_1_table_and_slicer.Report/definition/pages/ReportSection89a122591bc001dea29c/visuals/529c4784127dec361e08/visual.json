@@ -5,8 +5,8 @@
     "x": 9.72644376899696,
     "y": 0,
     "z": 0,
-    "height": 614.71124620060789,
-    "width": 568.02431610942256,
+    "height": 699.33130699088144,
+    "width": 562.18844984802433,
     "tabOrder": 0
   },
   "visual": {
@@ -83,6 +83,28 @@
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Orders"
+                      }
+                    },
+                    "Property": "Sales_Amount"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
       }
     },
     "drillFilterOtherVisuals": true
@@ -90,7 +112,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "9c295303aa4cdd7ce700",
+        "name": "44f037f2eb2d8d076e91",
         "field": {
           "Column": {
             "Expression": {
@@ -104,7 +126,7 @@
         "type": "Advanced"
       },
       {
-        "name": "35b0e7f9800ccd3926e4",
+        "name": "f826c76a06ab153ae886",
         "field": {
           "Column": {
             "Expression": {
@@ -118,7 +140,7 @@
         "type": "Categorical"
       },
       {
-        "name": "f2091fef5284976e2540",
+        "name": "73ff6c7d00ececc53cbd",
         "field": {
           "Aggregation": {
             "Expression": {
@@ -137,7 +159,7 @@
         "type": "Advanced"
       },
       {
-        "name": "5610a32fc0775a2b3774",
+        "name": "5d84f67ed62c1e6cd684",
         "field": {
           "Aggregation": {
             "Expression": {
