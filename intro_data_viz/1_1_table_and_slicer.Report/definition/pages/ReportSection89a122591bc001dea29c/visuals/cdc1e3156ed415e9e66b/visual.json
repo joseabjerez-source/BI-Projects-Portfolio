@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "cdc1e3156ed415e9e66b",
   "position": {
-    "x": 1031.0030395136778,
-    "y": 106.99088145896657,
-    "z": 2,
-    "height": 314.16413373860183,
+    "x": 563.161094224924,
+    "y": 156.59574468085108,
+    "z": 2000,
+    "height": 120.60790273556232,
     "width": 248.99696048632219,
-    "tabOrder": 2
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "slicer",
@@ -50,49 +50,7 @@
       ],
       "general": [
         {
-          "properties": {
-            "filter": {
-              "filter": {
-                "Version": 2,
-                "From": [
-                  {
-                    "Name": "p",
-                    "Entity": "Products",
-                    "Type": 0
-                  }
-                ],
-                "Where": [
-                  {
-                    "Condition": {
-                      "In": {
-                        "Expressions": [
-                          {
-                            "Column": {
-                              "Expression": {
-                                "SourceRef": {
-                                  "Source": "p"
-                                }
-                              },
-                              "Property": "Product_Name"
-                            }
-                          }
-                        ],
-                        "Values": [
-                          [
-                            {
-                              "Literal": {
-                                "Value": "'Aero Daily Fitness Tee'"
-                              }
-                            }
-                          ]
-                        ]
-                      }
-                    }
-                  }
-                ]
-              }
-            }
-          }
+          "properties": {}
         }
       ]
     },
@@ -101,7 +59,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "0f9c26dd50b09c6da1a1",
+        "name": "6491b50deb3c0000b820",
         "field": {
           "Column": {
             "Expression": {
