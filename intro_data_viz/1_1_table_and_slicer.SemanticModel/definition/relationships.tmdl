@@ -1,0 +1,22 @@
+relationship 4b81197c-1d14-42d6-b52c-97533bb3572d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Orders.Order_Date
+	toColumn: LocalDateTable_0f8ed742-9144-4d8a-8414-b08f6e36ffc9.Date
+
+relationship 8b5a607d-c2fc-4630-92c5-3a91172662cd
+	fromColumn: Orders.Product_SKU
+	toColumn: Products.Product_SKU
+
+relationship 6223df71-0a22-4399-8683-d2ed399f5923
+	fromColumn: Orders.Retailer_ID
+	toColumn: Retailers.Retailer_ID
+
+relationship 76c53114-7e7b-4aef-980a-9611c98bdc83
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Returns.Return_Date
+	toColumn: LocalDateTable_010fcf6a-8453-478f-a6bf-42c8c40b1dec.Date
+
+relationship 7344c6c7-5801-4769-8313-038a673f7fd1
+	fromColumn: Returns.Order_ID
+	toColumn: Orders.Order_ID
+

@@ -1,0 +1,75 @@
+table Products
+	lineageTag: b98e9355-ee5b-497b-8aa7-7ea565d13b1f
+
+	column Product_SKU
+		dataType: string
+		lineageTag: 54c889d1-38be-439f-9f4a-d1b3d40da5ac
+		summarizeBy: none
+		sourceColumn: Product_SKU
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product_Full_Description
+		dataType: string
+		lineageTag: d50a51ed-26d6-4784-bf7d-d2ffa536be54
+		summarizeBy: none
+		sourceColumn: Product_Full_Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product_Gender
+		dataType: string
+		lineageTag: 703a00a2-8c1a-4833-8dff-4387a55b3ca8
+		summarizeBy: none
+		sourceColumn: Product_Gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product_Category
+		dataType: string
+		lineageTag: 93623429-2463-40fd-9d78-9c18962fe187
+		summarizeBy: none
+		sourceColumn: Product_Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product_Name
+		dataType: string
+		lineageTag: 29781f88-a481-43ef-bb0b-1fd87c0b7edc
+		summarizeBy: none
+		sourceColumn: Product_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product_Size
+		dataType: string
+		lineageTag: ef032886-ad2e-4425-bd0e-521499326686
+		summarizeBy: none
+		sourceColumn: Product_Size
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product_Color
+		dataType: string
+		lineageTag: e441a160-ce1d-4f42-a6dc-e91dbbd1c97c
+		summarizeBy: none
+		sourceColumn: Product_Color
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Products-8e3fa2ae-3e57-409b-b25c-02f2b9b5ff82 = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(Web.Contents("https://assets.datacamp.com/production/repositories/5946/datasets/664086f048343c770b5247c4d5a0654afbaa9225/Products.xlsx"), null, true),
+				    Products_Sheet = Source{[Item="Products",Kind="Sheet"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Products_Sheet,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}, {"Column7", type text}}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"Product_SKU", type text}, {"Product_Full_Description", type text}, {"Product_Gender", type text}, {"Product_Category", type text}, {"Product_Name", type text}, {"Product_Size", type text}, {"Product_Color", type text}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

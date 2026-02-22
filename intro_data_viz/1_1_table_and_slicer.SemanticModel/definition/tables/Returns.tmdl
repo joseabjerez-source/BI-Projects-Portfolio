@@ -1,0 +1,97 @@
+table Returns
+	lineageTag: a3da8509-7d0b-44f4-80bb-1c2550daf2a8
+
+	column Order_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: a6f67a00-6327-424e-baf3-9a0c6a42adf4
+		summarizeBy: none
+		sourceColumn: Order_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Return_year
+		dataType: int64
+		formatString: 0
+		lineageTag: 0854effe-a117-4974-bd83-09e4c7a39248
+		summarizeBy: sum
+		sourceColumn: Return_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Return_Month
+		dataType: int64
+		formatString: 0
+		lineageTag: 3aa6c93a-dab8-426b-a537-3666c5097a9f
+		summarizeBy: sum
+		sourceColumn: Return_Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column Return_day
+		dataType: int64
+		formatString: 0
+		lineageTag: 43d0adf4-57a1-49b0-a202-3ffde74e34c2
+		summarizeBy: sum
+		sourceColumn: Return_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column Hour
+		dataType: int64
+		formatString: 0
+		lineageTag: 44410c06-cbfa-4a25-8ccc-da447278b52c
+		summarizeBy: sum
+		sourceColumn: Hour
+
+		annotation SummarizationSetBy = Automatic
+
+	column Minute
+		dataType: int64
+		formatString: 0
+		lineageTag: d7561981-b805-46ef-b881-6f227820342c
+		summarizeBy: sum
+		sourceColumn: Minute
+
+		annotation SummarizationSetBy = Automatic
+
+	column Second
+		dataType: int64
+		formatString: 0
+		lineageTag: c3897f30-906a-48d9-8429-c663fe118dc0
+		summarizeBy: sum
+		sourceColumn: Second
+
+		annotation SummarizationSetBy = Automatic
+
+	column Return_Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b52dbfca-bedf-4d66-9d1a-4d8f478aead2
+		summarizeBy: none
+		sourceColumn: Return_Date
+
+		variation Variation
+			isDefault
+			relationship: 76c53114-7e7b-4aef-980a-9611c98bdc83
+			defaultHierarchy: LocalDateTable_010fcf6a-8453-478f-a6bf-42c8c40b1dec.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Returns-20c99799-fe23-479d-9ef6-78293abcd7e4 = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(Web.Contents("https://assets.datacamp.com/production/repositories/5946/datasets/efb989571edf88cafc9b0a07a599f1242bea0423/Returns.xlsx"), null, true),
+				    Returns_Sheet = Source{[Item="Returns",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Returns_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Order_ID", Int64.Type}, {"Return_year", Int64.Type}, {"Return_Month", Int64.Type}, {"Return_day", Int64.Type}, {"Hour", Int64.Type}, {"Minute", Int64.Type}, {"Second", Int64.Type}, {"Return_Date", type date}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

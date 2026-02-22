@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "1_1_table_and_slicer"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "dbc5b829-aae7-49d8-803d-438b96e2d9da"
+  }
+}

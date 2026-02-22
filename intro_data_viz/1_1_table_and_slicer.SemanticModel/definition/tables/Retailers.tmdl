@@ -1,0 +1,84 @@
+table Retailers
+	lineageTag: 17552a55-a7ee-474f-9ea2-5b47d11cd83e
+
+	column Retailer_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 9c41a7f8-3c9b-42cb-8cc5-65f0b06e9555
+		summarizeBy: none
+		sourceColumn: Retailer_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Retailer_Channel
+		dataType: string
+		lineageTag: 02ea2c3e-1f16-4984-aa90-196557dbb838
+		summarizeBy: none
+		sourceColumn: Retailer_Channel
+
+		annotation SummarizationSetBy = Automatic
+
+	column Retailer_Name
+		dataType: string
+		lineageTag: 466b34dd-79cb-4531-a7d9-3c8babbf4db6
+		summarizeBy: none
+		sourceColumn: Retailer_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: 2ddb8ec6-aea3-4967-9c2a-9ea46056aca9
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: f46189d6-8324-4f61-b01f-ac1f06e082e9
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column Area
+		dataType: string
+		lineageTag: 845d9b91-c70a-43b9-838c-4bf601494c26
+		summarizeBy: none
+		sourceColumn: Area
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: a94c10ca-8024-4e49-ae15-753567e2e27b
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column Distance_from_Warehouse
+		dataType: int64
+		formatString: 0
+		lineageTag: a7de3186-f0db-4faf-a65a-675f6c9a671c
+		summarizeBy: none
+		sourceColumn: Distance_from_Warehouse
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Retailers-940c85ec-1ed8-4573-95bd-5d4d1b9c1b16 = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(Web.Contents("https://assets.datacamp.com/production/repositories/5946/datasets/2d59a136cdd35b09ed565d693d4582f17c063c15/Retailers.xlsx"), null, true),
+				    Retailers_Sheet = Source{[Item="Retailers",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Retailers_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Retailer_ID", Int64.Type}, {"Retailer_Channel", type text}, {"Retailer_Name", type text}, {"City", type text}, {"Region", type text}, {"Area", type text}, {"Country", type text}, {"Distance_from_Warehouse", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,155 @@
+table Orders
+	lineageTag: d501b676-f71f-4bc1-83a1-dcafb1e76d98
+
+	column Order_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 7dfab50d-d99a-42c3-8e17-da56492cffa5
+		summarizeBy: none
+		sourceColumn: Order_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Order_Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 87d2e4de-8672-4816-8db9-cdac5fb7720b
+		summarizeBy: none
+		sourceColumn: Order_Date
+
+		variation Variation
+			isDefault
+			relationship: 4b81197c-1d14-42d6-b52c-97533bb3572d
+			defaultHierarchy: LocalDateTable_0f8ed742-9144-4d8a-8414-b08f6e36ffc9.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Retailer_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 0f39189f-610f-48a7-9d2b-7e519ac48fc4
+		summarizeBy: none
+		sourceColumn: Retailer_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product_SKU
+		dataType: string
+		lineageTag: 55beaef0-d101-4d31-ba96-469586199c73
+		summarizeBy: none
+		sourceColumn: Product_SKU
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product_Price
+		dataType: int64
+		formatString: 0
+		lineageTag: 63aaa0f9-cc65-4092-a0dc-07598106c0c2
+		summarizeBy: sum
+		sourceColumn: Product_Price
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product_Cost
+		dataType: double
+		lineageTag: 682b09ba-b2a1-4acf-b1f2-c9e5ed0e3099
+		summarizeBy: sum
+		sourceColumn: Product_Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ' Order_Quantity '
+		dataType: int64
+		formatString: 0
+		lineageTag: 70c0887c-cb52-4f2b-9e68-d994ad85a40f
+		summarizeBy: sum
+		sourceColumn: " Order_Quantity "
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sales_Amount
+		dataType: int64
+		formatString: "£"#,0.00;-"£"#,0.00;"£"#,0.00
+		lineageTag: 68548350-72fc-4a0d-a3ea-0627b97c7e07
+		summarizeBy: sum
+		sourceColumn: Sales_Amount
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	column Cost_of_Goods_Sold
+		dataType: double
+		formatString: "£"#,0.00;-"£"#,0.00;"£"#,0.00
+		lineageTag: 82a530e5-2451-498c-8307-7782df746d12
+		summarizeBy: sum
+		sourceColumn: Cost_of_Goods_Sold
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	column Product_Discount
+		dataType: double
+		lineageTag: a8db6cae-1004-4f9a-971e-58de6483b36a
+		summarizeBy: sum
+		sourceColumn: Product_Discount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Profit
+		dataType: double
+		formatString: "£"#,0.00;-"£"#,0.00;"£"#,0.00
+		lineageTag: b14ead0c-2c45-4d6e-b84b-1cbe104da602
+		summarizeBy: sum
+		sourceColumn: Profit
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-GB"}
+
+	column Profit_Margin
+		dataType: double
+		lineageTag: 22b89322-5433-4fdf-92b1-5e4fe2c04805
+		summarizeBy: sum
+		sourceColumn: Profit_Margin
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Order_YearMonth
+		dataType: string
+		lineageTag: f6234519-e50f-4b9e-90e1-25ee2855d5c0
+		summarizeBy: none
+		sourceColumn: Order_YearMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Orders-573a6913-f764-4917-ba02-f90e42bfc4bc = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(Web.Contents("https://assets.datacamp.com/production/repositories/5946/datasets/09587427af2231c92bb23c609b940440bc3a9c36/Orders.xlsx"), null, true),
+				    Orders_Sheet = Source{[Item="Orders",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Orders_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Order_ID", Int64.Type}, {"Order_Date", type date}, {"Retailer_ID", Int64.Type}, {"Product_SKU", type text}, {"Product_Price", Int64.Type}, {"Product_Cost", type number}, {" Order_Quantity ", Int64.Type}, {"Sales_Amount", Int64.Type}, {"Cost_of_Goods_Sold", type number}, {"Product_Discount", type number}, {"Profit", type number}, {"Profit_Margin", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
