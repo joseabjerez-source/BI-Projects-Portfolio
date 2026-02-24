@@ -4,10 +4,10 @@
   "position": {
     "x": 9.72644376899696,
     "y": 568.99696048632222,
-    "z": 1,
+    "z": 1000,
     "height": 150.75987841945289,
     "width": 179.93920972644378,
-    "tabOrder": 1
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "slicer",
@@ -94,6 +94,41 @@
             }
           }
         }
+      ],
+      "header": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Gender'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Gender'"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
@@ -101,7 +136,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "511d033910317901c232",
+        "name": "d95f7575994a85920350",
         "field": {
           "Column": {
             "Expression": {

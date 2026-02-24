@@ -55,23 +55,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "6491b50deb3c0000b820",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Products"
-              }
-            },
-            "Property": "Product_Name"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }
