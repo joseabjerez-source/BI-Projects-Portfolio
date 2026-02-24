@@ -1,0 +1,176 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "f677aa338a9ba0c20ccc",
+  "position": {
+    "x": 9.61602671118531,
+    "y": 0,
+    "z": 0,
+    "height": 720.1335559265442,
+    "width": 1270.3839732888148,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Products"
+                    }
+                  },
+                  "Property": "Product_Gender"
+                }
+              },
+              "queryRef": "Products.Product_Gender",
+              "nativeQueryRef": "Product_Gender",
+              "active": true
+            }
+          ]
+        },
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Products"
+                    }
+                  },
+                  "Property": "Product_Color"
+                }
+              },
+              "queryRef": "Products.Product_Color",
+              "nativeQueryRef": "Product_Color"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Orders"
+                        }
+                      },
+                      "Property": " Order_Quantity "
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Orders. Order_Quantity )",
+              "nativeQueryRef": " Order_Quantity "
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Orders"
+                      }
+                    },
+                    "Property": " Order_Quantity "
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "smallMultiplesLayout": [
+        {
+          "properties": {
+            "rowCount": {
+              "expr": {
+                "Literal": {
+                  "Value": "4L"
+                }
+              }
+            },
+            "columnCount": {
+              "expr": {
+                "Literal": {
+                  "Value": "3L"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "bc0ccb3c24de008cdc9c",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Orders"
+                  }
+                },
+                "Property": " Order_Quantity "
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "9b19138e49a18c202554",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Products"
+              }
+            },
+            "Property": "Product_Gender"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "79f9054489b917806870",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Products"
+              }
+            },
+            "Property": "Product_Color"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}
