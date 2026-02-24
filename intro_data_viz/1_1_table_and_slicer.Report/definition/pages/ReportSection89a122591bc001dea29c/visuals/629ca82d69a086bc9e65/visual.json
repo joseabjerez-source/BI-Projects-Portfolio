@@ -2,10 +2,10 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "629ca82d69a086bc9e65",
   "position": {
-    "x": 563.161094224924,
-    "y": 6.8085106382978724,
+    "x": 1031.0030395136778,
+    "y": 582.613981762918,
     "z": 1000,
-    "height": 149.78723404255319,
+    "height": 137.14285714285714,
     "width": 248.99696048632219,
     "tabOrder": 1000
   },
@@ -78,13 +78,6 @@
       "data": [
         {
           "properties": {
-            "numericStart": {
-              "expr": {
-                "Literal": {
-                  "Value": "2020D"
-                }
-              }
-            },
             "mode": {
               "expr": {
                 "Literal": {
@@ -97,55 +90,7 @@
       ],
       "general": [
         {
-          "properties": {
-            "filter": {
-              "filter": {
-                "Version": 2,
-                "From": [
-                  {
-                    "Name": "o",
-                    "Entity": "Orders",
-                    "Type": 0
-                  }
-                ],
-                "Where": [
-                  {
-                    "Condition": {
-                      "Comparison": {
-                        "ComparisonKind": 2,
-                        "Left": {
-                          "HierarchyLevel": {
-                            "Expression": {
-                              "Hierarchy": {
-                                "Expression": {
-                                  "PropertyVariationSource": {
-                                    "Expression": {
-                                      "SourceRef": {
-                                        "Source": "o"
-                                      }
-                                    },
-                                    "Name": "Variation",
-                                    "Property": "Order_Date"
-                                  }
-                                },
-                                "Hierarchy": "Date Hierarchy"
-                              }
-                            },
-                            "Level": "Year"
-                          }
-                        },
-                        "Right": {
-                          "Literal": {
-                            "Value": "2020D"
-                          }
-                        }
-                      }
-                    }
-                  }
-                ]
-              }
-            }
-          }
+          "properties": {}
         }
       ]
     },
