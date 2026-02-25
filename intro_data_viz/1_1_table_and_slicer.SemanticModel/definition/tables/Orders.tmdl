@@ -122,13 +122,12 @@ table Orders
 
 	column Profit_Margin
 		dataType: double
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
 		lineageTag: 22b89322-5433-4fdf-92b1-5e4fe2c04805
 		summarizeBy: sum
 		sourceColumn: Profit_Margin
 
 		annotation SummarizationSetBy = Automatic
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column Order_YearMonth
 		dataType: string

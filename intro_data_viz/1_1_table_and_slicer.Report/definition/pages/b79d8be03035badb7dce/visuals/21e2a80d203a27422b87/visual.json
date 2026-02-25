@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "b889b6b1ac3cecb0e10c",
+  "name": "21e2a80d203a27422b87",
   "position": {
     "x": 0,
-    "y": 0,
-    "z": 1,
-    "height": 336.84210526315792,
-    "width": 1076.9843527738265,
-    "tabOrder": 1
+    "y": 336.84210526315792,
+    "z": 2,
+    "height": 383.271692745377,
+    "width": 1154.366998577525,
+    "tabOrder": 2
   },
   "visual": {
-    "visualType": "lineChart",
+    "visualType": "lineClusteredColumnComboChart",
     "query": {
       "queryState": {
         "Category": {
@@ -81,44 +81,6 @@
                           "Entity": "Orders"
                         }
                       },
-                      "Property": "Sales_Amount"
-                    }
-                  },
-                  "Function": 0
-                }
-              },
-              "queryRef": "Sum(Orders.Sales_Amount)",
-              "nativeQueryRef": "Sales_Amount"
-            },
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Orders"
-                        }
-                      },
-                      "Property": "Cost_of_Goods_Sold"
-                    }
-                  },
-                  "Function": 0
-                }
-              },
-              "queryRef": "Sum(Orders.Cost_of_Goods_Sold)",
-              "nativeQueryRef": "Cost_of_Goods_Sold"
-            },
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Orders"
-                        }
-                      },
                       "Property": "Profit"
                     }
                   },
@@ -129,37 +91,40 @@
               "nativeQueryRef": "Profit"
             }
           ]
+        },
+        "Y2": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Orders"
+                        }
+                      },
+                      "Property": "Profit_Margin"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Sum(Orders.Profit_Margin)",
+              "nativeQueryRef": "Average of Profit_Margin"
+            }
+          ]
         }
       }
     },
     "objects": {
-      "valueAxis": [
-        {
-          "properties": {
-            "showAxisTitle": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "labelDisplayUnits": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            }
-          }
-        }
-      ],
       "categoryAxis": [
         {
           "properties": {
             "titleText": {
               "expr": {
                 "Literal": {
-                  "Value": "'Year and Month'"
+                  "Value": "'Month and Year'"
                 }
               }
             }
@@ -174,7 +139,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Revenue, COGS, and Profit by Month and Year'"
+                  "Value": "'Gross Profit and Average Profit Margin over Time'"
                 }
               }
             }
@@ -183,5 +148,97 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "51c0112188768bb798b3",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Orders"
+                  }
+                },
+                "Property": "Profit"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "e6e333da7665e55a4aa4",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Orders"
+                  }
+                },
+                "Property": "Profit_Margin"
+              }
+            },
+            "Function": 1
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d92b0cbb79b331450b32",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "PropertyVariationSource": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Orders"
+                      }
+                    },
+                    "Name": "Variation",
+                    "Property": "Order_Date"
+                  }
+                },
+                "Hierarchy": "Date Hierarchy"
+              }
+            },
+            "Level": "Year"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "974b035471599a535089",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "PropertyVariationSource": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Orders"
+                      }
+                    },
+                    "Name": "Variation",
+                    "Property": "Order_Date"
+                  }
+                },
+                "Hierarchy": "Date Hierarchy"
+              }
+            },
+            "Level": "Month"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }
