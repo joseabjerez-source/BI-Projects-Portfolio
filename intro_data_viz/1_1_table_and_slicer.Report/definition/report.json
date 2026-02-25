@@ -48,6 +48,9 @@
       }
     ]
   },
+  "publicCustomVisuals": [
+    "TornadoChart1452517688218"
+  ],
   "resourcePackages": [
     {
       "name": "SharedResources",

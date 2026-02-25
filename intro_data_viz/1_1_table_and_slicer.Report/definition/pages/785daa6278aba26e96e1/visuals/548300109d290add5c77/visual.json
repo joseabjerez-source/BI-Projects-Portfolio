@@ -132,23 +132,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "d95f7575994a85920350",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Products"
-              }
-            },
-            "Property": "Product_Gender"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

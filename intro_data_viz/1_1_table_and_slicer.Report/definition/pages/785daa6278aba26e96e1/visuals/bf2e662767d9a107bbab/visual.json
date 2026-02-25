@@ -110,23 +110,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "035dd0c6826b9d9008e3",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Retailers"
-              }
-            },
-            "Property": "Retailer_Channel"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

@@ -147,56 +147,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "bc0ccb3c24de008cdc9c",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Orders"
-                  }
-                },
-                "Property": " Order_Quantity "
-              }
-            },
-            "Function": 0
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "9b19138e49a18c202554",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Products"
-              }
-            },
-            "Property": "Product_Gender"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "79f9054489b917806870",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Products"
-              }
-            },
-            "Property": "Product_Color"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

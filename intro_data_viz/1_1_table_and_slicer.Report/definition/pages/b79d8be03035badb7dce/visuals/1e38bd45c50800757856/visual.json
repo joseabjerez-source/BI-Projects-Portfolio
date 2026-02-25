@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "1e38bd45c50800757856",
   "position": {
-    "x": 1084.2674253200569,
+    "x": 980.48364153627313,
     "y": 0,
     "z": 0,
-    "height": 258.54907539118068,
-    "width": 195.7325746799431,
+    "height": 186.62873399715505,
+    "width": 299.51635846372687,
     "tabOrder": 0
   },
   "visual": {
@@ -17,21 +17,61 @@
           "projections": [
             {
               "field": {
-                "Column": {
+                "HierarchyLevel": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "Products"
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Orders"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "Order_Date"
+                        }
+                      },
+                      "Hierarchy": "Date Hierarchy"
                     }
                   },
-                  "Property": "Product_Category"
+                  "Level": "Year"
                 }
               },
-              "queryRef": "Products.Product_Category",
-              "nativeQueryRef": "Product_Category",
+              "queryRef": "Orders.Order_Date.Variation.Date Hierarchy.Year",
+              "nativeQueryRef": "Order_Date Year",
               "active": true
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "HierarchyLevel": {
+                "Expression": {
+                  "Hierarchy": {
+                    "Expression": {
+                      "PropertyVariationSource": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Orders"
+                          }
+                        },
+                        "Name": "Variation",
+                        "Property": "Order_Date"
+                      }
+                    },
+                    "Hierarchy": "Date Hierarchy"
+                  }
+                },
+                "Level": "Year"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
       }
     },
     "objects": {
@@ -54,7 +94,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Category'"
+                  "Value": "'Year'"
                 }
               }
             }
@@ -69,8 +109,8 @@
                 "Version": 2,
                 "From": [
                   {
-                    "Name": "p",
-                    "Entity": "Products",
+                    "Name": "l",
+                    "Entity": "LocalDateTable_0f8ed742-9144-4d8a-8414-b08f6e36ffc9",
                     "Type": 0
                   }
                 ],
@@ -83,10 +123,10 @@
                             "Column": {
                               "Expression": {
                                 "SourceRef": {
-                                  "Source": "p"
+                                  "Source": "l"
                                 }
                               },
-                              "Property": "Product_Category"
+                              "Property": "Year"
                             }
                           }
                         ],
@@ -94,10 +134,71 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'Tank Tops'"
+                                "Value": "2021L"
                               }
                             }
                           ]
+                        ]
+                      }
+                    },
+                    "Annotations": {
+                      "filterExpressionMetadata": {
+                        "expressions": [
+                          {
+                            "HierarchyLevel": {
+                              "Expression": {
+                                "Hierarchy": {
+                                  "Expression": {
+                                    "PropertyVariationSource": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Entity": "Orders"
+                                        }
+                                      },
+                                      "Name": "Variation",
+                                      "Property": "Order_Date"
+                                    }
+                                  },
+                                  "Hierarchy": "Date Hierarchy"
+                                }
+                              },
+                              "Level": "Year"
+                            }
+                          }
+                        ],
+                        "decomposedIdentities": {
+                          "values": [
+                            [
+                              {
+                                "0": [
+                                  {
+                                    "Literal": {
+                                      "Value": "2021L"
+                                    }
+                                  }
+                                ]
+                              }
+                            ]
+                          ],
+                          "columns": [
+                            {
+                              "value": {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Entity": "LocalDateTable_0f8ed742-9144-4d8a-8414-b08f6e36ffc9"
+                                    }
+                                  },
+                                  "Property": "Year"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        "valueMap": [
+                          {
+                            "0": "2021"
+                          }
                         ]
                       }
                     }

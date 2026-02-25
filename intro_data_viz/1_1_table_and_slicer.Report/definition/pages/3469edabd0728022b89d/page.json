@@ -225,7 +225,6 @@
       {
         "name": "d5612cd943a79ce291a5",
         "boundFilter": "3adb5f49e80282d8ab43",
-        "asAggregation": false,
         "qnaSingleSelectRequired": true,
         "fieldExpr": {
           "Column": {
@@ -241,7 +240,6 @@
       {
         "name": "82a9aa91401ed20cdb51",
         "boundFilter": "c087fc50450379e07917",
-        "asAggregation": false,
         "qnaSingleSelectRequired": true,
         "fieldExpr": {
           "Column": {

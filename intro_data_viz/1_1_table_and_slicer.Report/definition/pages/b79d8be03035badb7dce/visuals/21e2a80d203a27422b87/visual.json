@@ -4,10 +4,10 @@
   "position": {
     "x": 0,
     "y": 336.84210526315792,
-    "z": 2,
+    "z": 2000,
     "height": 383.271692745377,
-    "width": 1154.366998577525,
-    "tabOrder": 2
+    "width": 798.40682788051208,
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "lineClusteredColumnComboChart",
@@ -148,97 +148,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "51c0112188768bb798b3",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Orders"
-                  }
-                },
-                "Property": "Profit"
-              }
-            },
-            "Function": 0
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "e6e333da7665e55a4aa4",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Orders"
-                  }
-                },
-                "Property": "Profit_Margin"
-              }
-            },
-            "Function": 1
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "d92b0cbb79b331450b32",
-        "field": {
-          "HierarchyLevel": {
-            "Expression": {
-              "Hierarchy": {
-                "Expression": {
-                  "PropertyVariationSource": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "Orders"
-                      }
-                    },
-                    "Name": "Variation",
-                    "Property": "Order_Date"
-                  }
-                },
-                "Hierarchy": "Date Hierarchy"
-              }
-            },
-            "Level": "Year"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "974b035471599a535089",
-        "field": {
-          "HierarchyLevel": {
-            "Expression": {
-              "Hierarchy": {
-                "Expression": {
-                  "PropertyVariationSource": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "Orders"
-                      }
-                    },
-                    "Name": "Variation",
-                    "Property": "Order_Date"
-                  }
-                },
-                "Hierarchy": "Date Hierarchy"
-              }
-            },
-            "Level": "Month"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }
