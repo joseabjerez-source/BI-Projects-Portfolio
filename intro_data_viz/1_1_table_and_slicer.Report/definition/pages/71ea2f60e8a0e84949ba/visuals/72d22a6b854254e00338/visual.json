@@ -1,0 +1,172 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "72d22a6b854254e00338",
+  "position": {
+    "x": 650,
+    "y": 0,
+    "z": 1,
+    "height": 720,
+    "width": 630,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "kpi",
+    "query": {
+      "queryState": {
+        "Goal": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Returns"
+                    }
+                  },
+                  "Property": "Target Returns"
+                }
+              },
+              "queryRef": "Returns.Target Returns",
+              "nativeQueryRef": "Target Returns"
+            }
+          ]
+        },
+        "Indicator": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Returns"
+                    }
+                  },
+                  "Property": "Total Returns"
+                }
+              },
+              "queryRef": "Returns.Total Returns",
+              "nativeQueryRef": "Total Returns"
+            }
+          ]
+        },
+        "TrendLine": {
+          "projections": [
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Orders"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "Order_Date"
+                        }
+                      },
+                      "Hierarchy": "Date Hierarchy"
+                    }
+                  },
+                  "Level": "Month"
+                }
+              },
+              "queryRef": "Orders.Order_Date.Variation.Date Hierarchy.Month",
+              "nativeQueryRef": "Order_Date Month"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "status": [
+        {
+          "properties": {
+            "direction": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Negative'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Total Returns vs Target by Month'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "6e47cc3cd25090d1c070",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Returns"
+              }
+            },
+            "Property": "Total Returns"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "9a224d2327ce060b140d",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "PropertyVariationSource": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Orders"
+                      }
+                    },
+                    "Name": "Variation",
+                    "Property": "Order_Date"
+                  }
+                },
+                "Hierarchy": "Date Hierarchy"
+              }
+            },
+            "Level": "Month"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "b1b77d56238922d29220",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Returns"
+              }
+            },
+            "Property": "Target Returns"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

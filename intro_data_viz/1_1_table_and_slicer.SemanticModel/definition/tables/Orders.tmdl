@@ -17,6 +17,14 @@ table Orders
 		formatString: 0
 		lineageTag: fa815e3d-4c04-444e-a30a-4b5702b44e98
 
+	measure 'Total Orders' = COUNT(Orders[Order_ID])
+		formatString: 0
+		lineageTag: 9a379e17-18d4-4e87-908b-c62957febcba
+
+	measure 'Target Orders' = 180
+		formatString: 0
+		lineageTag: c9dd0f8c-7460-4fab-afbe-e37abe49c5e6
+
 	column Order_ID
 		dataType: int64
 		formatString: 0
