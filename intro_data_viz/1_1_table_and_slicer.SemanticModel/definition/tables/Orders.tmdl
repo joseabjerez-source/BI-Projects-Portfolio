@@ -1,6 +1,22 @@
 table Orders
 	lineageTag: d501b676-f71f-4bc1-83a1-dcafb1e76d98
 
+	measure 'Target Profit Margin' = 0.7
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: f0639d83-5301-488b-8897-ec9577b232a3
+
+	measure 'Maximum Profit Margin' = 1
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: 5ad0f991-3a02-4292-89a3-4cc445939bff
+
+	measure 'Orders Above Target Profit Margin' = SUMX(Orders, IF(Orders[Profit_Margin] > Orders[Target Profit Margin], 1, 0))
+		formatString: 0
+		lineageTag: 96038a04-a828-4481-ad0b-8832a7b0d0f3
+
+	measure 'Orders Below Target Margin' = SUMX(Orders, IF(Orders[Profit_Margin] < Orders[Target Profit Margin], 1, 0))
+		formatString: 0
+		lineageTag: fa815e3d-4c04-444e-a30a-4b5702b44e98
+
 	column Order_ID
 		dataType: int64
 		formatString: 0
