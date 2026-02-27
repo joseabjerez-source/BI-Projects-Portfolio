@@ -9,6 +9,10 @@ table 'Databel - Data'
 		formatString: #,0.000
 		lineageTag: 2a5474e1-187f-4490-8865-a842c27067c5
 
+	measure 'Number of Churned Customers' = DISTINCTCOUNT('Databel - Data'[Churned])
+		formatString: 0
+		lineageTag: 066659f6-3d5d-4f67-b8f1-3468e4889bfc
+
 	column 'Customer ID'
 		dataType: string
 		lineageTag: 1c037fb3-d164-41d8-9f71-3f4730ad2fde
@@ -255,6 +259,13 @@ table 'Databel - Data'
 		lineageTag: 144309d1-c2a1-40da-b38e-5b92dec623e4
 		summarizeBy: none
 		sourceColumn: Churn Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column Churned = IF('Databel - Data'[Churn Label] == "Yes",1,0)
+		formatString: 0
+		lineageTag: fc52d2cd-20ec-4498-82d0-5c4cf1b2b1cb
+		summarizeBy: sum
 
 		annotation SummarizationSetBy = Automatic
 
