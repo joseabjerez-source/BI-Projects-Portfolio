@@ -279,6 +279,12 @@ table 'Databel - Data'
 
 		annotation SummarizationSetBy = Automatic
 
+	column 'Contract Category' = SWITCH('Databel - Data'[Contract Type], "One Year", "Year","Two Year", "Year", "Month-to-Month", "Month")
+		lineageTag: b44c3f8c-b710-4591-8e21-c38f80ad8b89
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
 	partition 'Databel - Data' = m
 		mode: import
 		source =

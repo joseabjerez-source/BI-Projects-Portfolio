@@ -1,0 +1,139 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "d2cb73ac4be655096752",
+  "position": {
+    "x": 468.26475849731662,
+    "y": 0,
+    "z": 1,
+    "height": 437.35241502683363,
+    "width": 811.73524150268338,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Databel - Data"
+                    }
+                  },
+                  "Property": "Gender"
+                }
+              },
+              "queryRef": "Databel - Data.Gender",
+              "nativeQueryRef": "Gender",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Databel - Data"
+                    }
+                  },
+                  "Property": "Contract Category"
+                }
+              },
+              "queryRef": "Databel - Data.Contract Category",
+              "nativeQueryRef": "Contract Category"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Databel - Data"
+                    }
+                  },
+                  "Property": "Churn Rate"
+                }
+              },
+              "queryRef": "Databel - Data.Churn Rate",
+              "nativeQueryRef": "Churn Rate"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Databel - Data"
+                  }
+                },
+                "Property": "Churn Rate"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "845ac5b600c1e7ae7c10",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Databel - Data"
+              }
+            },
+            "Property": "Gender"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "660582bf6e30070c97bb",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Databel - Data"
+              }
+            },
+            "Property": "Churn Rate"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "25025e0408aaa70c37d1",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Databel - Data"
+              }
+            },
+            "Property": "Contract Category"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

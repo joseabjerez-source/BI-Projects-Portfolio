@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "d9c010043cd451b486a0",
+  "displayName": "Multiple Fields",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280
+}
