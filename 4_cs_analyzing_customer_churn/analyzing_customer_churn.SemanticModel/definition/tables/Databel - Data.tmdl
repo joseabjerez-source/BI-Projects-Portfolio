@@ -285,6 +285,12 @@ table 'Databel - Data'
 
 		annotation SummarizationSetBy = Automatic
 
+	column 'Grouped Consumption' = IF('Databel - Data'[Avg Monthly GB Download] < 5,"Less than 5 GB", IF('Databel - Data'[Avg Monthly GB Download] >= 5 && 'Databel - Data'[Avg Monthly GB Download] < 10, "Between 5 and 10 GB", "10 or more GB"))
+		lineageTag: 08aae79c-cd18-47dc-961d-57714f4dee8b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
 	partition 'Databel - Data' = m
 		mode: import
 		source =

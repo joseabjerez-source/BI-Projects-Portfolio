@@ -1,0 +1,84 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "1be56786b362e38d4a58",
+  "position": {
+    "x": 1031.556350626118,
+    "y": 45.796064400715565,
+    "z": 0,
+    "height": 120.21466905187836,
+    "width": 230.12522361359572,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Databel - Data"
+                    }
+                  },
+                  "Property": "Unlimited Data Plan"
+                }
+              },
+              "queryRef": "Databel - Data.Unlimited Data Plan",
+              "nativeQueryRef": "Unlimited Data Plan"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Databel - Data"
+                    }
+                  },
+                  "Property": "Churn Rate"
+                }
+              },
+              "queryRef": "Databel - Data.Churn Rate",
+              "nativeQueryRef": "Churn Rate"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "22c0c1d80eced9422c4c",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Databel - Data"
+              }
+            },
+            "Property": "Churn Rate"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "71bdc5d6d20770668038",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Databel - Data"
+              }
+            },
+            "Property": "Unlimited Data Plan"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}
