@@ -201,12 +201,12 @@ table 'Databel - Data'
 		dataType: int64
 		formatString: 0
 		lineageTag: 58384f68-93b5-4c19-aa94-631a381685e0
-		summarizeBy: sum
+		summarizeBy: count
 		sourceColumn: Number of Customers in Group
 
 		changedProperty = DataType
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 	column 'Device Protection & Online Backup'
 		dataType: string
@@ -239,7 +239,7 @@ table 'Databel - Data'
 		summarizeBy: sum
 		sourceColumn: Monthly Charge
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 	column 'Total Charges'
 		dataType: int64
