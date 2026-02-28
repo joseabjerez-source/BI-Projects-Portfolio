@@ -1,0 +1,89 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "b69dd3ce26ca4030ea03",
+  "position": {
+    "x": 0,
+    "y": 163.72093023255815,
+    "z": 1,
+    "height": 556.42218246869413,
+    "width": 1261.6815742397139,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "map",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Databel - Data"
+                    }
+                  },
+                  "Property": "State"
+                }
+              },
+              "queryRef": "Databel - Data.State",
+              "nativeQueryRef": "State",
+              "active": true
+            }
+          ]
+        },
+        "Size": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Databel - Data"
+                    }
+                  },
+                  "Property": "Churn Rate"
+                }
+              },
+              "queryRef": "Databel - Data.Churn Rate",
+              "nativeQueryRef": "Churn Rate"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "10ec2add1e8057d0d3a0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Databel - Data"
+              }
+            },
+            "Property": "State"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "a37c738d6208a2605518",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Databel - Data"
+              }
+            },
+            "Property": "Churn Rate"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

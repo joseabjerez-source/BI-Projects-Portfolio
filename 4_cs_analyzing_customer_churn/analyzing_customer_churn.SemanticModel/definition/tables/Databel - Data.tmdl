@@ -143,6 +143,7 @@ table 'Databel - Data'
 	column State
 		dataType: string
 		lineageTag: ee0c77f8-ad9e-4445-9daa-f6e818bc959b
+		dataCategory: StateOrProvince
 		summarizeBy: none
 		sourceColumn: State
 
