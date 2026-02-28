@@ -13,6 +13,10 @@ table 'Databel - Data'
 		formatString: 0
 		lineageTag: 066659f6-3d5d-4f67-b8f1-3468e4889bfc
 
+	measure 'Churn Rate' = DIVIDE(SUM('Databel - Data'[Churned]),[Number or customers])
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: a06fdf07-1c3f-41f7-8038-f5ec860b2c28
+
 	column 'Customer ID'
 		dataType: string
 		lineageTag: 1c037fb3-d164-41d8-9f71-3f4730ad2fde
