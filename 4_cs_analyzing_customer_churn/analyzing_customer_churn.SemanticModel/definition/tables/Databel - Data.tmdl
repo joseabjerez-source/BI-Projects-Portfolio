@@ -234,7 +234,7 @@ table 'Databel - Data'
 
 	column 'Monthly Charge'
 		dataType: int64
-		formatString: 0
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
 		lineageTag: ebde2cc6-b551-43c0-b746-958012849dc2
 		summarizeBy: sum
 		sourceColumn: Monthly Charge
@@ -270,6 +270,12 @@ table 'Databel - Data'
 		formatString: 0
 		lineageTag: fc52d2cd-20ec-4498-82d0-5c4cf1b2b1cb
 		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Demographics = IF('Databel - Data'[Under 30] == "Yes", "Under 30", IF('Databel - Data'[Senior] == "Yes", "Senior", "Other"))
+		lineageTag: a8e3f852-3ff7-450a-a280-e2a97c81c9e5
+		summarizeBy: none
 
 		annotation SummarizationSetBy = Automatic
 
