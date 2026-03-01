@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "7344921d3889be747dac",
+  "name": "eb89e9365ba6001b8246",
   "position": {
-    "x": 149.98211091234347,
-    "y": 45.796064400715565,
-    "z": 1000,
-    "height": 559.85688729874778,
-    "width": 702.96958855098387,
-    "tabOrder": 1000
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "height": 399.57066189624328,
+    "width": 580.46511627906978,
+    "tabOrder": 0
   },
   "visual": {
-    "visualType": "clusteredBarChart",
+    "visualType": "pieChart",
     "query": {
       "queryState": {
         "Category": {
@@ -23,30 +23,12 @@
                       "Entity": "Databel - Data"
                     }
                   },
-                  "Property": "Unlimited Data Plan"
+                  "Property": "Demographics"
                 }
               },
-              "queryRef": "Databel - Data.Unlimited Data Plan",
-              "nativeQueryRef": "Unlimited Data Plan",
+              "queryRef": "Databel - Data.Demographics",
+              "nativeQueryRef": "Demographics",
               "active": true
-            }
-          ]
-        },
-        "Series": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Databel - Data"
-                    }
-                  },
-                  "Property": "Grouped Consumption"
-                }
-              },
-              "queryRef": "Databel - Data.Grouped Consumption",
-              "nativeQueryRef": "Grouped Consumption"
             }
           ]
         },
@@ -73,27 +55,55 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Column": {
                 "Expression": {
                   "SourceRef": {
                     "Entity": "Databel - Data"
                   }
                 },
-                "Property": "Churn Rate"
+                "Property": "Demographics"
               }
             },
-            "direction": "Descending"
+            "direction": "Ascending"
           }
-        ],
-        "isDefaultSort": true
+        ]
       }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'inside'"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "drillFilterOtherVisuals": true
   },
   "filterConfig": {
     "filters": [
       {
-        "name": "3f874636282a460c0ba2",
+        "name": "fc1e43404cd44c9a595c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Databel - Data"
+              }
+            },
+            "Property": "Demographics"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "ef4e32a554bbc5d6377d",
         "field": {
           "Measure": {
             "Expression": {
@@ -105,34 +115,6 @@
           }
         },
         "type": "Advanced"
-      },
-      {
-        "name": "b81e46a3c96a5ccc4d60",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Databel - Data"
-              }
-            },
-            "Property": "Unlimited Data Plan"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "6bbb7f54083889e00116",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Databel - Data"
-              }
-            },
-            "Property": "Grouped Consumption"
-          }
-        },
-        "type": "Categorical"
       }
     ]
   }

@@ -1,37 +1,18 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "7344921d3889be747dac",
+  "name": "c41b17c1099c9dcc6383",
   "position": {
-    "x": 149.98211091234347,
-    "y": 45.796064400715565,
-    "z": 1000,
-    "height": 559.85688729874778,
-    "width": 702.96958855098387,
-    "tabOrder": 1000
+    "x": 580.46511627906978,
+    "y": 133.95348837209303,
+    "z": 2,
+    "height": 296.5295169946333,
+    "width": 699.53488372093022,
+    "tabOrder": 2
   },
   "visual": {
-    "visualType": "clusteredBarChart",
+    "visualType": "clusteredColumnChart",
     "query": {
       "queryState": {
-        "Category": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Databel - Data"
-                    }
-                  },
-                  "Property": "Unlimited Data Plan"
-                }
-              },
-              "queryRef": "Databel - Data.Unlimited Data Plan",
-              "nativeQueryRef": "Unlimited Data Plan",
-              "active": true
-            }
-          ]
-        },
         "Series": {
           "projections": [
             {
@@ -50,7 +31,7 @@
             }
           ]
         },
-        "Y": {
+        "Tooltips": {
           "projections": [
             {
               "field": {
@@ -67,19 +48,47 @@
               "nativeQueryRef": "Churn Rate"
             }
           ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Databel - Data"
+                        }
+                      },
+                      "Property": "Monthly Charge"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Sum(Databel - Data.Monthly Charge)",
+              "nativeQueryRef": "Average of Monthly Charge"
+            }
+          ]
         }
       },
       "sortDefinition": {
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Aggregation": {
                 "Expression": {
-                  "SourceRef": {
-                    "Entity": "Databel - Data"
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Databel - Data"
+                      }
+                    },
+                    "Property": "Monthly Charge"
                   }
                 },
-                "Property": "Churn Rate"
+                "Function": 1
               }
             },
             "direction": "Descending"
@@ -93,35 +102,26 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "3f874636282a460c0ba2",
+        "name": "89558e4d5ebbc181ce01",
         "field": {
-          "Measure": {
+          "Aggregation": {
             "Expression": {
-              "SourceRef": {
-                "Entity": "Databel - Data"
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Databel - Data"
+                  }
+                },
+                "Property": "Monthly Charge"
               }
             },
-            "Property": "Churn Rate"
+            "Function": 1
           }
         },
         "type": "Advanced"
       },
       {
-        "name": "b81e46a3c96a5ccc4d60",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Databel - Data"
-              }
-            },
-            "Property": "Unlimited Data Plan"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "6bbb7f54083889e00116",
+        "name": "e46eddb683a079c2020d",
         "field": {
           "Column": {
             "Expression": {
@@ -133,6 +133,20 @@
           }
         },
         "type": "Categorical"
+      },
+      {
+        "name": "24a158228135dea99e10",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Databel - Data"
+              }
+            },
+            "Property": "Churn Rate"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

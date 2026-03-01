@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "7344921d3889be747dac",
+  "name": "0f1ef85dd0d04b518180",
   "position": {
-    "x": 149.98211091234347,
-    "y": 45.796064400715565,
-    "z": 1000,
-    "height": 559.85688729874778,
-    "width": 702.96958855098387,
-    "tabOrder": 1000
+    "x": 370.94812164579605,
+    "y": 0,
+    "z": 2,
+    "height": 697.24508050089446,
+    "width": 898.747763864043,
+    "tabOrder": 2
   },
   "visual": {
-    "visualType": "clusteredBarChart",
+    "visualType": "scatterChart",
     "query": {
       "queryState": {
         "Category": {
@@ -23,11 +23,11 @@
                       "Entity": "Databel - Data"
                     }
                   },
-                  "Property": "Unlimited Data Plan"
+                  "Property": "Contract Type"
                 }
               },
-              "queryRef": "Databel - Data.Unlimited Data Plan",
-              "nativeQueryRef": "Unlimited Data Plan",
+              "queryRef": "Databel - Data.Contract Type",
+              "nativeQueryRef": "Contract Type",
               "active": true
             }
           ]
@@ -42,15 +42,15 @@
                       "Entity": "Databel - Data"
                     }
                   },
-                  "Property": "Grouped Consumption"
+                  "Property": "Contract Category"
                 }
               },
-              "queryRef": "Databel - Data.Grouped Consumption",
-              "nativeQueryRef": "Grouped Consumption"
+              "queryRef": "Databel - Data.Contract Category",
+              "nativeQueryRef": "Contract Category"
             }
           ]
         },
-        "Y": {
+        "Size": {
           "projections": [
             {
               "field": {
@@ -67,24 +67,28 @@
               "nativeQueryRef": "Churn Rate"
             }
           ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Databel - Data"
+                    }
+                  },
+                  "Property": "Avg Customer Service Calls"
+                }
+              },
+              "queryRef": "Databel - Data.Avg Customer Service Calls",
+              "nativeQueryRef": "Avg Customer Service Calls",
+              "active": true
+            }
+          ]
         }
       },
       "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Databel - Data"
-                  }
-                },
-                "Property": "Churn Rate"
-              }
-            },
-            "direction": "Descending"
-          }
-        ],
         "isDefaultSort": true
       }
     },
@@ -93,7 +97,21 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "3f874636282a460c0ba2",
+        "name": "0d645da520dae13d220b",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Databel - Data"
+              }
+            },
+            "Property": "Avg Customer Service Calls"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "bb3a29ca4745e46164d4",
         "field": {
           "Measure": {
             "Expression": {
@@ -107,7 +125,7 @@
         "type": "Advanced"
       },
       {
-        "name": "b81e46a3c96a5ccc4d60",
+        "name": "42534e26a5c53a78b058",
         "field": {
           "Column": {
             "Expression": {
@@ -115,13 +133,13 @@
                 "Entity": "Databel - Data"
               }
             },
-            "Property": "Unlimited Data Plan"
+            "Property": "Contract Type"
           }
         },
         "type": "Categorical"
       },
       {
-        "name": "6bbb7f54083889e00116",
+        "name": "4891fd1532195793302a",
         "field": {
           "Column": {
             "Expression": {
@@ -129,7 +147,7 @@
                 "Entity": "Databel - Data"
               }
             },
-            "Property": "Grouped Consumption"
+            "Property": "Contract Category"
           }
         },
         "type": "Categorical"

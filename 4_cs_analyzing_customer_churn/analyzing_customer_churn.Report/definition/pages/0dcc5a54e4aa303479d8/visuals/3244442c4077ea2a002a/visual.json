@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "3244442c4077ea2a002a",
+  "position": {
+    "x": 10.304114490161002,
+    "y": 206.08228980322005,
+    "z": 1,
+    "height": 156.8515205724508,
+    "width": 370.94812164579605,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Databel - Data"
+                    }
+                  },
+                  "Property": "Avg Customer Service Calls"
+                }
+              },
+              "queryRef": "Databel - Data.Avg Customer Service Calls",
+              "nativeQueryRef": "Avg Customer Service Calls"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Databel - Data"
+                  }
+                },
+                "Property": "Avg Customer Service Calls"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "a2ff8b67ce96c703c472",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Databel - Data"
+              }
+            },
+            "Property": "Avg Customer Service Calls"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

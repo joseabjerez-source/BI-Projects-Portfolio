@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "7344921d3889be747dac",
+  "name": "9ffff173802053880017",
   "position": {
-    "x": 149.98211091234347,
-    "y": 45.796064400715565,
-    "z": 1000,
-    "height": 559.85688729874778,
-    "width": 702.96958855098387,
-    "tabOrder": 1000
+    "x": 0,
+    "y": 399.57066189624328,
+    "z": 1,
+    "height": 320.57245080500894,
+    "width": 1280,
+    "tabOrder": 1
   },
   "visual": {
-    "visualType": "clusteredBarChart",
+    "visualType": "lineStackedColumnComboChart",
     "query": {
       "queryState": {
         "Category": {
@@ -23,34 +23,34 @@
                       "Entity": "Databel - Data"
                     }
                   },
-                  "Property": "Unlimited Data Plan"
+                  "Property": "Age"
                 }
               },
-              "queryRef": "Databel - Data.Unlimited Data Plan",
-              "nativeQueryRef": "Unlimited Data Plan",
+              "queryRef": "Databel - Data.Age",
+              "nativeQueryRef": "Sum of Age",
               "active": true
             }
           ]
         },
-        "Series": {
+        "Y": {
           "projections": [
             {
               "field": {
-                "Column": {
+                "Measure": {
                   "Expression": {
                     "SourceRef": {
                       "Entity": "Databel - Data"
                     }
                   },
-                  "Property": "Grouped Consumption"
+                  "Property": "Number or customers"
                 }
               },
-              "queryRef": "Databel - Data.Grouped Consumption",
-              "nativeQueryRef": "Grouped Consumption"
+              "queryRef": "Databel - Data.Number or customers",
+              "nativeQueryRef": "Number or customers"
             }
           ]
         },
-        "Y": {
+        "Y2": {
           "projections": [
             {
               "field": {
@@ -79,7 +79,7 @@
                     "Entity": "Databel - Data"
                   }
                 },
-                "Property": "Churn Rate"
+                "Property": "Number or customers"
               }
             },
             "direction": "Descending"
@@ -93,7 +93,35 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "3f874636282a460c0ba2",
+        "name": "86ccebd75ec9d6a42ac0",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Databel - Data"
+              }
+            },
+            "Property": "Number or customers"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a9eea325a23989901080",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Databel - Data"
+              }
+            },
+            "Property": "Age"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "531173423abd5446c47a",
         "field": {
           "Measure": {
             "Expression": {
@@ -105,34 +133,6 @@
           }
         },
         "type": "Advanced"
-      },
-      {
-        "name": "b81e46a3c96a5ccc4d60",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Databel - Data"
-              }
-            },
-            "Property": "Unlimited Data Plan"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "6bbb7f54083889e00116",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Databel - Data"
-              }
-            },
-            "Property": "Grouped Consumption"
-          }
-        },
-        "type": "Categorical"
       }
     ]
   }

@@ -14,8 +14,22 @@ table 'Databel - Data'
 		lineageTag: 066659f6-3d5d-4f67-b8f1-3468e4889bfc
 
 	measure 'Churn Rate' = DIVIDE(SUM('Databel - Data'[Churned]),[Number or customers])
-		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		formatString: 0.000\ %;-0.000\ %;0.000\ %
 		lineageTag: a06fdf07-1c3f-41f7-8038-f5ec860b2c28
+
+	measure 'Avg Customer Service Calls' = AVERAGEX('Databel - Data','Databel - Data'[Customer Service Calls])
+		formatString: #,0.00
+		lineageTag: b6e442cc-3860-4c9e-81ff-3ae5b5f8c9f8
+
+	measure 'AVG Extra International Charges' = SUM('Databel - Data'[Extra International Charges]) / [Number or customers]
+		lineageTag: 6c2c8718-f0d1-4678-bccb-bfe99c49195d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AVG Extra Data Charges' = SUM('Databel - Data'[Extra Data Charges]) / [Number or customers]
+		lineageTag: 074dc0c7-6d96-4049-8894-eb9bf1c7a8bd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column 'Customer ID'
 		dataType: string

@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "95bbd1bf3059eb2b47c2",
+  "position": {
+    "x": 535.81395348837214,
+    "y": 0,
+    "z": 3,
+    "height": 130.51878354203936,
+    "width": 249.58855098389984,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Databel - Data"
+                    }
+                  },
+                  "Property": "AVG Extra International Charges"
+                }
+              },
+              "queryRef": "Databel - Data.AVG Extra International Charges",
+              "nativeQueryRef": "AVG Extra International Charges"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Databel - Data"
+                  }
+                },
+                "Property": "AVG Extra International Charges"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "8add08ba25b6bd9c10a7",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Databel - Data"
+              }
+            },
+            "Property": "AVG Extra International Charges"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

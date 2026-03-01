@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "a303187eb774aa159882",
+  "position": {
+    "x": 713.27370304114493,
+    "y": 77.853309481216456,
+    "z": 1,
+    "height": 217.53130590339893,
+    "width": 566.72629695885507,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Databel - Data"
+                    }
+                  },
+                  "Property": "AVG Extra Data Charges"
+                }
+              },
+              "queryRef": "Databel - Data.AVG Extra Data Charges",
+              "nativeQueryRef": "AVG Extra Data Charges"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Databel - Data"
+                  }
+                },
+                "Property": "AVG Extra Data Charges"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "d37d740d061d9a542c41",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Databel - Data"
+              }
+            },
+            "Property": "AVG Extra Data Charges"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

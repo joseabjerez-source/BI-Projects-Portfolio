@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "7344921d3889be747dac",
+  "name": "79608dfe40cc1ea87e88",
   "position": {
-    "x": 149.98211091234347,
-    "y": 45.796064400715565,
-    "z": 1000,
-    "height": 559.85688729874778,
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "height": 720.14311270125222,
     "width": 702.96958855098387,
-    "tabOrder": 1000
+    "tabOrder": 0
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -93,7 +93,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "3f874636282a460c0ba2",
+        "name": "3d57ef600d7d31b1d994",
         "field": {
           "Measure": {
             "Expression": {
@@ -107,7 +107,7 @@
         "type": "Advanced"
       },
       {
-        "name": "b81e46a3c96a5ccc4d60",
+        "name": "9bf664b2dec06669c0b2",
         "field": {
           "Column": {
             "Expression": {
@@ -118,10 +118,49 @@
             "Property": "Unlimited Data Plan"
           }
         },
-        "type": "Categorical"
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "d",
+              "Entity": "Databel - Data",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "d"
+                          }
+                        },
+                        "Property": "Unlimited Data Plan"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'No'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        }
       },
       {
-        "name": "6bbb7f54083889e00116",
+        "name": "f439bab9830340409400",
         "field": {
           "Column": {
             "Expression": {

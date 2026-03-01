@@ -1,0 +1,122 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "ff21b74434eac4a1a104",
+  "position": {
+    "x": 9.1592128801431123,
+    "y": 145.40250447227191,
+    "z": 6,
+    "height": 559.85688729874778,
+    "width": 702.96958855098387,
+    "tabOrder": 6
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Databel - Data"
+                    }
+                  },
+                  "Property": "State"
+                }
+              },
+              "queryRef": "Databel - Data.State",
+              "nativeQueryRef": "State",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Databel - Data"
+                        }
+                      },
+                      "Property": "Customer Service Calls"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Databel - Data.Customer Service Calls)",
+              "nativeQueryRef": "Sum of Customer Service Calls"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Databel - Data"
+                      }
+                    },
+                    "Property": "Customer Service Calls"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "c402513400e50030189d",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Databel - Data"
+                  }
+                },
+                "Property": "Customer Service Calls"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "185949a75043add323c5",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Databel - Data"
+              }
+            },
+            "Property": "State"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}
