@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "d2cb73ac4be655096752",
+  "name": "2449e80e97d013cee0c0",
   "position": {
-    "x": 468.26475849731662,
-    "y": 166.01073345259391,
-    "z": 1000,
-    "height": 437.35241502683363,
-    "width": 811.73524150268338,
-    "tabOrder": 1000
+    "x": 10,
+    "y": 145.71428571428572,
+    "z": 5003,
+    "height": 334.28571428571433,
+    "width": 741.42857142857144,
+    "tabOrder": 5003
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "lineChart",
     "query": {
       "queryState": {
         "Category": {
@@ -23,11 +23,11 @@
                       "Entity": "Databel - Data"
                     }
                   },
-                  "Property": "Gender"
+                  "Property": "Account Length (in months)"
                 }
               },
-              "queryRef": "Databel - Data.Gender",
-              "nativeQueryRef": "Gender",
+              "queryRef": "Databel - Data.Account Length (in months)",
+              "nativeQueryRef": "Sum of Account Length (in months)",
               "active": true
             }
           ]
@@ -42,11 +42,11 @@
                       "Entity": "Databel - Data"
                     }
                   },
-                  "Property": "Contract Category"
+                  "Property": "Contract Type"
                 }
               },
-              "queryRef": "Databel - Data.Contract Category",
-              "nativeQueryRef": "Contract Category"
+              "queryRef": "Databel - Data.Contract Type",
+              "nativeQueryRef": "Contract Type"
             }
           ]
         },
@@ -89,5 +89,51 @@
       }
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "e6818587ddd7e795e06b",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Databel - Data"
+              }
+            },
+            "Property": "Churn Rate"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "1ddb1d18cb00d72e4014",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Databel - Data"
+              }
+            },
+            "Property": "Account Length (in months)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8363726eedc1a02d0b08",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Databel - Data"
+              }
+            },
+            "Property": "Contract Type"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

@@ -48,37 +48,5 @@
       }
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "22c0c1d80eced9422c4c",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Databel - Data"
-              }
-            },
-            "Property": "Churn Rate"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "71bdc5d6d20770668038",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Databel - Data"
-              }
-            },
-            "Property": "Unlimited Data Plan"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

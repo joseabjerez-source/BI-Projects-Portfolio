@@ -85,37 +85,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "70cb00a644037747122c",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Databel - Data"
-              }
-            },
-            "Property": "Demographics"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "4d214f55b542a74776d0",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Databel - Data"
-              }
-            },
-            "Property": "Churn Rate"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

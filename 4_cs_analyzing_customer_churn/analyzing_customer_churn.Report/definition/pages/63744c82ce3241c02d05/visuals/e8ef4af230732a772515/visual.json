@@ -1,19 +1,19 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "3e903890ad4cb0147c06",
+  "name": "e8ef4af230732a772515",
   "position": {
-    "x": 118.53553481694185,
-    "y": 72.591529073941132,
-    "z": 2000,
-    "height": 543.05814788226849,
-    "width": 561.43575017946876,
-    "tabOrder": 2000
+    "x": 244.28571428571431,
+    "y": 0,
+    "z": 5002,
+    "height": 164.28571428571431,
+    "width": 237.14285714285717,
+    "tabOrder": 5002
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "cardVisual",
     "query": {
       "queryState": {
-        "Y": {
+        "Data": {
           "projections": [
             {
               "field": {
@@ -23,25 +23,11 @@
                       "Entity": "Databel - Data"
                     }
                   },
-                  "Property": "Number of Unique Customers"
+                  "Property": "Churn Rate"
                 }
               },
-              "queryRef": "Databel - Data.Number of Unique Customers",
-              "nativeQueryRef": "Number of Unique Customers"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Databel - Data"
-                    }
-                  },
-                  "Property": "Number or customers"
-                }
-              },
-              "queryRef": "Databel - Data.Number or customers",
-              "nativeQueryRef": "Number or customers"
+              "queryRef": "Databel - Data.Churn Rate",
+              "nativeQueryRef": "Churn Rate"
             }
           ]
         }
@@ -56,7 +42,7 @@
                     "Entity": "Databel - Data"
                   }
                 },
-                "Property": "Number of Unique Customers"
+                "Property": "Churn Rate"
               }
             },
             "direction": "Descending"
@@ -66,5 +52,23 @@
       }
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "673da3c981d027700c90",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Databel - Data"
+              }
+            },
+            "Property": "Churn Rate"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

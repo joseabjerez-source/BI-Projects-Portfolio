@@ -70,37 +70,5 @@
       }
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "bdfb9f54b428d0247914",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Databel - Data"
-              }
-            },
-            "Property": "Contract Category"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "e518dffd6304c3ed00ea",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Databel - Data"
-              }
-            },
-            "Property": "Churn Rate"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

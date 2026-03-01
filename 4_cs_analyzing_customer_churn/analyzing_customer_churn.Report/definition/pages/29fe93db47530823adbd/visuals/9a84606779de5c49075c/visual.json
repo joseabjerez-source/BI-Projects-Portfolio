@@ -89,51 +89,5 @@
       }
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "e89ed4ad79913b9e1840",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Databel - Data"
-              }
-            },
-            "Property": "Number or customers"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "b63cfda15a0c0021341c",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Databel - Data"
-              }
-            },
-            "Property": "Churn Rate"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "d46eca3508e289078d97",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Databel - Data"
-              }
-            },
-            "Property": "Age"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

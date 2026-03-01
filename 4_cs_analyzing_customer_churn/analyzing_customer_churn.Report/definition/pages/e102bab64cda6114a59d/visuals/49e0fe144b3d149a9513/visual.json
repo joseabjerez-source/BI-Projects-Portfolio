@@ -4,10 +4,10 @@
   "position": {
     "x": 10,
     "y": 421,
-    "z": 1,
+    "z": 1000,
     "height": 299,
     "width": 649,
-    "tabOrder": 1
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "lineChart",
@@ -71,37 +71,5 @@
       }
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "f0b5c71f560de21007e0",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Databel - Data"
-              }
-            },
-            "Property": "Number or customers"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "c602953f47787ad6b7e1",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Databel - Data"
-              }
-            },
-            "Property": "Payment Method"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

@@ -1,34 +1,20 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "3e903890ad4cb0147c06",
+  "name": "8acd7e4f20d697da0b61",
   "position": {
-    "x": 118.53553481694185,
-    "y": 72.591529073941132,
-    "z": 2000,
-    "height": 543.05814788226849,
-    "width": 561.43575017946876,
-    "tabOrder": 2000
+    "x": 0,
+    "y": 0,
+    "z": 4000,
+    "height": 167.2271914132379,
+    "width": 258.17531305903395,
+    "tabOrder": 4000
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "cardVisual",
     "query": {
       "queryState": {
-        "Y": {
+        "Data": {
           "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Databel - Data"
-                    }
-                  },
-                  "Property": "Number of Unique Customers"
-                }
-              },
-              "queryRef": "Databel - Data.Number of Unique Customers",
-              "nativeQueryRef": "Number of Unique Customers"
-            },
             {
               "field": {
                 "Measure": {
@@ -56,7 +42,7 @@
                     "Entity": "Databel - Data"
                   }
                 },
-                "Property": "Number of Unique Customers"
+                "Property": "Number or customers"
               }
             },
             "direction": "Descending"

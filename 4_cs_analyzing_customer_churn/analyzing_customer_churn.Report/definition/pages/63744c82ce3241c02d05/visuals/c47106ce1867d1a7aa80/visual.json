@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "4fd291c05be02c4c38e4",
+  "name": "c47106ce1867d1a7aa80",
   "position": {
-    "x": 0,
-    "y": 4.3126684636118595,
-    "z": 0,
-    "height": 709.86522911051213,
-    "width": 1280,
-    "tabOrder": 0
+    "x": 731.42857142857144,
+    "y": 238.57142857142858,
+    "z": 5000,
+    "height": 241.42857142857144,
+    "width": 401.42857142857144,
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "pieChart",
@@ -160,6 +160,20 @@
             }
           ]
         }
+      },
+      {
+        "name": "27698f40e72841993a47",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Databel - Data"
+              }
+            },
+            "Property": "Number or customers"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

@@ -4,10 +4,10 @@
   "position": {
     "x": 0,
     "y": 163.72093023255815,
-    "z": 1,
+    "z": 1000,
     "height": 556.42218246869413,
     "width": 1261.6815742397139,
-    "tabOrder": 1
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "map",
@@ -53,37 +53,5 @@
       }
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "10ec2add1e8057d0d3a0",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Databel - Data"
-              }
-            },
-            "Property": "State"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "a37c738d6208a2605518",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Databel - Data"
-              }
-            },
-            "Property": "Churn Rate"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

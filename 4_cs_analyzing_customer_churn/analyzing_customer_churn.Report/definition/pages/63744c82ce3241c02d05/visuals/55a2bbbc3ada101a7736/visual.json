@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "46d98325dbeb9e865990",
+  "name": "55a2bbbc3ada101a7736",
   "position": {
-    "x": 10,
-    "y": 0,
-    "z": 0,
-    "height": 720,
-    "width": 1270,
-    "tabOrder": 0
+    "x": 0,
+    "y": 480.00000000000006,
+    "z": 5001,
+    "height": 480.00000000000006,
+    "width": 1132.8571428571429,
+    "tabOrder": 5001
   },
   "visual": {
     "visualType": "map",
@@ -101,6 +101,13 @@
                   "Value": "46.16461250485392D"
                 }
               }
+            },
+            "showZoomButtons": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
             }
           }
         }
@@ -144,6 +151,19 @@
             ]
           }
         }
+      ],
+      "heatMap": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
@@ -181,7 +201,7 @@
         }
       },
       {
-        "name": "4d6bc519b904606d8115",
+        "name": "2d32407b67eb01327500",
         "field": {
           "Column": {
             "Expression": {
@@ -195,7 +215,7 @@
         "type": "Categorical"
       },
       {
-        "name": "c92b8f6299183e992998",
+        "name": "dae02f53a915144c6804",
         "field": {
           "Measure": {
             "Expression": {
@@ -209,7 +229,7 @@
         "type": "Advanced"
       },
       {
-        "name": "0bac4e3684c7a6170a82",
+        "name": "35ddfac1d607bdca52a0",
         "field": {
           "Measure": {
             "Expression": {
@@ -223,7 +243,7 @@
         "type": "Advanced"
       },
       {
-        "name": "8baf1ce426b0c024dce2",
+        "name": "7cfd7ba68608e6986ea4",
         "field": {
           "Measure": {
             "Expression": {

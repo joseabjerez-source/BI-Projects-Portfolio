@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "155efd598bbcb06c0225",
+  "name": "c14683529753bd3a6e98",
   "position": {
-    "x": 10.304114490161002,
+    "x": 731.42857142857144,
     "y": 0,
     "z": 0,
-    "height": 411.01967799642222,
-    "width": 649.15921288014317,
+    "height": 238.57142857142858,
+    "width": 401.42857142857144,
     "tabOrder": 0
   },
   "visual": {
-    "visualType": "lineChart",
+    "visualType": "pieChart",
     "query": {
       "queryState": {
         "Category": {
@@ -23,30 +23,12 @@
                       "Entity": "Databel - Data"
                     }
                   },
-                  "Property": "Account Length (in months)"
+                  "Property": "Demographics"
                 }
               },
-              "queryRef": "Databel - Data.Account Length (in months)",
-              "nativeQueryRef": "Sum of Account Length (in months)",
+              "queryRef": "Databel - Data.Demographics",
+              "nativeQueryRef": "Demographics",
               "active": true
-            }
-          ]
-        },
-        "Series": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Databel - Data"
-                    }
-                  },
-                  "Property": "Contract Type"
-                }
-              },
-              "queryRef": "Databel - Data.Contract Type",
-              "nativeQueryRef": "Contract Type"
             }
           ]
         },
@@ -73,27 +55,55 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Column": {
                 "Expression": {
                   "SourceRef": {
                     "Entity": "Databel - Data"
                   }
                 },
-                "Property": "Churn Rate"
+                "Property": "Demographics"
               }
             },
-            "direction": "Descending"
+            "direction": "Ascending"
           }
-        ],
-        "isDefaultSort": true
+        ]
       }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'inside'"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "drillFilterOtherVisuals": true
   },
   "filterConfig": {
     "filters": [
       {
-        "name": "b9c0b0f3c5bcad80708b",
+        "name": "3d763f167ec597625d13",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Databel - Data"
+              }
+            },
+            "Property": "Demographics"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "9e797b99b782c7bdb3b3",
         "field": {
           "Measure": {
             "Expression": {
@@ -105,34 +115,6 @@
           }
         },
         "type": "Advanced"
-      },
-      {
-        "name": "8d1636c074c20a0260a6",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Databel - Data"
-              }
-            },
-            "Property": "Account Length (in months)"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "edab56757bd5ad30b032",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Databel - Data"
-              }
-            },
-            "Property": "Contract Type"
-          }
-        },
-        "type": "Categorical"
       }
     ]
   }

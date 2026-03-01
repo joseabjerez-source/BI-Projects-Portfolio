@@ -4,10 +4,10 @@
   "position": {
     "x": 149.98211091234347,
     "y": 45.796064400715565,
-    "z": 1,
+    "z": 1000,
     "height": 559.85688729874778,
     "width": 702.96958855098387,
-    "tabOrder": 1
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -89,51 +89,5 @@
       }
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "78474729c04d4aa58be5",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Databel - Data"
-              }
-            },
-            "Property": "Churn Rate"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "ad06098cb9d7720967d0",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Databel - Data"
-              }
-            },
-            "Property": "Unlimited Data Plan"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "d5c360e632cbbb822d86",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Databel - Data"
-              }
-            },
-            "Property": "Grouped Consumption"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

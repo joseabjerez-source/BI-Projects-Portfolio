@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "4fd291c05be02c4c38e4",
+  "name": "f925cac03c57c04181d6",
   "position": {
-    "x": 0,
-    "y": 4.3126684636118595,
-    "z": 0,
-    "height": 709.86522911051213,
-    "width": 1280,
-    "tabOrder": 0
+    "x": 1132.4508050089444,
+    "y": 0,
+    "z": 1000,
+    "height": 959.35599284436489,
+    "width": 507.5491949910554,
+    "tabOrder": 1000
   },
   "visual": {
-    "visualType": "pieChart",
+    "visualType": "clusteredBarChart",
     "query": {
       "queryState": {
         "Category": {
@@ -23,11 +23,11 @@
                       "Entity": "Databel - Data"
                     }
                   },
-                  "Property": "Churn Category"
+                  "Property": "Churn Reason"
                 }
               },
-              "queryRef": "Databel - Data.Churn Category",
-              "nativeQueryRef": "Churn Category",
+              "queryRef": "Databel - Data.Churn Reason",
+              "nativeQueryRef": "Churn Reason",
               "active": true
             }
           ]
@@ -36,17 +36,37 @@
           "projections": [
             {
               "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Databel - Data"
+                "Arithmetic": {
+                  "Left": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Databel - Data"
+                        }
+                      },
+                      "Property": "Number or customers"
                     }
                   },
-                  "Property": "Number or customers"
+                  "Right": {
+                    "ScopedEval": {
+                      "Expression": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Databel - Data"
+                            }
+                          },
+                          "Property": "Number or customers"
+                        }
+                      },
+                      "Scope": []
+                    }
+                  },
+                  "Operator": 3
                 }
               },
               "queryRef": "Databel - Data.Number or customers",
-              "nativeQueryRef": "Number or customers"
+              "nativeQueryRef": "%GT Number or customers"
             }
           ]
         }
@@ -55,42 +75,26 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Column": {
                 "Expression": {
                   "SourceRef": {
                     "Entity": "Databel - Data"
                   }
                 },
-                "Property": "Number or customers"
+                "Property": "Churn Reason"
               }
             },
-            "direction": "Descending"
+            "direction": "Ascending"
           }
-        ],
-        "isDefaultSort": true
+        ]
       }
-    },
-    "objects": {
-      "labels": [
-        {
-          "properties": {
-            "position": {
-              "expr": {
-                "Literal": {
-                  "Value": "'inside'"
-                }
-              }
-            }
-          }
-        }
-      ]
     },
     "drillFilterOtherVisuals": true
   },
   "filterConfig": {
     "filters": [
       {
-        "name": "b0647ca02d6eb0701960",
+        "name": "1d479e2f9b3ac21a68a4",
         "field": {
           "Column": {
             "Expression": {
@@ -98,7 +102,7 @@
                 "Entity": "Databel - Data"
               }
             },
-            "Property": "Churn Category"
+            "Property": "Churn Reason"
           }
         },
         "type": "Categorical",
@@ -125,7 +129,7 @@
                                 "Source": "d"
                               }
                             },
-                            "Property": "Churn Category"
+                            "Property": "Churn Reason"
                           }
                         }
                       ],
