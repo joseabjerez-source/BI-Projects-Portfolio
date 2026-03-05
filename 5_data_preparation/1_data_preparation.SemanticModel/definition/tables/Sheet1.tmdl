@@ -94,13 +94,23 @@ table Sheet1
 				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type1",{{"ProductVariantNameDescription", "Product Name"}, {"Category1", "Subcategory"}, {"Category2", "Category"}}),
 				    #"Reordered Columns" = Table.ReorderColumns(#"Renamed Columns",{"ProductKey", "SKU", "Product Name", "Standard Cost", "Color", "List Price", "Model", "Category", "Subcategory"}),
 				    #"Reordered Columns1" = Table.ReorderColumns(#"Reordered Columns",{"SKU", "Product Name", "Color", "List Price", "Model", "Category", "Subcategory", "Standard Cost"}),
-				    #"Filtered Rows" = Table.SelectRows(#"Reordered Columns1", each true),
-				    #"Changed Type2" = Table.TransformColumnTypes(#"Filtered Rows",{{"Standard Cost", Currency.Type}}),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Reordered Columns1",{{"Standard Cost", Currency.Type}}),
 				    #"Reordered Columns2" = Table.ReorderColumns(#"Changed Type2",{"ProductKey", "SKU", "Product Name", "Color", "Model", "Category", "Subcategory", "List Price", "Standard Cost"}),
 				    #"Changed Type3" = Table.TransformColumnTypes(#"Reordered Columns2",{{"List Price", Currency.Type}, {"ProductKey", Int64.Type}}),
-				    #"Sorted Rows" = Table.Sort(#"Changed Type3",{{"Category", Order.Ascending}, {"List Price", Order.Descending}})
+				    #"Sorted Rows" = Table.Sort(#"Changed Type3",{{"Category", Order.Ascending}, {"List Price", Order.Descending}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Sorted Rows","multi","Multi",Replacer.ReplaceText,{"Color"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","Yeelow","Yellow",Replacer.ReplaceText,{"Color"}),
+				    #"Sorted Rows1" = Table.Sort(#"Replaced Value1",{{"ProductKey", Order.Ascending}}),
+				    #"Filled Down" = Table.FillDown(#"Sorted Rows1",{"ProductKey", "Subcategory"}),
+				    #"Filled Up" = Table.FillUp(#"Filled Down",{"Subcategory"}),
+				    #"Replaced Value2" = Table.ReplaceValue(#"Filled Up",-2171.2942,2171.2942,Replacer.ReplaceValue,{"Standard Cost"}),
+				    #"Sorted Rows2" = Table.Sort(#"Replaced Value2",{{"Standard Cost", Order.Descending}}),
+				    #"Replaced Value3" = Table.ReplaceValue(#"Sorted Rows2","261763","26.1763",Replacer.ReplaceText,{"Model"}),
+				    #"Replaced Value4" = Table.ReplaceValue(#"Replaced Value3",261763,26.1763,Replacer.ReplaceValue,{"Standard Cost"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Replaced Value4", {"ProductKey"}),
+				    #"Changed Type4" = Table.TransformColumnTypes(#"Removed Duplicates",{{"Standard Cost", Currency.Type}})
 				in
-				    #"Sorted Rows"
+				    #"Changed Type4"
 
 	annotation PBI_NavigationStepName = Navigation
 
