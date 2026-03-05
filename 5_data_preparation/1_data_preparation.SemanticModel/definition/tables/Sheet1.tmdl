@@ -1,0 +1,108 @@
+table Sheet1
+	lineageTag: 31123324-166f-4b05-8760-c2b88bcddcc7
+
+	column ProductKey
+		dataType: int64
+		formatString: 0
+		lineageTag: ada4e135-5829-479b-b392-aea980dfbd83
+		summarizeBy: count
+		sourceColumn: ProductKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SKU
+		dataType: string
+		lineageTag: 36f62469-6beb-45ce-aa7f-2540e4487b00
+		summarizeBy: none
+		sourceColumn: SKU
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Name'
+		dataType: string
+		lineageTag: fb760e1c-e00c-4121-97a5-cb264675ebbe
+		summarizeBy: none
+		sourceColumn: Product Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Color
+		dataType: string
+		lineageTag: a278a39c-12af-44be-95ed-9ac489a02ab2
+		summarizeBy: none
+		sourceColumn: Color
+
+		annotation SummarizationSetBy = Automatic
+
+	column Model
+		dataType: string
+		lineageTag: 89ae61be-f35f-4015-aae3-42254f135316
+		summarizeBy: none
+		sourceColumn: Model
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 8cfd414f-885c-4473-85e8-1b309caa331b
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subcategory
+		dataType: string
+		lineageTag: 7bae3f09-bf8c-4ec8-a186-256bcbf64db1
+		summarizeBy: none
+		sourceColumn: Subcategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'List Price'
+		dataType: decimal
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: 143f44e8-9894-4acf-94e8-c00f64f38b2b
+		summarizeBy: sum
+		sourceColumn: List Price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-MX"}
+
+	column 'Standard Cost'
+		dataType: decimal
+		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
+		lineageTag: dd21d223-a378-4f75-8043-bb071cb8e646
+		summarizeBy: sum
+		sourceColumn: Standard Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-MX"}
+
+	partition Sheet1 = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\JoséAndrésBarriosJer\Downloads\data-preparation-in-power-bi\Datasets\ProductData.xlsx"), null, true),
+				    Sheet1_Sheet = Source{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"x", type any}, {"x_1", type text}, {"x_2", type text}, {"x_3", type any}, {"x_4", type text}, {"x_5", type any}, {"x_6", type text}, {"x_7", type text}, {"x_8", type text}}),
+				    #"Removed Top Rows" = Table.Skip(#"Changed Type",1),
+				    #"Promoted Headers1" = Table.PromoteHeaders(#"Removed Top Rows", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers1",{{"ProductKey", Int64.Type}, {"SKU", type text}, {"ProductVariantNameDescription", type text}, {"Standard Cost", type number}, {"Color", type text}, {"List Price", type number}, {"Model", type text}, {"Category1", type text}, {"Category2", type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type1",{{"ProductVariantNameDescription", "Product Name"}, {"Category1", "Subcategory"}, {"Category2", "Category"}}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Renamed Columns",{"ProductKey", "SKU", "Product Name", "Standard Cost", "Color", "List Price", "Model", "Category", "Subcategory"}),
+				    #"Reordered Columns1" = Table.ReorderColumns(#"Reordered Columns",{"SKU", "Product Name", "Color", "List Price", "Model", "Category", "Subcategory", "Standard Cost"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Reordered Columns1", each true),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Filtered Rows",{{"Standard Cost", Currency.Type}}),
+				    #"Reordered Columns2" = Table.ReorderColumns(#"Changed Type2",{"ProductKey", "SKU", "Product Name", "Color", "Model", "Category", "Subcategory", "List Price", "Standard Cost"}),
+				    #"Changed Type3" = Table.TransformColumnTypes(#"Reordered Columns2",{{"List Price", Currency.Type}, {"ProductKey", Int64.Type}}),
+				    #"Sorted Rows" = Table.Sort(#"Changed Type3",{{"Category", Order.Ascending}, {"List Price", Order.Descending}})
+				in
+				    #"Sorted Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
