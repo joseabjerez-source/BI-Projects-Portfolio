@@ -1,0 +1,110 @@
+table Resellers
+	lineageTag: 56b486d0-ed07-4195-a7d6-822e8a72c318
+
+	column ResellerKey
+		dataType: string
+		lineageTag: ffa30a7b-3201-409e-8594-b1d2d8990ac8
+		summarizeBy: none
+		sourceColumn: ResellerKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Business Type'
+		dataType: string
+		lineageTag: a7660d02-84f8-400a-8ca0-03590b6bcf16
+		summarizeBy: none
+		sourceColumn: Business Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Reseller
+		dataType: string
+		lineageTag: 792178b9-59d1-4b89-9fea-fe3dae8d6163
+		summarizeBy: none
+		sourceColumn: Reseller
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: 8fabf351-92b2-4f21-b3e9-f6accbfc6de9
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'State / Region'
+		dataType: string
+		lineageTag: ff848b6b-f06a-4bd1-b3d6-81aed1389d06
+		summarizeBy: none
+		sourceColumn: State / Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 090dc91e-fb24-45e1-a87a-99a17d8cd6eb
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Postal Code'
+		dataType: string
+		lineageTag: 1f90a99b-0262-4d3f-b3b5-ced71f84e553
+		summarizeBy: none
+		sourceColumn: Postal Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales Rep Full Name'
+		dataType: string
+		lineageTag: f28c6c42-479d-4c8d-a0bb-00364ce84113
+		summarizeBy: none
+		sourceColumn: Sales Rep Full Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Name Length'
+		dataType: int64
+		formatString: 0
+		lineageTag: b62e3ab1-27fc-4bb2-b66b-0faf89d5aefc
+		summarizeBy: sum
+		sourceColumn: Name Length
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Resellers = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\JoséAndrésBarriosJer\Downloads\data-preparation-in-power-bi\Datasets\ResellersData.xlsx"), null, true),
+				    Sheet1_Sheet = Source{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ResellerKey", Int64.Type}, {"Business Type", type text}, {"Reseller", type text}, {"Location", type text}, {"Sales Rep First Name", type text}, {"Sales Rep Last Name", type text}}),
+				    #"Trimmed Text" = Table.TransformColumns(Table.TransformColumnTypes(#"Changed Type", {{"ResellerKey", type text}}, "es-MX"),{{"ResellerKey", Text.Trim, type text}, {"Business Type", Text.Trim, type text}, {"Reseller", Text.Trim, type text}, {"Location", Text.Trim, type text}, {"Sales Rep First Name", Text.Trim, type text}, {"Sales Rep Last Name", Text.Trim, type text}}),
+				    #"Cleaned Text" = Table.TransformColumns(#"Trimmed Text",{{"ResellerKey", Text.Clean, type text}, {"Business Type", Text.Clean, type text}, {"Reseller", Text.Clean, type text}, {"Location", Text.Clean, type text}, {"Sales Rep First Name", Text.Clean, type text}, {"Sales Rep Last Name", Text.Clean, type text}}),
+				    #"Capitalized Each Word" = Table.TransformColumns(#"Cleaned Text",{{"Business Type", Text.Proper, type text}}),
+				    #"Uppercased Text" = Table.TransformColumns(#"Capitalized Each Word",{{"Sales Rep First Name", Text.Upper, type text}}),
+				    #"Merged Columns" = Table.CombineColumns(#"Uppercased Text",{"Sales Rep First Name", "Sales Rep Last Name"},Combiner.CombineTextByDelimiter(" ", QuoteStyle.None),"Sales Rep Full Name"),
+				    #"Duplicated Column" = Table.DuplicateColumn(#"Merged Columns", "Sales Rep Full Name", "Sales Rep Full Name - Copy"),
+				    #"Calculated Text Length" = Table.TransformColumns(#"Duplicated Column",{{"Sales Rep Full Name - Copy", Text.Length, Int64.Type}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Calculated Text Length",{{"Sales Rep Full Name - Copy", "Name Length"}}),
+				    #"Sorted Rows" = Table.Sort(#"Renamed Columns",{{"Name Length", Order.Descending}}),
+				    #"Split Column by Delimiter" = Table.SplitColumn(#"Sorted Rows", "Location", Splitter.SplitTextByDelimiter(",", QuoteStyle.Csv), {"Location.1", "Location.2", "Location.3"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"Location.1", type text}, {"Location.2", type text}, {"Location.3", type text}}),
+				    #"Split Column by Delimiter1" = Table.SplitColumn(#"Changed Type1", "Location.3", Splitter.SplitTextByDelimiter("-", QuoteStyle.Csv), {"Location.3.1", "Location.3.2"}),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Split Column by Delimiter1",{{"Location.3.1", type text}, {"Location.3.2", type text}}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Changed Type2",{{"Location.1", "City"}, {"Location.2", "State / Region"}, {"Location.3.1", "Country"}, {"Location.3.2", "Postal Code"}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Renamed Columns1","USA","United States",Replacer.ReplaceText,{"Country"}),
+				    #"Trimmed Text1" = Table.TransformColumns(#"Replaced Value",{{"Country", Text.Trim, type text}}),
+				    #"Cleaned Text1" = Table.TransformColumns(#"Trimmed Text1",{{"Country", Text.Clean, type text}}),
+				    #"Added Prefix" = Table.TransformColumns(#"Cleaned Text1", {{"Reseller", each "AW Reseller-" & _, type text}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Added Prefix", each ([Country] = "United States"))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,4 +1,4 @@
-table Sheet1
+table Products
 	lineageTag: 31123324-166f-4b05-8760-c2b88bcddcc7
 
 	column ProductKey
@@ -80,7 +80,7 @@ table Sheet1
 
 		annotation PBI_FormatHint = {"currencyCulture":"es-MX"}
 
-	partition Sheet1 = m
+	partition Products = m
 		mode: import
 		source =
 				let
@@ -111,6 +111,8 @@ table Sheet1
 				    #"Changed Type4" = Table.TransformColumnTypes(#"Removed Duplicates",{{"Standard Cost", Currency.Type}})
 				in
 				    #"Changed Type4"
+
+	changedProperty = Name
 
 	annotation PBI_NavigationStepName = Navigation
 

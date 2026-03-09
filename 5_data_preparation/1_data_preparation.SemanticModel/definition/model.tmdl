@@ -8,11 +8,12 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["Sheet1"]
+annotation PBI_QueryOrder = ["Products","Resellers"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
-ref table Sheet1
+ref table Products
+ref table Resellers
 
 ref cultureInfo en-US
 
