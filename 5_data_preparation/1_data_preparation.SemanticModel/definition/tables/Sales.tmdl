@@ -1,0 +1,216 @@
+table Sales
+	lineageTag: 24a190bb-86e8-485b-b7fe-a5c436b905e2
+
+	column SalesOrderLineKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 231f9db9-f5d8-45c3-ab34-490b7049de30
+		summarizeBy: count
+		sourceColumn: SalesOrderLineKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ResellerKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 81b88d3b-3841-484f-89a2-70f1c7144983
+		summarizeBy: count
+		sourceColumn: ResellerKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerKey
+		dataType: int64
+		formatString: 0
+		lineageTag: b2aa1a21-a4e6-4c06-a072-279af486c556
+		summarizeBy: count
+		sourceColumn: CustomerKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 0ae8088f-fd73-4cf4-8836-7a0adf8f3a11
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 040ce6bf-7a1c-4641-b6fb-4eaf80363907
+		summarizeBy: none
+		sourceColumn: OrderDate
+
+		variation Variation
+			isDefault
+			relationship: 5807992e-2546-4bcf-a10c-414c6b8c5c95
+			defaultHierarchy: LocalDateTable_f7e2f695-0328-4318-9454-2fa50c46eaa4.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DueDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d675a84f-acca-48e5-b62e-f1b724b63288
+		summarizeBy: none
+		sourceColumn: DueDate
+
+		variation Variation
+			isDefault
+			relationship: 011412a5-c22e-41b2-867b-08fae718c7ab
+			defaultHierarchy: LocalDateTable_99ce72ad-6b19-4981-9854-6461f40e2f85.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Unit Price Discount Pct'
+		dataType: double
+		lineageTag: 54cccf9f-945a-403b-8387-0030da9124f5
+		summarizeBy: sum
+		sourceColumn: Unit Price Discount Pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ShipDay
+		dataType: string
+		lineageTag: 4f28a72d-20d2-4cab-9503-dc38b0efbd70
+		summarizeBy: none
+		sourceColumn: ShipDay
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesTerritoryKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 1f99c30b-f1c3-492e-a98e-4b0dfd78b1a0
+		summarizeBy: count
+		sourceColumn: SalesTerritoryKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Quantity'
+		dataType: int64
+		formatString: 0
+		lineageTag: f7426f50-b4e9-4ffa-bc8c-5a42193bea49
+		summarizeBy: sum
+		sourceColumn: Order Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unit Price'
+		dataType: double
+		lineageTag: f8d0776d-76b1-47ae-abce-d467dea824cd
+		summarizeBy: sum
+		sourceColumn: Unit Price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Extended Amount'
+		dataType: double
+		lineageTag: b1eaeaea-3b8b-4b40-b790-7cf3c3c8a877
+		summarizeBy: sum
+		sourceColumn: Extended Amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Product Standard Cost'
+		dataType: double
+		lineageTag: 65875482-e0cd-4670-b079-0f720d5d2773
+		summarizeBy: sum
+		sourceColumn: Product Standard Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Total Product Cost'
+		dataType: double
+		lineageTag: 634ff2b9-5cdf-47a6-bd34-e175261aa89b
+		summarizeBy: sum
+		sourceColumn: Total Product Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SubTotal
+		dataType: double
+		lineageTag: 22e824ad-8812-482e-89f4-2d276d25b26b
+		summarizeBy: sum
+		sourceColumn: SubTotal
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Discount Amount'
+		dataType: double
+		lineageTag: 7bbbb9b2-36ee-4683-916b-649a4f99c807
+		summarizeBy: sum
+		sourceColumn: Discount Amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Sales Total'
+		dataType: double
+		lineageTag: bb6ce93f-df9d-476d-bec7-3180078a6006
+		summarizeBy: sum
+		sourceColumn: Sales Total
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Week of Month'
+		dataType: int64
+		formatString: 0
+		lineageTag: a59ac527-249f-4cf3-8282-a989702fcbf6
+		summarizeBy: sum
+		sourceColumn: Week of Month
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Sales = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\JoséAndrésBarriosJer\Downloads\data-preparation-in-power-bi\Datasets\SalesData.xlsx"), null, true),
+				    Sales_Table = Source{[Item="Sales",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Sales_Table,{{"SalesOrderLineKey", Int64.Type}, {"ResellerKey", Int64.Type}, {"CustomerKey", Int64.Type}, {"ProductKey", Int64.Type}, {"OrderDate", type date}, {"DueDate", type date}, {"ShipDate", type date}, {"SalesTerritoryKey", Int64.Type}, {"Order Quantity", Int64.Type}, {"Unit Price", type number}, {"Extended Amount", type number}, {"Unit Price Discount Pct", type number}, {"Product Standard Cost", type number}, {"Total Product Cost", type number}, {"SubTotal", type number}, {"Discount Amount", type number}, {"Sales Total", type number}}),
+				    #"Calculated Absolute Value" = Table.TransformColumns(#"Changed Type",{{"Order Quantity", Number.Abs, Int64.Type}, {"Extended Amount", Number.Abs, type number}}),
+				    #"Rounded Off" = Table.TransformColumns(#"Calculated Absolute Value",{{"Unit Price", each Number.Round(_, 1), type number}}),
+				    #"Rounded Off1" = Table.TransformColumns(#"Rounded Off",{{"Extended Amount", each Number.Round(_, 1), type number}}),
+				    #"Multiplied Column" = Table.TransformColumns(#"Rounded Off1", {{"Discount Amount", each _ * -1, type number}}),
+				    #"Multiplied Column1" = Table.TransformColumns(#"Multiplied Column", {{"Unit Price Discount Pct", each _ * 100, type number}}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Multiplied Column1",{{"Unit Price Discount Pct", Percentage.Type}}),
+				    #"Subtracted from Column" = Table.TransformColumns(#"Changed Type1", {{"Sales Total", each _ - 1, type number}}),
+				    #"Calculated Square Root" = Table.TransformColumns(#"Subtracted from Column",{{"Total Product Cost", Number.Sqrt, type number}}),
+				    #"Rounded Off2" = Table.TransformColumns(#"Calculated Square Root",{{"Sales Total", each Number.Round(_, 1), type number}}),
+				    #"Rounded Off3" = Table.TransformColumns(#"Rounded Off2",{{"SubTotal", each Number.Round(_, 1), type number}}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Rounded Off3",{"SalesOrderLineKey", "ResellerKey", "CustomerKey", "ProductKey", "OrderDate", "DueDate", "Unit Price Discount Pct", "ShipDate", "SalesTerritoryKey", "Order Quantity", "Unit Price", "Extended Amount", "Product Standard Cost", "Total Product Cost", "SubTotal", "Discount Amount", "Sales Total"}),
+				    #"Duplicated Column" = Table.DuplicateColumn(#"Reordered Columns", "OrderDate", "OrderDate - Copy"),
+				    #"Calculated Week of Month" = Table.TransformColumns(#"Duplicated Column",{{"OrderDate - Copy", Date.WeekOfMonth, Int64.Type}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Calculated Week of Month",{{"OrderDate - Copy", "Week of Month"}}),
+				    #"Extracted Day Name" = Table.TransformColumns(#"Renamed Columns", {{"ShipDate", each Date.DayOfWeekName(_), type text}}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Extracted Day Name",{{"ShipDate", "ShipDay"}})
+				in
+				    #"Renamed Columns1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -5,7 +5,7 @@ table Products
 		dataType: int64
 		formatString: 0
 		lineageTag: ada4e135-5829-479b-b392-aea980dfbd83
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: ProductKey
 
 		annotation SummarizationSetBy = Automatic
@@ -62,7 +62,7 @@ table Products
 		dataType: decimal
 		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
 		lineageTag: 143f44e8-9894-4acf-94e8-c00f64f38b2b
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: List Price
 
 		annotation SummarizationSetBy = Automatic
@@ -73,7 +73,7 @@ table Products
 		dataType: decimal
 		formatString: \$#,0.###############;-\$#,0.###############;\$#,0.###############
 		lineageTag: dd21d223-a378-4f75-8043-bb071cb8e646
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Standard Cost
 
 		annotation SummarizationSetBy = Automatic

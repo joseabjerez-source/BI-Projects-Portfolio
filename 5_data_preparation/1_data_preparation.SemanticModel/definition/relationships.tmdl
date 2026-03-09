@@ -1,0 +1,14 @@
+relationship 5807992e-2546-4bcf-a10c-414c6b8c5c95
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Sales.OrderDate
+	toColumn: LocalDateTable_f7e2f695-0328-4318-9454-2fa50c46eaa4.Date
+
+relationship 011412a5-c22e-41b2-867b-08fae718c7ab
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Sales.DueDate
+	toColumn: LocalDateTable_99ce72ad-6b19-4981-9854-6461f40e2f85.Date
+
+relationship AutoDetected_2193ee5d-e432-45f0-821b-18c276f80f98
+	fromColumn: Sales.ProductKey
+	toColumn: Products.ProductKey
+
