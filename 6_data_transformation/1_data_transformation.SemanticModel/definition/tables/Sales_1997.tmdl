@@ -1,0 +1,77 @@
+table Sales_1997
+	lineageTag: b481cdc7-dde8-4607-8e75-1cd2588a38f5
+
+	column 'Company Name'
+		dataType: string
+		lineageTag: 50e91496-c0ed-44ae-bcbc-b198e3b0654c
+		summarizeBy: none
+		sourceColumn: Company Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 47544e26-e106-4c1d-a1c8-b76c96024fa8
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Attribute
+		dataType: string
+		lineageTag: 9f9949d4-ee7a-4d1d-9ae8-6d5ce3e61108
+		summarizeBy: none
+		sourceColumn: Attribute
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		dataType: double
+		lineageTag: c9449821-4ce4-484a-967b-220f3df8ab71
+		summarizeBy: sum
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Sales_1997-c48e2799-b0ed-49e9-9e5e-a3dc8bd7e8e6 = m
+		mode: import
+		source =
+				let
+				    Sales_1997 = let
+				    Source = Csv.Document(Web.Contents("https://assets.datacamp.com/production/repositories/5976/datasets/16eef7d98a506764191c09b93b11edb69dbdd3bf/SalesByAmounts.csv")),
+				    #"Promoted Headers1" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Promoted Headers1",{{"SaleAmount", type number}, {"OrderID", Int64.Type}, {"CompanyName", type text}, {"ShippedDate", type datetime}}),
+				    #"Extracted Month Name" = Table.TransformColumns(#"Changed Type2", {{"ShippedDate", each Date.MonthName(_), type text}}),
+				    #"Grouped Rows" = Table.Group(#"Extracted Month Name", {"CompanyName", "ShippedDate"}, {{"Sale Amount", each List.Sum([SaleAmount]), type nullable number}}),
+				    #"Pivoted Column" = Table.Pivot(#"Grouped Rows", List.Distinct(#"Grouped Rows"[ShippedDate]), "ShippedDate", "Sale Amount", List.Sum),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Pivoted Column",{"CompanyName", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"}),
+				    #"Added Custom" = Table.AddColumn(#"Reordered Columns", "Year", each 1997),
+				    #"Reordered Columns1" = Table.ReorderColumns(#"Added Custom",{"CompanyName", "Year", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"}),
+				    #"Demoted Headers" = Table.DemoteHeaders(#"Reordered Columns1"),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Demoted Headers",{{"Column1", type text}, {"Column2", type any}, {"Column3", type any}, {"Column4", type any}, {"Column5", type any}, {"Column6", type any}, {"Column7", type any}, {"Column8", type any}, {"Column9", type any}, {"Column10", type any}, {"Column11", type any}, {"Column12", type any}, {"Column13", type any}}),
+				    #"Transposed Table" = Table.Transpose(#"Changed Type"),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Transposed Table", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"CompanyName", type text}, {"Berglunds snabbköp", type number}, {"Bon app'", Int64.Type}, {"Bottom-Dollar Markets", Int64.Type}, {"Bólido Comidas preparadas", type number}, {"Eastern Connection", Int64.Type}, {"Ernst Handel", type number}, {"Folies gourmandes", type number}, {"Folk och fä HB", type number}, {"Godos Cocina Típica", type number}, {"Gourmet Lanchonetes", Int64.Type}, {"Great Lakes Food Market", type number}, {"HILARION-Abastos", type number}, {"Hungry Owl All-Night Grocers", type number}, {"Königlich Essen", Int64.Type}, {"LINO-Delicateses", type number}, {"La maison d'Asie", type number}, {"Lehmanns Marktstand", type number}, {"Maison Dewey", Int64.Type}, {"Mère Paillarde", type number}, {"Piccolo und mehr", Int64.Type}, {"QUICK-Stop", type number}, {"Queen Cozinha", type number}, {"Rattlesnake Canyon Grocery", type number}, {"Richter Supermarkt", type number}, {"Save-a-lot Markets", type number}, {"Simons bistro", type number}, {"Suprêmes délices", Int64.Type}, {"Tortuga Restaurante", type number}, {"Vaffeljernet", type number}, {"Victuailles en stock", Int64.Type}, {"Wartian Herkku", Int64.Type}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type1",{{"CompanyName", "Column 1"}}),
+				    Step = ""
+				
+				in
+				    #"Renamed Columns",
+				    #"Demoted Headers" = Table.DemoteHeaders(Sales_1997),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Demoted Headers",{{"Column1", type text}, {"Column2", type any}, {"Column3", type any}, {"Column4", type any}, {"Column5", type any}, {"Column6", type any}, {"Column7", type any}, {"Column8", type any}, {"Column9", type any}, {"Column10", type any}, {"Column11", type any}, {"Column12", type any}, {"Column13", type any}, {"Column14", type any}, {"Column15", type any}, {"Column16", type any}, {"Column17", type any}, {"Column18", type any}, {"Column19", type any}, {"Column20", type any}, {"Column21", type any}, {"Column22", type any}, {"Column23", type any}, {"Column24", type any}, {"Column25", type any}, {"Column26", type any}, {"Column27", type any}, {"Column28", type any}, {"Column29", type any}, {"Column30", type any}, {"Column31", type any}, {"Column32", type any}}),
+				    #"Transposed Table" = Table.Transpose(#"Changed Type"),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Transposed Table", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"Column 1", type text}, {"Year", Int64.Type}, {"January", type number}, {"February", type number}, {"March", type number}, {"April", type number}, {"May", type number}, {"June", type number}, {"July", type number}, {"August", type number}, {"September", type number}, {"October", type number}, {"November", type number}, {"December", type number}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type1",{{"Column 1", "Company Name"}}),
+				    #"Unpivoted Columns" = Table.UnpivotOtherColumns(#"Renamed Columns", {"Company Name", "Year"}, "Attribute", "Value"),
+				    #"Sorted Rows" = Table.Sort(#"Unpivoted Columns",{{"Value", Order.Descending}})
+				in
+				    #"Sorted Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

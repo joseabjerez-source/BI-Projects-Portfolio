@@ -1,0 +1,53 @@
+table EmployeeData
+	lineageTag: 337949d4-0943-4646-8cc2-4ee411326a34
+
+	column EmployeeID
+		dataType: int64
+		formatString: 0
+		lineageTag: 42d2995f-e528-46b1-ac39-75afb2e37435
+		summarizeBy: count
+		sourceColumn: EmployeeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: b724f024-0090-474e-8fef-a62a62c33a10
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Sales Quantity'
+		dataType: double
+		lineageTag: 68c70fd8-0665-452f-8672-bbae2f641bb5
+		summarizeBy: sum
+		sourceColumn: Total Sales Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition EmployeeData-d6e875c7-35c2-4b27-aec9-5187bf004e3e = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://assets.datacamp.com/production/repositories/5976/datasets/44956cbb3b659474ba698a96aef526fb7d093546/EmployeeData.csv"),[Delimiter=",", Columns=11, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"EmployeeID", Int64.Type}, {"LastName", type text}, {"FirstName", type text}, {"OrderID", Int64.Type}, {"ProductID", Int64.Type}, {"UnitPrice", type number}, {"Quantity", Int64.Type}, {"CustomerID", type text}, {"CompanyName", type text}, {"Attribute", type text}, {"Value", type text}}),
+				    #"Pivoted Column" = Table.Pivot(#"Changed Type", List.Distinct(#"Changed Type"[Attribute]), "Attribute", "Value"),
+				    #"Removed Columns" = Table.RemoveColumns(#"Pivoted Column",{"OrderID", "ProductID", "UnitPrice", "ProductName", "SupplierName"}),
+				    #"Pivoted Column1" = Table.Pivot(#"Removed Columns", List.Distinct(#"Removed Columns"[CategoryName]), "CategoryName", "Quantity", List.Sum),
+				    #"Sorted Rows" = Table.Sort(#"Pivoted Column1",{{"Beverages", Order.Descending}}),
+				    #"Unpivoted Columns" = Table.UnpivotOtherColumns(#"Sorted Rows", {"EmployeeID", "LastName", "FirstName", "CustomerID", "CompanyName"}, "Attribute", "Value"),
+				    #"Renamed Columns" = Table.RenameColumns(#"Unpivoted Columns",{{"Attribute", "Category"}}),
+				    #"Grouped Rows" = Table.Group(#"Renamed Columns", {"EmployeeID", "Category"}, {{"Total Sales Quantity", each List.Sum([Value]), type number}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Grouped Rows", each ([Category] = "Dairy Products")),
+				    #"Sorted Rows1" = Table.Sort(#"Filtered Rows",{{"Total Sales Quantity", Order.Ascending}})
+				in
+				    #"Sorted Rows1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
