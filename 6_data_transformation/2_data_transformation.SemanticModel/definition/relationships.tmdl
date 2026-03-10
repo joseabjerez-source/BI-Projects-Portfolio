@@ -1,0 +1,12 @@
+relationship AutoDetected_461fb1d7-057d-4540-be03-56b0de959b06
+	fromColumn: Sales_1996.EmployeeID
+	toColumn: northwind_employees.EmployeeID
+
+relationship AutoDetected_3bf8f090-99b2-4512-8bc6-33f711a98670
+	fromColumn: Sales_1997.EmployeeID
+	toColumn: northwind_employees.EmployeeID
+
+relationship AutoDetected_40c901b1-a6c1-45a5-b483-8060ee6931ae
+	fromColumn: Sales_1998.EmployeeID
+	toColumn: northwind_employees.EmployeeID
+

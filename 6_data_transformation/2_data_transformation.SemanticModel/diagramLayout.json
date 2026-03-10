@@ -36,13 +36,13 @@
         },
         {
           "location": {
-            "x": 852,
-            "y": 0
+            "x": 1136,
+            "y": 48
           },
-          "nodeIndex": "Append1",
-          "nodeLineageTag": "4b2bdf15-1409-4ea3-83e5-180118df29b1",
+          "nodeIndex": "northwind_employees",
+          "nodeLineageTag": "f2c56e6a-9c61-45fd-a553-ce852db7e2e6",
           "size": {
-            "height": 272,
+            "height": 176,
             "width": 234
           },
           "zIndex": 0
@@ -52,9 +52,21 @@
             "x": 0,
             "y": 12
           },
-          "nodeIndex": "Total Sales",
+          "nodeIndex": "Sales_1996",
           "size": {
             "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 852,
+            "y": 0
+          },
+          "nodeIndex": "Total Sales",
+          "size": {
+            "height": 272,
             "width": 234
           },
           "zIndex": 0

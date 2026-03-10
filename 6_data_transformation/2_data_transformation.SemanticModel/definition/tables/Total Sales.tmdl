@@ -1,62 +1,138 @@
 table 'Total Sales'
-	lineageTag: 9c24c92e-0b1d-423e-b0a4-aa1ba2879863
-
-	column EmployeeID
-		dataType: int64
-		formatString: 0
-		lineageTag: cd475d1d-864b-45bb-9ab2-a5d5d4db6d7b
-		summarizeBy: count
-		sourceColumn: EmployeeID
-
-		annotation SummarizationSetBy = Automatic
-
-	column RegionDescription
-		dataType: string
-		lineageTag: d0b65bd6-d2b8-470d-8433-8fcaa0992ef0
-		summarizeBy: none
-		sourceColumn: RegionDescription
-
-		annotation SummarizationSetBy = Automatic
-
-	column CompanyName
-		dataType: string
-		lineageTag: 78a9ae0c-33ae-423e-a1c3-1e83b5be716c
-		summarizeBy: none
-		sourceColumn: CompanyName
-
-		annotation SummarizationSetBy = Automatic
+	lineageTag: 4b2bdf15-1409-4ea3-83e5-180118df29b1
 
 	column Year
 		dataType: int64
 		formatString: 0
-		lineageTag: 9308b953-6033-4a77-a2b1-607e7817d3ec
+		lineageTag: adb1c23f-f681-4c24-8419-f0ec5d04cc09
 		summarizeBy: sum
 		sourceColumn: Year
 
 		annotation SummarizationSetBy = Automatic
 
-	column Month
+	column Name
 		dataType: string
-		lineageTag: 786e16a5-6f03-4f34-ab1f-1e64e6b6f028
+		lineageTag: 41deeecf-ed9a-45c8-bd5d-4f53939b49b3
 		summarizeBy: none
-		sourceColumn: Month
+		sourceColumn: Name
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Total Quantity'
-		dataType: int64
-		formatString: 0
-		lineageTag: c9c4c4ac-6bef-4299-9810-301f21b584f3
-		summarizeBy: sum
-		sourceColumn: Total Quantity
-
-		annotation SummarizationSetBy = Automatic
-
-	column 'Total Sales'
+	column September
 		dataType: double
-		lineageTag: eee387b8-7dbc-4d94-ad29-4e2e5e48a04c
+		lineageTag: 7fc305ad-71d9-413b-b027-61a56f5f5983
 		summarizeBy: sum
-		sourceColumn: Total Sales
+		sourceColumn: September
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column November
+		dataType: double
+		lineageTag: 9299e811-b36f-4b41-b855-a0005b5f63f5
+		summarizeBy: sum
+		sourceColumn: November
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column December
+		dataType: double
+		lineageTag: bf32ad5b-9cef-44f1-ac7d-ab1aa9f84835
+		summarizeBy: sum
+		sourceColumn: December
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column July
+		dataType: double
+		lineageTag: 660d147f-9ff4-4ece-bacb-26ee902d0956
+		summarizeBy: sum
+		sourceColumn: July
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column August
+		dataType: double
+		lineageTag: 6bbdc497-6d9f-4b1c-9420-5198029ec759
+		summarizeBy: sum
+		sourceColumn: August
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column October
+		dataType: double
+		lineageTag: 98d01747-ca4a-46c6-a389-c4e9b68c7823
+		summarizeBy: sum
+		sourceColumn: October
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column January
+		dataType: double
+		lineageTag: eeb02d41-f4fb-411c-a79d-76be80150e22
+		summarizeBy: sum
+		sourceColumn: January
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column June
+		dataType: double
+		lineageTag: 03369265-9cb9-47a2-864a-44ff7a76f4b0
+		summarizeBy: sum
+		sourceColumn: June
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column March
+		dataType: double
+		lineageTag: 659ba6e1-a362-41f0-952a-49937733185b
+		summarizeBy: sum
+		sourceColumn: March
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column February
+		dataType: double
+		lineageTag: d6437576-4ae2-42db-8905-25741a903749
+		summarizeBy: sum
+		sourceColumn: February
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column April
+		dataType: double
+		lineageTag: d53f0b7a-1f7b-4c02-bc18-79f202ee6d78
+		summarizeBy: sum
+		sourceColumn: April
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column May
+		dataType: double
+		lineageTag: 17f8ec73-f8ed-4c1f-be9c-4d1a3c22d5ce
+		summarizeBy: sum
+		sourceColumn: May
 
 		annotation SummarizationSetBy = Automatic
 
@@ -66,13 +142,22 @@ table 'Total Sales'
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\JoséAndrésBarriosJer\Downloads\data-transformation-in-power-bi\Datasets\Sales_1996.csv"),[Delimiter=",", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),
-				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"EmployeeID", Int64.Type}, {"RegionDescription", type text}, {"CompanyName", type text}, {"Year", Int64.Type}, {"Month", type text}, {"Total Quantity", Int64.Type}, {"Total Sales", type number}})
+				    Source = Table.Combine({Sales_1996, Sales_1997, Sales_1998}),
+				    #"Merged Queries" = Table.NestedJoin(Source, {"EmployeeID"}, northwind_employees, {"EmployeeID"}, "northwind_employees", JoinKind.LeftOuter),
+				    #"Expanded northwind_employees" = Table.ExpandTableColumn(#"Merged Queries", "northwind_employees", {"Name", "ReportsTo"}, {"Name", "ReportsTo"}),
+				    #"Merged Queries1" = Table.NestedJoin(#"Expanded northwind_employees", {"ReportsTo"}, northwind_employees, {"EmployeeID"}, "northwind_employees", JoinKind.LeftOuter),
+				    #"Expanded northwind_employees1" = Table.ExpandTableColumn(#"Merged Queries1", "northwind_employees", {"Name"}, {"Name.1"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Expanded northwind_employees1",{{"Name.1", "Manager"}}),
+				    #"Merged Queries2" = Table.NestedJoin(#"Renamed Columns", {"CompanyName", "RegionDescription", "Year"}, Orders_per_region, {"CompanyName", "RegionDescription", "Year"}, "Orders_per_region", JoinKind.RightOuter),
+				    #"Expanded Orders_per_region" = Table.ExpandTableColumn(#"Merged Queries2", "Orders_per_region", {"# Orders"}, {"# Orders"}),
+				    #"Sorted Rows" = Table.Sort(#"Expanded Orders_per_region",{{"# Orders", Order.Descending}}),
+				    #"Grouped Rows" = Table.Group(#"Sorted Rows", {"Name", "Year", "Month"}, {{"Sales", each List.Sum([Total Sales]), type nullable number}}),
+				    #"Pivoted Column" = Table.Pivot(#"Grouped Rows", List.Distinct(#"Grouped Rows"[Month]), "Month", "Sales", List.Sum),
+				    #"Filtered Rows" = Table.SelectRows(#"Pivoted Column", each ([Name] = "Buchanan, Steven"))
 				in
-				    #"Changed Type"
-
-	annotation PBI_ResultType = Table
+				    #"Filtered Rows"
 
 	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
 

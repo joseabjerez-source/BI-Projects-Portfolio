@@ -1,0 +1,49 @@
+table Orders_per_region
+	lineageTag: 6dca6ab2-c738-4bb2-811a-149667aa4c3f
+
+	column CompanyName
+		dataType: string
+		lineageTag: 1a7b8a7b-b4df-4e06-ac09-f929879bc4b8
+		summarizeBy: none
+		sourceColumn: CompanyName
+
+		annotation SummarizationSetBy = Automatic
+
+	column RegionDescription
+		dataType: string
+		lineageTag: d5bc4b62-6fd4-4906-8bf7-fa3d6ba43c50
+		summarizeBy: none
+		sourceColumn: RegionDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: e952bc5a-b39f-4a5e-b002-ae70fe2543d7
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column '# Orders'
+		dataType: int64
+		formatString: 0
+		lineageTag: 33edcce3-7800-4ff2-9d48-4a14d2b90055
+		summarizeBy: sum
+		sourceColumn: # Orders
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Orders_per_region = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\JoséAndrésBarriosJer\Downloads\data-transformation-in-power-bi\Datasets\Orders_per_region.csv"),[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"CompanyName", type text}, {"RegionDescription", type text}, {"Year", Int64.Type}, {"# Orders", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

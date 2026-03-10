@@ -8,14 +8,16 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["Total Sales","Sales_1997","Sales_1998","Append1"]
+annotation PBI_QueryOrder = ["Sales_1996","Sales_1997","Sales_1998","Total Sales","northwind_employees","Orders_per_region"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
-ref table 'Total Sales'
+ref table Sales_1996
 ref table Sales_1997
 ref table Sales_1998
-ref table Append1
+ref table 'Total Sales'
+ref table northwind_employees
+ref table Orders_per_region
 
 ref cultureInfo en-US
 

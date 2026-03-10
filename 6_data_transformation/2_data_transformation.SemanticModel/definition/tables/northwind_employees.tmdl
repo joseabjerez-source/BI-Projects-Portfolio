@@ -1,0 +1,49 @@
+table northwind_employees
+	lineageTag: f2c56e6a-9c61-45fd-a553-ce852db7e2e6
+
+	column EmployeeID
+		dataType: int64
+		formatString: 0
+		lineageTag: 202f57ff-a8cf-4c76-b0db-4a66c1a54e13
+		summarizeBy: none
+		sourceColumn: EmployeeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 54b8a873-cf07-4789-a3d9-288c901eaf39
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Title
+		dataType: string
+		lineageTag: bedc2a7b-ef55-4bad-a422-382ae82270c7
+		summarizeBy: none
+		sourceColumn: Title
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReportsTo
+		dataType: int64
+		formatString: 0
+		lineageTag: d89397a7-7b04-4127-a4c2-85f6fa6a9ad3
+		summarizeBy: sum
+		sourceColumn: ReportsTo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition northwind_employees = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\JoséAndrésBarriosJer\Downloads\data-transformation-in-power-bi\Datasets\northwind_employees.csv"),[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"EmployeeID", Int64.Type}, {"Name", type text}, {"Title", type text}, {"ReportsTo", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

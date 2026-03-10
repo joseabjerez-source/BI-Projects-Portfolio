@@ -1,10 +1,10 @@
-table Sales_1998
-	lineageTag: f2093f0c-0c21-49d0-9e49-b69a1cf1b2ee
+table Sales_1996
+	lineageTag: 9c24c92e-0b1d-423e-b0a4-aa1ba2879863
 
 	column EmployeeID
 		dataType: int64
 		formatString: 0
-		lineageTag: cdab3aa0-ee80-4ee7-908b-981283f3a02f
+		lineageTag: cd475d1d-864b-45bb-9ab2-a5d5d4db6d7b
 		summarizeBy: none
 		sourceColumn: EmployeeID
 
@@ -12,7 +12,7 @@ table Sales_1998
 
 	column RegionDescription
 		dataType: string
-		lineageTag: 9a4a3041-c942-4647-a38e-d002f9920e9c
+		lineageTag: d0b65bd6-d2b8-470d-8433-8fcaa0992ef0
 		summarizeBy: none
 		sourceColumn: RegionDescription
 
@@ -20,7 +20,7 @@ table Sales_1998
 
 	column CompanyName
 		dataType: string
-		lineageTag: f345dc98-2a31-43d9-be0f-e0f662f36c1d
+		lineageTag: 78a9ae0c-33ae-423e-a1c3-1e83b5be716c
 		summarizeBy: none
 		sourceColumn: CompanyName
 
@@ -29,7 +29,7 @@ table Sales_1998
 	column Year
 		dataType: int64
 		formatString: 0
-		lineageTag: 3c7312a4-5b9b-4dbd-8192-7671df2b67ef
+		lineageTag: 9308b953-6033-4a77-a2b1-607e7817d3ec
 		summarizeBy: sum
 		sourceColumn: Year
 
@@ -37,7 +37,7 @@ table Sales_1998
 
 	column Month
 		dataType: string
-		lineageTag: 1f0f2499-0001-463b-abd1-fbc3a72a4666
+		lineageTag: 786e16a5-6f03-4f34-ab1f-1e64e6b6f028
 		summarizeBy: none
 		sourceColumn: Month
 
@@ -46,7 +46,7 @@ table Sales_1998
 	column 'Total Quantity'
 		dataType: int64
 		formatString: 0
-		lineageTag: 52c4ff2d-c074-4937-8d51-e3d1ac1d7285
+		lineageTag: c9c4c4ac-6bef-4299-9810-301f21b584f3
 		summarizeBy: sum
 		sourceColumn: Total Quantity
 
@@ -54,7 +54,7 @@ table Sales_1998
 
 	column 'Total Sales'
 		dataType: double
-		lineageTag: 63b0f84c-d963-4ceb-9a51-72d9797720b0
+		lineageTag: eee387b8-7dbc-4d94-ad29-4e2e5e48a04c
 		summarizeBy: sum
 		sourceColumn: Total Sales
 
@@ -62,16 +62,15 @@ table Sales_1998
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	partition Sales_1998 = m
+	partition Sales_1996 = m
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents("C:\Users\JoséAndrésBarriosJer\Downloads\data-transformation-in-power-bi\Datasets\Sales_1998.csv"),[Delimiter=",", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(File.Contents("C:\Users\JoséAndrésBarriosJer\Downloads\data-transformation-in-power-bi\Datasets\Sales_1996.csv"),[Delimiter=",", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"EmployeeID", Int64.Type}, {"RegionDescription", type text}, {"Company Name", type text}, {"Year", Int64.Type}, {"Month", type text}, {"Total Quantity", Int64.Type}, {"Total Sales", type number}}),
-				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"Company Name", "CompanyName"}})
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"EmployeeID", Int64.Type}, {"RegionDescription", type text}, {"CompanyName", type text}, {"Year", Int64.Type}, {"Month", type text}, {"Total Quantity", Int64.Type}, {"Total Sales", type number}})
 				in
-				    #"Renamed Columns"
+				    #"Changed Type"
 
 	annotation PBI_ResultType = Table
 
