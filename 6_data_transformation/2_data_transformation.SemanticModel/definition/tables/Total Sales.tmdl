@@ -1,0 +1,78 @@
+table 'Total Sales'
+	lineageTag: 9c24c92e-0b1d-423e-b0a4-aa1ba2879863
+
+	column EmployeeID
+		dataType: int64
+		formatString: 0
+		lineageTag: cd475d1d-864b-45bb-9ab2-a5d5d4db6d7b
+		summarizeBy: count
+		sourceColumn: EmployeeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column RegionDescription
+		dataType: string
+		lineageTag: d0b65bd6-d2b8-470d-8433-8fcaa0992ef0
+		summarizeBy: none
+		sourceColumn: RegionDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column CompanyName
+		dataType: string
+		lineageTag: 78a9ae0c-33ae-423e-a1c3-1e83b5be716c
+		summarizeBy: none
+		sourceColumn: CompanyName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 9308b953-6033-4a77-a2b1-607e7817d3ec
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: 786e16a5-6f03-4f34-ab1f-1e64e6b6f028
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Quantity'
+		dataType: int64
+		formatString: 0
+		lineageTag: c9c4c4ac-6bef-4299-9810-301f21b584f3
+		summarizeBy: sum
+		sourceColumn: Total Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Sales'
+		dataType: double
+		lineageTag: eee387b8-7dbc-4d94-ad29-4e2e5e48a04c
+		summarizeBy: sum
+		sourceColumn: Total Sales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Total Sales' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\JoséAndrésBarriosJer\Downloads\data-transformation-in-power-bi\Datasets\Sales_1996.csv"),[Delimiter=",", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"EmployeeID", Int64.Type}, {"RegionDescription", type text}, {"CompanyName", type text}, {"Year", Int64.Type}, {"Month", type text}, {"Total Quantity", Int64.Type}, {"Total Sales", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

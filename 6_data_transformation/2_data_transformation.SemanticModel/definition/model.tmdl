@@ -1,0 +1,21 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-MX
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Total Sales","Sales_1997","Sales_1998","Append1"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table 'Total Sales'
+ref table Sales_1997
+ref table Sales_1998
+ref table Append1
+
+ref cultureInfo en-US
+
