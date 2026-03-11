@@ -1,0 +1,60 @@
+table Northwind_products
+	lineageTag: d5673b8f-d6c1-4277-be5b-1ed8eef82d04
+
+	column CategoryName
+		dataType: string
+		lineageTag: c5a25246-f8c3-45be-8c30-7edb33a4687b
+		summarizeBy: none
+		sourceColumn: CategoryName
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalValue
+		dataType: double
+		lineageTag: f52e8db1-f1c6-4bac-99dd-94d26b62f601
+		summarizeBy: sum
+		sourceColumn: TotalValue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column GroupedRank
+		dataType: string
+		lineageTag: 56a06d76-88e6-47f0-b654-9229cf0e27a5
+		summarizeBy: none
+		sourceColumn: GroupedRank
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Northwind_products = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\JoséAndrésBarriosJer\Downloads\data-transformation-in-power-bi\Datasets\Northwind_products.csv"),[Delimiter=",", Columns=11, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ProductID", Int64.Type}, {"ProductName", type text}, {"SupplierID", Int64.Type}, {"CategoryID", Int64.Type}, {"QuantityPerUnit", type text}, {"UnitPrice", type number}, {"UnitsInStock", Int64.Type}, {"UnitsOnOrder", Int64.Type}, {"ReorderLevel", Int64.Type}, {"Discontinued", type logical}, {"CategoryName", type text}}),
+				    #"Sorted Rows" = Table.Sort(#"Changed Type",{{"UnitsInStock", Order.Descending}}),
+				    #"Added Index" = Table.AddIndexColumn(#"Sorted Rows", "Index", 1, 1, Int64.Type),
+				    #"Renamed Columns" = Table.RenameColumns(#"Added Index",{{"Index", "OverallStockRank"}}),
+				    #"Grouped Rows" = Table.Group(#"Renamed Columns", {"CategoryName"}, {{"TotalStock", each List.Sum([UnitsInStock]), type nullable number}, {"Grouped", each _, type table [ProductID=nullable number, ProductName=nullable text, SupplierID=nullable number, CategoryID=nullable number, QuantityPerUnit=nullable text, UnitPrice=nullable number, UnitsInStock=nullable number, UnitsOnOrder=nullable number, ReorderLevel=nullable number, Discontinued=nullable logical, CategoryName=nullable text, OverallStockRank=number]}}),
+				    #"Sorted Rows1" = Table.Sort(#"Grouped Rows",{{"TotalStock", Order.Descending}}),
+				    #"Added Index1" = Table.AddIndexColumn(#"Sorted Rows1", "Index", 1, 1, Int64.Type),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Added Index1",{{"Index", "CategoryStockRank"}}),
+				    #"Expanded Grouped" = Table.ExpandTableColumn(#"Renamed Columns1", "Grouped", {"ProductID", "ProductName", "SupplierID", "CategoryID", "QuantityPerUnit", "UnitPrice", "UnitsInStock", "UnitsOnOrder", "ReorderLevel", "Discontinued", "OverallStockRank"}, {"ProductID", "ProductName", "SupplierID", "CategoryID", "QuantityPerUnit", "UnitPrice", "UnitsInStock", "UnitsOnOrder", "ReorderLevel", "Discontinued", "OverallStockRank"}),
+				    #"Added Custom" = Table.AddColumn(#"Expanded Grouped", "StockPlusOrdered", each [UnitsInStock] + [UnitsOnOrder]),
+				    #"Added Custom1" = Table.AddColumn(#"Added Custom", "StockPlusOrderValue", each [StockPlusOrdered] + [UnitPrice]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom1",{{"StockPlusOrdered", Int64.Type}, {"StockPlusOrderValue", type number}}),
+				    #"Added Custom2" = Table.AddColumn(#"Changed Type1", "IsBackOrdered", each if ([StockPlusOrdered] < [ReorderLevel]) then "true" else "false"),
+				    #"Grouped Rows1" = Table.Group(#"Added Custom2", {"CategoryName"}, {{"TotalValue", each List.Sum([StockPlusOrderValue]), type nullable number}, {"Grouped", each _, type table [CategoryName=nullable text, TotalStock=nullable number, ProductID=nullable number, ProductName=nullable text, SupplierID=nullable number, CategoryID=nullable number, QuantityPerUnit=nullable text, UnitPrice=nullable number, UnitsInStock=nullable number, UnitsOnOrder=nullable number, ReorderLevel=nullable number, Discontinued=nullable logical, OverallStockRank=nullable number, CategoryStockRank=number, StockPlusOrdered=nullable number, StockPlusOrderValue=nullable number, IsBackOrdered=text]}}),
+				    #"Added Custom3" = Table.AddColumn(#"Grouped Rows1", "SortedGroup", each Table.Sort([Grouped], {{"StockPlusOrderValue", Order.Descending}})),
+				    #"Added Custom4" = Table.AddColumn(#"Added Custom3", "Custom", each Table.AddIndexColumn([SortedGroup],"CategoryGroupedRank", 1 )),
+				    #"Renamed Columns2" = Table.RenameColumns(#"Added Custom4",{{"Custom", "GroupedRank"}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Renamed Columns2",{"SortedGroup", "Grouped"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
