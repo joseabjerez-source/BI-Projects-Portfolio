@@ -1,0 +1,40 @@
+table Zscores
+	lineageTag: 8ef1eb83-8ce4-4e3c-a45f-f1a09db9b651
+
+	column ProductPriceCategory
+		dataType: string
+		lineageTag: bedf0e0f-e841-4297-aafb-4e92cc10fbab
+		summarizeBy: none
+		sourceColumn: ProductPriceCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalStock
+		dataType: double
+		lineageTag: c99d36a6-1a4d-4802-a392-c40cd3406bb2
+		summarizeBy: sum
+		sourceColumn: TotalStock
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Zscores-16f7c637-4e64-483e-81d0-47bd00d18d71 = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://assets.datacamp.com/production/repositories/5976/datasets/685b6fbc4edc014c22877f3abb72242a93c20709/Northwind_products.csv")),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ProductID", Int64.Type}, {"ProductName", type text}, {"SupplierID", Int64.Type}, {"CategoryID", Int64.Type}, {"QuantityPerUnit", type text}, {"UnitPrice", type number}, {"UnitsInStock", Int64.Type}, {"UnitsOnOrder", Int64.Type}, {"ReorderLevel", Int64.Type}, {"Discontinued", type logical}, {"CategoryName", type text}}),
+				    #"Grouped Rows" = Table.Group(#"Changed Type", {"CategoryName"}, {{"CategoryAveragePrice", each List.Average([UnitPrice]), type nullable number}, {"CategoryPriceStandardDeviation", each List.StandardDeviation([UnitPrice]), type nullable number}, {"Grouped", each _, type table [ProductID=number, ProductName=text, SupplierID=nullable number, CategoryID=nullable number, QuantityPerUnit=nullable text, UnitPrice=nullable number, UnitsInStock=nullable number, UnitsOnOrder=nullable number, ReorderLevel=nullable number, Discontinued=logical, CategoryName=text]}}),
+				    #"Expanded Grouped" = Table.ExpandTableColumn(#"Grouped Rows", "Grouped", {"ProductID", "ProductName", "CategoryID", "UnitPrice", "UnitsInStock"}, {"ProductID", "ProductName", "CategoryID", "UnitPrice", "UnitsInStock"}),
+				    #"Added Custom" = Table.AddColumn(#"Expanded Grouped", "ProductPriceZScore", each ([UnitPrice] - [CategoryAveragePrice]) / [CategoryPriceStandardDeviation]),
+				    #"Added Conditional Column" = Table.AddColumn(#"Added Custom", "ProductPriceCategory", each if [ProductPriceZScore] >= 2.5 then "Gourmet" else if [ProductPriceZScore] > 1 then "Premium" else if [ProductPriceZScore] < 2.5 then "Premium" else if [ProductPriceZScore] > 0 then "Standard" else if [ProductPriceZScore] < 1 then "Stardard" else if [ProductPriceZScore] < 0 then "Value" else null),
+				    #"Grouped Rows1" = Table.Group(#"Added Conditional Column", {"ProductPriceCategory"}, {{"TotalStock", each List.Sum([UnitsInStock]), type nullable number}})
+				in
+				    #"Grouped Rows1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

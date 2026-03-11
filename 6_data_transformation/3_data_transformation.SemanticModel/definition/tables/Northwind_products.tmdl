@@ -61,6 +61,13 @@ table Northwind_products
 		mode: import
 		source =
 				let
+				// This Query is used to calculate safety stock for each product.
+				    FreshProducts = {"Seafood","Meat/Poultry","Produce","Dairy Products"},
+				    isFreshProduct = (input as list) =>
+				    let
+				        Result = if List.ContainsAny(input, FreshProducts) then true else false
+				    in
+				        Result,
 				    Source = Csv.Document(File.Contents("C:\Users\JoséAndrésBarriosJer\Downloads\data-transformation-in-power-bi\Datasets\Northwind_products.csv"),[Delimiter=",", Columns=11, Encoding=1252, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ProductID", Int64.Type}, {"ProductName", type text}, {"SupplierID", Int64.Type}, {"CategoryID", Int64.Type}, {"QuantityPerUnit", type text}, {"UnitPrice", type number}, {"UnitsInStock", Int64.Type}, {"UnitsOnOrder", Int64.Type}, {"ReorderLevel", Int64.Type}, {"Discontinued", type logical}, {"CategoryName", type text}}),
@@ -69,8 +76,8 @@ table Northwind_products
 				    #"Renamed Columns" = Table.RenameColumns(#"Added Index",{{"Index", "OverallStockRank"}}),
 				    #"Grouped Rows" = Table.Group(#"Renamed Columns", {"CategoryName"}, {{"AverageStock", each List.Average([UnitsInStock]), type nullable number}, {"Grouped", each _, type table [ProductID=nullable number, ProductName=nullable text, SupplierID=nullable number, CategoryID=nullable number, QuantityPerUnit=nullable text, UnitPrice=nullable number, UnitsInStock=nullable number, UnitsOnOrder=nullable number, ReorderLevel=nullable number, Discontinued=nullable logical, CategoryName=nullable text, OverallStockRank=number]}}),
 				    #"Expanded Grouped" = Table.ExpandTableColumn(#"Grouped Rows", "Grouped", {"ProductID", "ProductName", "UnitsInStock"}, {"ProductID", "ProductName", "UnitsInStock"}),
-				    #"Added Custom" = Table.AddColumn(#"Expanded Grouped", "StockPercentDeviation", each [UnitsInStock] / [AverageStock]),
-				    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom",{{"StockPercentDeviation", Percentage.Type}})
+				    #"Added IsFreshProduct" = Table.AddColumn(#"Expanded Grouped", "StockPercentDeviation", each isFreshProduct({[CategoryName]})),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Added IsFreshProduct",{{"StockPercentDeviation", Percentage.Type}})
 				in
 				    #"Changed Type1"
 
