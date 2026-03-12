@@ -1,0 +1,202 @@
+table manufacturing_data
+	lineageTag: f3bb7da5-1beb-4e06-8b73-32c956203cef
+
+	column id
+		dataType: string
+		lineageTag: dac250e6-254f-4d68-a5bf-e5f76dfdafa9
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Geographic Area Name'
+		dataType: string
+		lineageTag: 31ae3b4c-7a30-41b6-802b-7716e574d193
+		dataCategory: StateOrProvince
+		summarizeBy: none
+		sourceColumn: Geographic Area Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Geo Footnote'
+		dataType: string
+		lineageTag: c2ef3b9a-1c67-495d-96cd-b1c6f73b57f5
+		summarizeBy: none
+		sourceColumn: Geo Footnote
+
+		annotation SummarizationSetBy = Automatic
+
+	column '2017 NAICS code'
+		dataType: string
+		lineageTag: c77718c6-8f65-4b6b-9e64-0e617cc716cd
+		summarizeBy: none
+		sourceColumn: 2017 NAICS code
+		sortByColumn: 'Meaning of NAICS code'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Industry group'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0e5840e8-4883-45e7-a876-b7a82d9c0ea3
+		summarizeBy: sum
+		sourceColumn: Industry group
+
+		annotation SummarizationSetBy = Automatic
+
+	column '2017 NAICS Footnote'
+		dataType: string
+		isHidden
+		lineageTag: 1ff931e4-effb-4df4-9aa6-893004d24837
+		summarizeBy: none
+		sourceColumn: 2017 NAICS Footnote
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Meaning of NAICS code'
+		dataType: string
+		lineageTag: 944f5cf7-a997-45f2-abc0-7f4f6e4effd8
+		summarizeBy: none
+		sourceColumn: Meaning of NAICS code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NAICS economic sector '
+		dataType: int64
+		formatString: 0
+		lineageTag: 5443297a-6d05-423a-9025-f500458ffce5
+		summarizeBy: sum
+		sourceColumn: "NAICS economic sector "
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUBSECTOR
+		dataType: int64
+		formatString: 0
+		lineageTag: ae508182-57bb-40da-82c2-bfe8092058b2
+		summarizeBy: sum
+		sourceColumn: SUBSECTOR
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Industry level'
+		dataType: int64
+		formatString: 0
+		lineageTag: 175f9eb2-4d05-4508-a202-27a721ef8018
+		summarizeBy: sum
+		sourceColumn: Industry level
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: bc138cc0-00ce-478d-bbdc-f2a78929ead0
+		summarizeBy: none
+		sourceColumn: Year
+
+		variation Variation
+			isDefault
+			relationship: 355446d7-7402-48d3-9505-a67f1a902da3
+			defaultHierarchy: LocalDateTable_3648bf61-f5de-4fd5-97a0-25c9e986e7df.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Sales, value of shipments, or revenue ($1,000)'
+		dataType: double
+		formatString: #,0.0
+		lineageTag: c75f4b03-d894-46c4-bc87-9632606366c7
+		summarizeBy: sum
+		sourceColumn: Sales, value of shipments, or revenue ($1,000)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Relative standard error for estimate of sales, value of shipments, or revenue (%)'
+		dataType: double
+		lineageTag: f555a467-242a-45b4-9c30-53badd7ee33e
+		summarizeBy: sum
+		sourceColumn: Relative standard error for estimate of sales, value of shipments, or revenue (%)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Annual payroll ($1,000)'
+		dataType: double
+		formatString: 0
+		lineageTag: c57a54fc-a10b-4677-9336-814506f359c3
+		summarizeBy: sum
+		sourceColumn: Annual payroll ($1,000)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'First-quarter payroll ($1,000)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 83e92b41-be19-413e-bb83-9ce9409c9fa2
+		summarizeBy: sum
+		sourceColumn: First-quarter payroll ($1,000)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of employees'
+		dataType: int64
+		formatString: 0
+		lineageTag: ac9bf413-3ccf-47b9-b05d-09a223ffa9a2
+		summarizeBy: sum
+		sourceColumn: Number of employees
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Production workers for pay period including March 12'
+		dataType: int64
+		formatString: 0
+		lineageTag: 465f24b0-577b-445a-8c24-61ae29f7807f
+		summarizeBy: sum
+		sourceColumn: Production workers for pay period including March 12
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Range indicating percent of total annual payroll imputed'
+		dataType: string
+		lineageTag: f17ba8f8-c581-4fe1-af03-987b95a5a50a
+		summarizeBy: none
+		sourceColumn: Range indicating percent of total annual payroll imputed
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Range indicating percent of total employees imputed'
+		dataType: string
+		lineageTag: 84fe8f2e-1bb5-41d7-88b3-3a2095ce6e1f
+		summarizeBy: none
+		sourceColumn: Range indicating percent of total employees imputed
+
+		annotation SummarizationSetBy = Automatic
+
+	partition manufacturing_data = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\JoséAndrésBarriosJer\Downloads\data-modeling-in-power-bi\Datasets\manufacturing_data.csv"),[Delimiter=",", Columns=19, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}, {"Column7", type text}, {"Column8", type text}, {"Column9", type text}, {"Column10", type text}, {"Column11", type text}, {"Column12", type text}, {"Column13", type text}, {"Column14", type text}, {"Column15", type text}, {"Column16", type text}, {"Column17", type text}, {"Column18", type text}, {"Column19", type text}}),
+				    #"Removed Top Rows" = Table.Skip(#"Changed Type",1),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Removed Top Rows", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"id", type text}, {"Geographic Area Name", type text}, {"Geo Footnote", type text}, {"2017 NAICS code", type text}, {"Industry group", Int64.Type}, {"2017 NAICS Footnote", type text}, {"Meaning of NAICS code", type text}, {"NAICS economic sector ", Int64.Type}, {"SUBSECTOR", Int64.Type}, {"Industry level", Int64.Type}, {"Year", type date}, {"Sales, value of shipments, or revenue ($1,000)", Int64.Type}, {"Relative standard error for estimate of sales, value of shipments, or revenue (%)", type number}, {"Annual payroll ($1,000)", Int64.Type}, {"First-quarter payroll ($1,000)", Int64.Type}, {"Number of employees", Int64.Type}, {"Production workers for pay period including March 12", Int64.Type}, {"Range indicating percent of total annual payroll imputed", type text}, {"Range indicating percent of total employees imputed", type text}}),
+				    #"Calculated Square Root" = Table.TransformColumns(#"Changed Type1",{{"Sales, value of shipments, or revenue ($1,000)", Number.Sqrt, type number}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Calculated Square Root",13356360,1335636,Replacer.ReplaceValue,{"Annual payroll ($1,000)"}),
+				    #"Capitalized Each Word" = Table.TransformColumns(#"Replaced Value",{{"Meaning of NAICS code", Text.Proper, type text}}),
+				    #"Uppercased Text" = Table.TransformColumns(#"Capitalized Each Word",{{"Geographic Area Name", Text.Upper, type text}}),
+				    #"Added Prefix" = Table.TransformColumns(#"Uppercased Text", {{"2017 NAICS code", each "MANU-" & _, type text}})
+				in
+				    #"Added Prefix"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

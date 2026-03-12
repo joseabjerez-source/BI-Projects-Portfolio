@@ -1,0 +1,5 @@
+relationship 355446d7-7402-48d3-9505-a67f1a902da3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: manufacturing_data.Year
+	toColumn: LocalDateTable_3648bf61-f5de-4fd5-97a0-25c9e986e7df.Date
+

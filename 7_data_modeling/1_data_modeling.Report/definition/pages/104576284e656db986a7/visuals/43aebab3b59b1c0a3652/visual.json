@@ -1,0 +1,99 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "43aebab3b59b1c0a3652",
+  "position": {
+    "x": 9.72644376899696,
+    "y": 0,
+    "z": 0,
+    "height": 512.58358662613989,
+    "width": 834.52887537993922,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "map",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "manufacturing_data"
+                    }
+                  },
+                  "Property": "Geographic Area Name"
+                }
+              },
+              "queryRef": "manufacturing_data.Geographic Area Name",
+              "nativeQueryRef": "Geographic Area Name",
+              "active": true
+            }
+          ]
+        },
+        "Size": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "manufacturing_data"
+                        }
+                      },
+                      "Property": "Number of employees"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Sum(manufacturing_data.Number of employees)",
+              "nativeQueryRef": "Average of Number of employees"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "b1a8f34337e042e6c849",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "manufacturing_data"
+              }
+            },
+            "Property": "Geographic Area Name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "865c392c6a3c3e20050a",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "manufacturing_data"
+                  }
+                },
+                "Property": "Number of employees"
+              }
+            },
+            "Function": 1
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}
