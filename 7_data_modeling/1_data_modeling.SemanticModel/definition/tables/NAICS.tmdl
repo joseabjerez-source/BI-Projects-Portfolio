@@ -1,0 +1,42 @@
+table NAICS
+	lineageTag: 62be87c7-05e4-4f00-a692-f166f6f1e87c
+
+	column '2017 NAICS code'
+		dataType: string
+		lineageTag: 38271568-c4e1-43aa-b617-7776a4495a27
+		summarizeBy: none
+		sourceColumn: 2017 NAICS code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Meaning of NAICS code'
+		dataType: string
+		lineageTag: d27ea557-642c-426d-bfd7-3b3d7c05a1e3
+		summarizeBy: none
+		sourceColumn: Meaning of NAICS code
+
+		annotation SummarizationSetBy = Automatic
+
+	partition NAICS = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\JoséAndrésBarriosJer\Downloads\data-modeling-in-power-bi\Datasets\manufacturing_data.csv"),[Delimiter=",", Columns=19, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}, {"Column7", type text}, {"Column8", type text}, {"Column9", type text}, {"Column10", type text}, {"Column11", type text}, {"Column12", type text}, {"Column13", type text}, {"Column14", type text}, {"Column15", type text}, {"Column16", type text}, {"Column17", type text}, {"Column18", type text}, {"Column19", type text}}),
+				    #"Removed Top Rows" = Table.Skip(#"Changed Type",1),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Removed Top Rows", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"id", type text}, {"Geographic Area Name", type text}, {"Geo Footnote", type text}, {"2017 NAICS code", type text}, {"Industry group", Int64.Type}, {"2017 NAICS Footnote", type text}, {"Meaning of NAICS code", type text}, {"NAICS economic sector ", Int64.Type}, {"SUBSECTOR", Int64.Type}, {"Industry level", Int64.Type}, {"Year", type date}, {"Sales, value of shipments, or revenue ($1,000)", Int64.Type}, {"Relative standard error for estimate of sales, value of shipments, or revenue (%)", type number}, {"Annual payroll ($1,000)", Int64.Type}, {"First-quarter payroll ($1,000)", Int64.Type}, {"Number of employees", Int64.Type}, {"Production workers for pay period including March 12", Int64.Type}, {"Range indicating percent of total annual payroll imputed", type text}, {"Range indicating percent of total employees imputed", type text}}),
+				    #"Calculated Square Root" = Table.TransformColumns(#"Changed Type1",{{"Sales, value of shipments, or revenue ($1,000)", Number.Sqrt, type number}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Calculated Square Root",13356360,1335636,Replacer.ReplaceValue,{"Annual payroll ($1,000)"}),
+				    #"Capitalized Each Word" = Table.TransformColumns(#"Replaced Value",{{"Meaning of NAICS code", Text.Proper, type text}}),
+				    #"Uppercased Text" = Table.TransformColumns(#"Capitalized Each Word",{{"Geographic Area Name", Text.Upper, type text}}),
+				    #"Added Prefix" = Table.TransformColumns(#"Uppercased Text", {{"2017 NAICS code", each "MANU-" & _, type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Added Prefix",{"Production workers for pay period including March 12", "Range indicating percent of total annual payroll imputed", "Range indicating percent of total employees imputed", "Relative standard error for estimate of sales, value of shipments, or revenue (%)", "Annual payroll ($1,000)", "First-quarter payroll ($1,000)", "Number of employees", "SUBSECTOR", "Industry level", "Year", "Sales, value of shipments, or revenue ($1,000)", "NAICS economic sector ", "2017 NAICS Footnote", "Industry group", "id", "Geographic Area Name", "Geo Footnote"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Columns", {"2017 NAICS code"})
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -3,3 +3,7 @@ relationship 355446d7-7402-48d3-9505-a67f1a902da3
 	fromColumn: manufacturing_data.Year
 	toColumn: LocalDateTable_3648bf61-f5de-4fd5-97a0-25c9e986e7df.Date
 
+relationship AutoDetected_3000331e-906a-4ee8-bb65-63cdeb75769c
+	fromColumn: manufacturing_data.'2017 NAICS code'
+	toColumn: NAICS.'2017 NAICS code'
+
