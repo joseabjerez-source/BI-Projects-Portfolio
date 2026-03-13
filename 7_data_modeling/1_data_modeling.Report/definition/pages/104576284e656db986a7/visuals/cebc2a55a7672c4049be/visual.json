@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "43aebab3b59b1c0a3652",
+  "name": "cebc2a55a7672c4049be",
   "position": {
-    "x": 9.72644376899696,
+    "x": 607,
     "y": 0,
-    "z": 0,
-    "height": 512.58358662613989,
-    "width": 586.50455927051678,
-    "tabOrder": 0
+    "z": 2,
+    "height": 513,
+    "width": 587,
+    "tabOrder": 2
   },
   "visual": {
-    "visualType": "map",
+    "visualType": "clusteredBarChart",
     "query": {
       "queryState": {
         "Category": {
@@ -20,19 +20,19 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "manufacturing_data"
+                      "Entity": "Establishments by Age"
                     }
                   },
-                  "Property": "Geographic Area Name"
+                  "Property": "Meaning of Establishment age code"
                 }
               },
-              "queryRef": "manufacturing_data.Geographic Area Name",
-              "nativeQueryRef": "Geographic Area Name",
+              "queryRef": "Establishments by Age.Meaning of Establishment age code",
+              "nativeQueryRef": "Meaning of Establishment age code",
               "active": true
             }
           ]
         },
-        "Size": {
+        "Y": {
           "projections": [
             {
               "field": {
@@ -41,20 +41,43 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "manufacturing_data"
+                          "Entity": "Establishments by Age"
                         }
                       },
                       "Property": "Number of employees"
                     }
                   },
-                  "Function": 1
+                  "Function": 0
                 }
               },
-              "queryRef": "Sum(manufacturing_data.Number of employees)",
-              "nativeQueryRef": "Average of Number of employees"
+              "queryRef": "Sum(Establishments by Age.Number of employees)",
+              "nativeQueryRef": "Sum of Number of employees"
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Establishments by Age"
+                      }
+                    },
+                    "Property": "Number of employees"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
       }
     },
     "drillFilterOtherVisuals": true
@@ -62,34 +85,34 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "b1a8f34337e042e6c849",
+        "name": "2067c75bb0c0cad63096",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "manufacturing_data"
+                "Entity": "Establishments by Age"
               }
             },
-            "Property": "Geographic Area Name"
+            "Property": "Meaning of Establishment age code"
           }
         },
         "type": "Categorical"
       },
       {
-        "name": "865c392c6a3c3e20050a",
+        "name": "975d5916d8b0a902b950",
         "field": {
           "Aggregation": {
             "Expression": {
               "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "manufacturing_data"
+                    "Entity": "Establishments by Age"
                   }
                 },
                 "Property": "Number of employees"
               }
             },
-            "Function": 1
+            "Function": 0
           }
         },
         "type": "Advanced"

@@ -179,6 +179,24 @@ table manufacturing_data
 
 		annotation SummarizationSetBy = Automatic
 
+	column 'Low Range Total Employees'
+		dataType: int64
+		formatString: 0
+		lineageTag: 11ad0401-8d4f-4da6-b4e9-263120f87973
+		summarizeBy: sum
+		sourceColumn: Low Range Total Employees
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'High Range Total Employees'
+		dataType: int64
+		formatString: #,0.00
+		lineageTag: a612bea8-97f8-46da-bbbe-4351a615be70
+		summarizeBy: sum
+		sourceColumn: High Range Total Employees
+
+		annotation SummarizationSetBy = Automatic
+
 	partition manufacturing_data = m
 		mode: import
 		source =
@@ -192,9 +210,19 @@ table manufacturing_data
 				    #"Replaced Value" = Table.ReplaceValue(#"Calculated Square Root",13356360,1335636,Replacer.ReplaceValue,{"Annual payroll ($1,000)"}),
 				    #"Capitalized Each Word" = Table.TransformColumns(#"Replaced Value",{{"Meaning of NAICS code", Text.Proper, type text}}),
 				    #"Uppercased Text" = Table.TransformColumns(#"Capitalized Each Word",{{"Geographic Area Name", Text.Upper, type text}}),
-				    #"Added Prefix" = Table.TransformColumns(#"Uppercased Text", {{"2017 NAICS code", each "MANU-" & _, type text}})
+				    #"Added Prefix" = Table.TransformColumns(#"Uppercased Text", {{"2017 NAICS code", each "MANU-" & _, type text}}),
+				    #"Duplicated Column" = Table.DuplicateColumn(#"Added Prefix", "Range indicating percent of total employees imputed", "Range indicating percent of total employees imputed - Copy"),
+				    #"Duplicated Column1" = Table.DuplicateColumn(#"Duplicated Column", "Range indicating percent of total employees imputed - Copy", "Range indicating percent of total employees imputed - Copy - Copy"),
+				    #"Extracted Text Before Delimiter" = Table.TransformColumns(#"Duplicated Column1", {{"Range indicating percent of total employees imputed - Copy", each Text.BeforeDelimiter(_, "%"), type text}}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Extracted Text Before Delimiter","Less than ","",Replacer.ReplaceText,{"Range indicating percent of total employees imputed - Copy"}),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Replaced Value1",{{"Range indicating percent of total employees imputed - Copy", Int64.Type}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type2",{{"Range indicating percent of total employees imputed - Copy", "Low Range Total Employees"}}),
+				    #"Extracted Last Characters" = Table.TransformColumns(#"Renamed Columns", {{"Range indicating percent of total employees imputed - Copy - Copy", each Text.End(_, 4), type text}}),
+				    #"Extracted Text Before Delimiter1" = Table.TransformColumns(#"Extracted Last Characters", {{"Range indicating percent of total employees imputed - Copy - Copy", each Text.BeforeDelimiter(_, "%"), type text}}),
+				    #"Changed Type3" = Table.TransformColumnTypes(#"Extracted Text Before Delimiter1",{{"Range indicating percent of total employees imputed - Copy - Copy", Int64.Type}}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Changed Type3",{{"Range indicating percent of total employees imputed - Copy - Copy", "High Range Total Employees"}})
 				in
-				    #"Added Prefix"
+				    #"Renamed Columns1"
 
 	annotation PBI_NavigationStepName = Navigation
 

@@ -7,3 +7,15 @@ relationship AutoDetected_3000331e-906a-4ee8-bb65-63cdeb75769c
 	fromColumn: manufacturing_data.'2017 NAICS code'
 	toColumn: NAICS.'2017 NAICS code'
 
+relationship AutoDetected_d6a31cc7-dd4a-41dd-aab3-cc8f182e43d2
+	fromColumn: 'Establishments by Age'.'Establishment age code'
+	toColumn: Timeseries_1979.'Establishment age code'
+
+relationship AutoDetected_9c89dd3c-2917-4b3c-8334-4b7930b6cbad
+	fromColumn: 'Establishments by Age'.'Establishment age code'
+	toColumn: Timeseries_1980.'Establishment age code'
+
+relationship AutoDetected_7788f337-5a78-4aea-8ea4-193952e2d61b
+	fromColumn: 'Establishments by Age'.'Establishment age code'
+	toColumn: Timeseries_1981.'Establishment age code'
+
