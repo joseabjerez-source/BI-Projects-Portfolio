@@ -1,0 +1,43 @@
+table 'Industry Group'
+	lineageTag: 9a35eb93-c52e-4616-a818-79b65371287b
+
+	column 'Industry group'
+		dataType: string
+		lineageTag: dc5905f2-371d-4994-a78a-aa8b7153e7ed
+		summarizeBy: none
+		sourceColumn: Industry group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Industry group code'
+		dataType: int64
+		formatString: 0
+		lineageTag: 20716603-58df-4fe9-85e3-49f98f9fadff
+		summarizeBy: none
+		sourceColumn: Industry group code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NAICS code'
+		dataType: int64
+		formatString: 0
+		lineageTag: 47c758e0-5a0b-4971-a2f6-57430ffae6a1
+		summarizeBy: none
+		sourceColumn: NAICS code
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Industry Group' = m
+		mode: import
+		source =
+				let
+				    Source = Industry,
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"Industry group", "Industry group code", "NAICS code"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns")
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

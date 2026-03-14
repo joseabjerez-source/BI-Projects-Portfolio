@@ -1,0 +1,118 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "13cb96e1a86e9001361d",
+  "position": {
+    "x": 10,
+    "y": 404,
+    "z": 1,
+    "height": 316,
+    "width": 1170,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Time"
+                    }
+                  },
+                  "Property": "Decade"
+                }
+              },
+              "queryRef": "Time.Decade",
+              "nativeQueryRef": "Decade",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Subsector"
+                    }
+                  },
+                  "Property": "Subsector"
+                }
+              },
+              "queryRef": "Subsector.Subsector",
+              "nativeQueryRef": "Subsector"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Establishment Survey"
+                        }
+                      },
+                      "Property": "Number of employees"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Sum(Establishment Survey.Number of employees)",
+              "nativeQueryRef": "Average of Number of employees"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Establishment Survey"
+                      }
+                    },
+                    "Property": "Number of employees"
+                  }
+                },
+                "Function": 1
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Snowflake Schema'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

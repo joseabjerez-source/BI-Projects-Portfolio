@@ -8,7 +8,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["manufacturing_data","NAICS","Timeseries_1979","Timeseries_1980","Timeseries_1981","Establishments by Age","Industry","Establishment Survey","Time","Age"]
+annotation PBI_QueryOrder = ["manufacturing_data","NAICS","Timeseries_1979","Timeseries_1980","Timeseries_1981","Establishments by Age","Industry","Establishment Survey","Time","Age","Industry Group","Subsector","Sector","NAICS Code"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
@@ -16,14 +16,15 @@ ref table manufacturing_data
 ref table DateTableTemplate_990482af-c4e6-4112-92e9-543549cf5b28
 ref table LocalDateTable_3648bf61-f5de-4fd5-97a0-25c9e986e7df
 ref table NAICS
-ref table Timeseries_1979
-ref table Timeseries_1980
 ref table 'Establishments by Age'
-ref table Timeseries_1981
 ref table Industry
 ref table 'Establishment Survey'
 ref table Time
 ref table Age
+ref table 'Industry Group'
+ref table Subsector
+ref table Sector
+ref table 'NAICS Code'
 
 ref cultureInfo en-US
 

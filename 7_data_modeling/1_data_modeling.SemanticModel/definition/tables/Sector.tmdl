@@ -1,0 +1,45 @@
+table Sector
+	lineageTag: e6ebac29-6238-4698-90e2-49fa4a53198d
+
+	column 'Sector code'
+		dataType: int64
+		formatString: 0
+		lineageTag: 9dab0aeb-722f-45a7-9a38-b08afc050515
+		summarizeBy: none
+		sourceColumn: Sector code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Subsector code'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3976ab36-38fe-40a1-836e-f3e471fc84be
+		summarizeBy: none
+		sourceColumn: Subsector code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sector
+		dataType: string
+		lineageTag: b7e528c3-0232-4670-b88a-fd27982b72d7
+		summarizeBy: none
+		sourceColumn: Sector
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Sector = m
+		mode: import
+		source =
+				let
+				    Source = Industry,
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"Sector", "Sector code", "Subsector code"}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Removed Other Columns",{"Subsector code", "Sector code", "Sector"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Reordered Columns"),
+				    #"Reordered Columns1" = Table.ReorderColumns(#"Removed Duplicates",{"Sector code", "Subsector code", "Sector"})
+				in
+				    #"Reordered Columns1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

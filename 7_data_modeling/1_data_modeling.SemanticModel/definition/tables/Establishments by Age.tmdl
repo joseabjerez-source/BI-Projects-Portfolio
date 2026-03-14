@@ -37,7 +37,7 @@ table 'Establishments by Age'
 		dataType: int64
 		formatString: 0
 		lineageTag: 077ab665-e803-4d2e-aa15-e5f71d00aca4
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Establishment age code
 
 		annotation SummarizationSetBy = Automatic

@@ -1,0 +1,80 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "1a5df67b6a472636ec73",
+  "position": {
+    "x": 10,
+    "y": 0,
+    "z": 0,
+    "height": 273,
+    "width": 1178,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Industry"
+                    }
+                  },
+                  "Property": "Sector"
+                }
+              },
+              "queryRef": "Industry.Sector",
+              "nativeQueryRef": "Sector"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Industry"
+                    }
+                  },
+                  "Property": "Subsector"
+                }
+              },
+              "queryRef": "Industry.Subsector",
+              "nativeQueryRef": "Subsector"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Industry"
+                    }
+                  },
+                  "Property": "Industry group"
+                }
+              },
+              "queryRef": "Industry.Industry group",
+              "nativeQueryRef": "Industry group"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Industry"
+                    }
+                  },
+                  "Property": "NAICS code description"
+                }
+              },
+              "queryRef": "Industry.NAICS code description",
+              "nativeQueryRef": "NAICS code description"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

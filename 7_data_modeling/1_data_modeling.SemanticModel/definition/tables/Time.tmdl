@@ -14,7 +14,7 @@ table Time
 		dataType: int64
 		formatString: 0
 		lineageTag: 399200ed-d4fb-49e5-8928-c1e16f11509e
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Decade
 
 		annotation SummarizationSetBy = Automatic
@@ -23,7 +23,7 @@ table Time
 		dataType: int64
 		formatString: 0
 		lineageTag: 7a0c1282-fda7-48ce-b7cf-959ab952d99c
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Century
 
 		annotation SummarizationSetBy = Automatic

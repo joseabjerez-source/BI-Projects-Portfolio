@@ -1,0 +1,43 @@
+table Subsector
+	lineageTag: ceada1ff-5067-44b4-b759-af3288852139
+
+	column Subsector
+		dataType: string
+		lineageTag: 23a8b021-eeed-47c1-8754-124e2e42cf73
+		summarizeBy: none
+		sourceColumn: Subsector
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Subsector code'
+		dataType: int64
+		formatString: 0
+		lineageTag: fc3cca62-91a6-426d-b28e-ae79618bf350
+		summarizeBy: none
+		sourceColumn: Subsector code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Industry group code'
+		dataType: int64
+		formatString: 0
+		lineageTag: 322ecd40-5edb-42d1-b679-e777ff176ffd
+		summarizeBy: none
+		sourceColumn: Industry group code
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Subsector = m
+		mode: import
+		source =
+				let
+				    Source = Industry,
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"Subsector", "Subsector code", "Industry group code"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns")
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
