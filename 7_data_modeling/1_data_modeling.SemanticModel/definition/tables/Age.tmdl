@@ -1,0 +1,36 @@
+table Age
+	lineageTag: 6c41efc4-ab25-4f28-b451-1bf182792a70
+
+	column 'Age code'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4d41f7b9-9893-4aa9-8fce-5c656cdefc53
+		summarizeBy: none
+		sourceColumn: Age code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Establishment Age'
+		dataType: string
+		lineageTag: 68c2607e-c759-42cf-8f89-de5857022a28
+		summarizeBy: none
+		sourceColumn: Establishment Age
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Age = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\JoséAndrésBarriosJer\Downloads\data-modeling-in-power-bi\Datasets\EstablishmentAge.csv"),[Delimiter=",", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Age code", Int64.Type}, {"Establishment Age", type text}}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Changed Type",{"Age code", "Establishment Age"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Reordered Columns")
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

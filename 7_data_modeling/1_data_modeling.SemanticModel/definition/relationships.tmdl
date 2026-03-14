@@ -23,3 +23,30 @@ relationship AutoDetected_f575f210-acb4-40a3-94a3-55e06a9ddf52
 	fromColumn: 'Establishment Survey'.'NAICS code'
 	toColumn: Industry.'NAICS code'
 
+relationship AutoDetected_1d1cda98-f17e-4a2b-abfb-f1fd0b8c806c
+	fromColumn: Timeseries_1979.Year
+	toColumn: Time.Year
+
+relationship AutoDetected_d5012e37-f3b7-42c5-8de2-37baa7083c70
+	isActive: false
+	fromColumn: Timeseries_1980.Year
+	toColumn: Time.Year
+
+relationship AutoDetected_a915e4b2-116f-4a8f-ae42-71e28e9970eb
+	isActive: false
+	fromColumn: 'Establishments by Age'.Year
+	toColumn: Time.Year
+
+relationship AutoDetected_33eb6f07-541c-44b3-9642-5c2c16d0bf9d
+	isActive: false
+	fromColumn: Timeseries_1981.Year
+	toColumn: Time.Year
+
+relationship AutoDetected_6ac8ffea-8826-40fa-977d-4d520b04bde8
+	fromColumn: 'Establishment Survey'.Year
+	toColumn: Time.Year
+
+relationship AutoDetected_7c921e9f-dafd-439a-b0d9-71f8e27d7913
+	fromColumn: 'Establishment Survey'.'Age code'
+	toColumn: Age.'Age code'
+

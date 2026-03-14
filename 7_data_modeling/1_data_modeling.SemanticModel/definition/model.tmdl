@@ -8,7 +8,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["manufacturing_data","NAICS","Timeseries_1979","Timeseries_1980","Timeseries_1981","Establishments by Age","Industry","Establishment Survey"]
+annotation PBI_QueryOrder = ["manufacturing_data","NAICS","Timeseries_1979","Timeseries_1980","Timeseries_1981","Establishments by Age","Industry","Establishment Survey","Time","Age"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
@@ -22,6 +22,8 @@ ref table 'Establishments by Age'
 ref table Timeseries_1981
 ref table Industry
 ref table 'Establishment Survey'
+ref table Time
+ref table Age
 
 ref cultureInfo en-US
 

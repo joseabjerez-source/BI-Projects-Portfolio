@@ -5,8 +5,8 @@
     "x": 10,
     "y": 0,
     "z": 0,
-    "height": 473.75,
-    "width": 791.875,
+    "height": 281.875,
+    "width": 816.875,
     "tabOrder": 0
   },
   "visual": {
@@ -79,6 +79,21 @@
         ],
         "isDefaultSort": true
       }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "drillFilterOtherVisuals": true
   }

@@ -14,7 +14,7 @@ table 'Establishment Survey'
 		dataType: int64
 		formatString: 0
 		lineageTag: 4834bdd1-36b5-4efa-82af-63db39594565
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Age code
 
 		annotation SummarizationSetBy = Automatic
@@ -23,7 +23,7 @@ table 'Establishment Survey'
 		dataType: int64
 		formatString: 0
 		lineageTag: 5ac70206-bd60-4ce0-a048-bd08ede11ab6
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Year
 
 		annotation SummarizationSetBy = Automatic

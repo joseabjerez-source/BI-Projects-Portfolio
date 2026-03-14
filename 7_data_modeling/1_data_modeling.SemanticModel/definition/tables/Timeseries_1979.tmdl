@@ -86,7 +86,7 @@ table Timeseries_1979
 		isHidden
 		formatString: 0
 		lineageTag: bb008644-2669-491c-87b8-8a099527830b
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Number of firms
 
 		changedProperty = IsHidden
@@ -98,7 +98,7 @@ table Timeseries_1979
 		isHidden
 		formatString: 0
 		lineageTag: 46181661-79e3-44ae-95fc-59a50192dde6
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Number of establishments
 
 		changedProperty = IsHidden
@@ -110,7 +110,7 @@ table Timeseries_1979
 		isHidden
 		formatString: 0
 		lineageTag: 6d793bb2-88c1-4778-98eb-1a915249b5dd
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Number of employees
 
 		changedProperty = IsHidden
@@ -122,7 +122,7 @@ table Timeseries_1979
 		isHidden
 		formatString: 0
 		lineageTag: 067dabba-62e5-43b4-ba49-c47c35ecbdc2
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: (DHS) denominator
 
 		changedProperty = IsHidden
@@ -134,7 +134,7 @@ table Timeseries_1979
 		isHidden
 		formatString: 0
 		lineageTag: 68ff4acf-00f1-4d16-819f-4f35c6d4c1a6
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Number of establishments born during the last 12 months
 
 		changedProperty = IsHidden
@@ -145,7 +145,7 @@ table Timeseries_1979
 		dataType: double
 		isHidden
 		lineageTag: 5ad7d321-6e97-412f-b800-864a1e739c93
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Rate of establishments born during the last 12 months
 
 		changedProperty = IsHidden
@@ -159,7 +159,7 @@ table Timeseries_1979
 		isHidden
 		formatString: 0
 		lineageTag: ac3c05a6-8b70-4f74-8ed7-9630ce38e059
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Number of establishments exited during the last 12 months
 
 		changedProperty = IsHidden
@@ -170,7 +170,7 @@ table Timeseries_1979
 		dataType: double
 		isHidden
 		lineageTag: 069fb188-7439-4928-8cb8-03684d64ce0c
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Rate of establishments exited during the last 12 months
 
 		changedProperty = IsHidden
@@ -184,7 +184,7 @@ table Timeseries_1979
 		isHidden
 		formatString: 0
 		lineageTag: 24387b9e-bab3-43b8-adae-240f24a88b2a
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Number of jobs created from expanding and opening establishments during the last 12 months
 
 		changedProperty = IsHidden
@@ -196,7 +196,7 @@ table Timeseries_1979
 		isHidden
 		formatString: 0
 		lineageTag: f0fea488-c243-4ee6-9e18-43bdd8c26fd6
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Number of jobs created from opening establishments during the last 12 months
 
 		changedProperty = IsHidden
@@ -208,7 +208,7 @@ table Timeseries_1979
 		isHidden
 		formatString: 0
 		lineageTag: 3b916c58-813e-4ad8-a61c-afe69e869e14
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Number of jobs created from expanding establishments during the last 12 months
 
 		changedProperty = IsHidden
@@ -219,7 +219,7 @@ table Timeseries_1979
 		dataType: double
 		isHidden
 		lineageTag: 69d24b8a-88b5-4ca8-a2f4-5533e1b97805
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Rate of jobs created from opening establishments during the last 12 months
 
 		changedProperty = IsHidden
@@ -232,7 +232,7 @@ table Timeseries_1979
 		dataType: double
 		isHidden
 		lineageTag: 9832ae5d-5e08-4b3f-84ba-506e2795de3f
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Rate of jobs created from expanding and opening establishments during the last 12 months
 
 		changedProperty = IsHidden
@@ -246,7 +246,7 @@ table Timeseries_1979
 		isHidden
 		formatString: 0
 		lineageTag: 130267f8-a909-460e-90ba-774bc6babe9e
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Number of jobs lost from contracting and closing establishments during the last 12 months
 
 		changedProperty = IsHidden
@@ -258,7 +258,7 @@ table Timeseries_1979
 		isHidden
 		formatString: 0
 		lineageTag: 7f42a90d-1f61-48a9-9671-afe2845aa1bf
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Number of jobs lost from closing establishments during the last 12 months
 
 		changedProperty = IsHidden
@@ -270,7 +270,7 @@ table Timeseries_1979
 		isHidden
 		formatString: 0
 		lineageTag: d21c34e7-6c76-4074-987d-67f0fee92163
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Number of jobs lost from contracting establishments during the last 12 months
 
 		changedProperty = IsHidden
@@ -281,7 +281,7 @@ table Timeseries_1979
 		dataType: double
 		isHidden
 		lineageTag: a859d123-12d8-4f66-b9db-50d4f928c0fc
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Rate of jobs lost from closing establishments during the last 12 months
 
 		changedProperty = IsHidden
@@ -294,7 +294,7 @@ table Timeseries_1979
 		dataType: double
 		isHidden
 		lineageTag: 54cb0565-241e-40cf-b71b-46e62bb0a99a
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Rate of jobs lost from contracting and closing establishments during the last 12 months
 
 		changedProperty = IsHidden
@@ -308,7 +308,7 @@ table Timeseries_1979
 		isHidden
 		formatString: 0
 		lineageTag: 2ef5b820-d1ab-4fa2-b452-2bffd90911b1
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Number of net jobs created from expanding/contracting and opening/closing establishments during the last 12 months
 
 		changedProperty = IsHidden
@@ -319,7 +319,7 @@ table Timeseries_1979
 		dataType: double
 		isHidden
 		lineageTag: 0f52a271-4ef5-443c-892b-48700fcef980
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Rate of net jobs created from expanding/contracting and opening/closing establishments during the last 12 months
 
 		changedProperty = IsHidden
@@ -332,7 +332,7 @@ table Timeseries_1979
 		dataType: double
 		isHidden
 		lineageTag: bb6f583c-eab7-4892-8cfe-dc03ef5b6153
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Rate of reallocation during the last 12 months
 
 		changedProperty = IsHidden
@@ -346,7 +346,7 @@ table Timeseries_1979
 		isHidden
 		formatString: 0
 		lineageTag: ed476800-b676-4ef0-8bf7-fdfc717711a8
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Number of firms that exited during the last 12 months
 
 		changedProperty = IsHidden
@@ -358,7 +358,7 @@ table Timeseries_1979
 		isHidden
 		formatString: 0
 		lineageTag: 6dfb4cfa-3d48-42aa-90e5-143c83c224bc
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Number of establishments associated with firm deaths during the last 12 months
 
 		changedProperty = IsHidden
@@ -370,7 +370,7 @@ table Timeseries_1979
 		isHidden
 		formatString: 0
 		lineageTag: ddc708b9-3c4d-4761-b815-ef2e09d1de5e
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Number of employees associated with firm deaths during the last 12 months
 
 		changedProperty = IsHidden
