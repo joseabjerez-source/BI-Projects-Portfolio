@@ -47,11 +47,11 @@
                       "Property": "First-quarter payroll ($1,000)"
                     }
                   },
-                  "Function": 5
+                  "Function": 0
                 }
               },
               "queryRef": "Sum(manufacturing_data.First-quarter payroll ($1,000))",
-              "nativeQueryRef": "Count of First-quarter payroll ($1,000)"
+              "nativeQueryRef": "Sum of First-quarter payroll ($1,000)"
             }
           ]
         }
@@ -71,7 +71,7 @@
                     "Property": "First-quarter payroll ($1,000)"
                   }
                 },
-                "Function": 5
+                "Function": 0
               }
             },
             "direction": "Descending"

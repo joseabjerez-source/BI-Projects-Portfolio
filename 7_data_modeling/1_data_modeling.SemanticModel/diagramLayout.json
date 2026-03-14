@@ -1,0 +1,126 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 534,
+        "y": 250
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 852.334119080641,
+            "y": 341.76899042206833
+          },
+          "nodeIndex": "manufacturing_data",
+          "nodeLineageTag": "f3bb7da5-1beb-4e06-8b73-32c956203cef",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1136.3341190806409,
+            "y": 427.76899042206833
+          },
+          "nodeIndex": "NAICS",
+          "nodeLineageTag": "62be87c7-05e4-4f00-a692-f166f6f1e87c",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 334.1957458375764,
+            "y": 283.33664784425855
+          },
+          "nodeIndex": "Establishments by Age",
+          "nodeLineageTag": "495822c1-b52e-442a-b642-bff3b840ff62",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 204.01607653610768
+          },
+          "nodeIndex": "Timeseries_1979",
+          "nodeLineageTag": "d4d5c253-48f9-4683-a66c-45ca7bd2e652",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 618.334119080641,
+            "y": -50
+          },
+          "nodeIndex": "Timeseries_1980",
+          "nodeLineageTag": "3535fff6-9efe-4aea-8fa4-229bbaad10f7",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 439.69571650466867,
+            "y": 633.53798084413665
+          },
+          "nodeIndex": "Timeseries_1981",
+          "nodeLineageTag": "18e18f6c-d0f1-4556-a647-c8da17a6412b",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1694.3341190806409,
+            "y": 647.76899042206833
+          },
+          "nodeIndex": "Establishment Survey",
+          "nodeLineageTag": "9548b2be-1648-4464-ad68-8756d8547136",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1420.3341190806409,
+            "y": 305.76899042206833
+          },
+          "nodeIndex": "Industry",
+          "nodeLineageTag": "34cf867e-a390-4e75-ad5c-4e4edc91f8f1",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

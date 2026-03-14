@@ -1,0 +1,99 @@
+table 'Establishment Survey'
+	lineageTag: 9548b2be-1648-4464-ad68-8756d8547136
+
+	column Id
+		dataType: int64
+		formatString: 0
+		lineageTag: ec618258-8a6b-4e5f-9964-e7de7d6087e7
+		summarizeBy: count
+		sourceColumn: Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Age code'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4834bdd1-36b5-4efa-82af-63db39594565
+		summarizeBy: sum
+		sourceColumn: Age code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 5ac70206-bd60-4ce0-a048-bd08ede11ab6
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NAICS code'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4b8c1913-f1ea-4051-baf5-d1b77d4279a5
+		summarizeBy: none
+		sourceColumn: NAICS code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of firms'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0d34d2c4-987d-407e-bee6-ac1df1e68af9
+		summarizeBy: sum
+		sourceColumn: Number of firms
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of establishments'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8fd7be5d-9bd3-491c-b441-798d12723319
+		summarizeBy: sum
+		sourceColumn: Number of establishments
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of employees'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5786f364-1c8f-48fe-9544-66242715fb56
+		summarizeBy: sum
+		sourceColumn: Number of employees
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of establishments born'
+		dataType: int64
+		formatString: 0
+		lineageTag: 39a1b8d7-454c-40ae-adfd-64356fe36bd4
+		summarizeBy: sum
+		sourceColumn: Number of establishments born
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of establishments exited'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3e86db65-d023-49a2-9ba2-994801daa61d
+		summarizeBy: sum
+		sourceColumn: Number of establishments exited
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Establishment Survey' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\JoséAndrésBarriosJer\Downloads\data-modeling-in-power-bi\Datasets\Establishment Survey.csv"),[Delimiter=",", Columns=16, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Id", Int64.Type}, {"Age code", Int64.Type}, {"Year", Int64.Type}, {"NAICS code", Int64.Type}, {"Number of firms", Int64.Type}, {"Number of establishments", Int64.Type}, {"Number of employees", Int64.Type}, {"Number of establishments born", Int64.Type}, {"Number of establishments exited", Int64.Type}, {"NAICS code description", type text}, {"Industry group code", Int64.Type}, {"Industry group", type text}, {"Subsector code", Int64.Type}, {"Subsector", type text}, {"Sector code", Int64.Type}, {"Sector", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"NAICS code description", "Industry group code", "Industry group", "Subsector code", "Subsector", "Sector code", "Sector"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -19,3 +19,7 @@ relationship AutoDetected_7788f337-5a78-4aea-8ea4-193952e2d61b
 	fromColumn: 'Establishments by Age'.'Establishment age code'
 	toColumn: Timeseries_1981.'Establishment age code'
 
+relationship AutoDetected_f575f210-acb4-40a3-94a3-55e06a9ddf52
+	fromColumn: 'Establishment Survey'.'NAICS code'
+	toColumn: Industry.'NAICS code'
+

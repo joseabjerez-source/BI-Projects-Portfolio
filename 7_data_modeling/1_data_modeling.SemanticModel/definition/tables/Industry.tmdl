@@ -1,0 +1,87 @@
+table Industry
+	lineageTag: 34cf867e-a390-4e75-ad5c-4e4edc91f8f1
+
+	column 'NAICS code'
+		dataType: int64
+		formatString: 0
+		lineageTag: 29820a1a-f7d7-4094-98fc-e5048f604739
+		summarizeBy: none
+		sourceColumn: NAICS code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NAICS code description'
+		dataType: string
+		lineageTag: 5118bee3-841f-4611-838f-6f25f26097be
+		summarizeBy: none
+		sourceColumn: NAICS code description
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Industry group'
+		dataType: string
+		lineageTag: 1813e9b1-e1a7-4239-b213-ddfafe0b5225
+		summarizeBy: none
+		sourceColumn: Industry group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Industry group code'
+		dataType: int64
+		formatString: 0
+		lineageTag: 997869a3-859f-4aff-b6f4-ec09c63ec6e1
+		summarizeBy: none
+		sourceColumn: Industry group code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Subsector code'
+		dataType: int64
+		formatString: 0
+		lineageTag: a3c4e871-072d-40cb-a4f8-13b216a6da72
+		summarizeBy: none
+		sourceColumn: Subsector code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subsector
+		dataType: string
+		lineageTag: 69be9622-cc78-4eda-9f40-1fb6fcaebb8a
+		summarizeBy: none
+		sourceColumn: Subsector
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sector code'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3a6fde96-479f-4258-b629-6a186d1b5b9c
+		summarizeBy: none
+		sourceColumn: Sector code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sector
+		dataType: string
+		lineageTag: ffcca5b3-1cbc-4fd5-a6f0-3dd40a3590d4
+		summarizeBy: none
+		sourceColumn: Sector
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Industry = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\JoséAndrésBarriosJer\Downloads\data-modeling-in-power-bi\Datasets\Establishment Survey.csv"),[Delimiter=",", Columns=16, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Id", Int64.Type}, {"Age code", Int64.Type}, {"Year", Int64.Type}, {"NAICS code", Int64.Type}, {"Number of firms", Int64.Type}, {"Number of establishments", Int64.Type}, {"Number of employees", Int64.Type}, {"Number of establishments born", Int64.Type}, {"Number of establishments exited", Int64.Type}, {"NAICS code description", type text}, {"Industry group code", Int64.Type}, {"Industry group", type text}, {"Subsector code", Int64.Type}, {"Subsector", type text}, {"Sector code", Int64.Type}, {"Sector", type text}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type",{"NAICS code", "NAICS code description", "Industry group", "Industry group code", "Subsector code", "Subsector", "Sector code", "Sector"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns")
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
