@@ -1,0 +1,24 @@
+relationship 0ada58d2-27bb-4053-90f0-38aecc733ac7
+	fromColumn: 'Business Establishment by Age'.'Establishment age code'
+	toColumn: 'Establishment Age Code'.'Establishment age code'
+
+relationship 52e34f86-94b2-4701-83fe-923778141c6b
+	fromColumn: 'Business Establishment by Age'.'2012 NAICS Code'
+	toColumn: 'NAICS Code'.'2017 NAICS code'
+
+relationship 99a3d8d6-458b-4166-8f9b-6af83065da57
+	fromColumn: 'Business Establishment by Age'.id
+	toColumn: Geography.id
+
+relationship 0f15e109-eae1-4bbe-b4d3-cc3c143db903
+	fromColumn: 'Business Establishment by Age'.Year
+	toColumn: Year.Year
+
+relationship 3888212e-43fc-471b-9ec3-35b64262336f
+	fromColumn: 'Summary Statistics for Manufacturing'.'2017 NAICS code'
+	toColumn: 'NAICS Code'.'2017 NAICS code'
+
+relationship 6a3809e1-5c7d-4b51-842d-93bbc3c8dedb
+	fromColumn: 'Summary Statistics for Manufacturing'.GEO_ID
+	toColumn: Geography.id
+

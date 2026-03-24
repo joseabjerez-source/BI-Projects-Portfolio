@@ -1,0 +1,122 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "c2ab3a9459586a03aa9d",
+  "position": {
+    "x": 64.712939160239927,
+    "y": 347.69494430162808,
+    "z": 1,
+    "height": 342.21079691516707,
+    "width": 1103.4104541559554,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Year"
+                    }
+                  },
+                  "Property": "Decade"
+                }
+              },
+              "queryRef": "Year.Decade",
+              "nativeQueryRef": "Decade",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Business Establishment by Age"
+                        }
+                      },
+                      "Property": "Number of firms"
+                    }
+                  },
+                  "Function": 4
+                }
+              },
+              "queryRef": "Sum(Business Establishment by Age.Number of firms)",
+              "nativeQueryRef": "Max of Number of firms"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Business Establishment by Age"
+                      }
+                    },
+                    "Property": "Number of firms"
+                  }
+                },
+                "Function": 4
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "9a01b1d793a8a98f45e9",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Year"
+              }
+            },
+            "Property": "Decade"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "2f40916dceb2fca16238",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Business Establishment by Age"
+                  }
+                },
+                "Property": "Number of firms"
+              }
+            },
+            "Function": 4
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

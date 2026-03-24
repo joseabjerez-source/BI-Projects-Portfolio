@@ -1,0 +1,4 @@
+relationship 0dffdd9c-469e-67a1-af44-f4bd04b424d5
+	fromColumn: 'Business Establishment by Age'.Year
+	toColumn: Year.Year
+

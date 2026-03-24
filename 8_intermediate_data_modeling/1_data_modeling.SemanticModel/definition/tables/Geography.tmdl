@@ -1,0 +1,103 @@
+table Geography
+	lineageTag: 8dd1653f-0d1e-416b-a603-a5eaf5553702
+
+	column id
+		dataType: string
+		lineageTag: fa63cac6-f69b-4415-aaba-6ffe25d33c0a
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Geo Footnote'
+		dataType: string
+		lineageTag: cd404fbb-d935-4bda-9424-3e5227856022
+		summarizeBy: none
+		sourceColumn: Geo Footnote
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Geographic Area Name'
+		dataType: string
+		lineageTag: 758f8a5a-ac2f-4374-8d22-73bdcc543678
+		summarizeBy: none
+		sourceColumn: Geographic Area Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column '2017 NAICS code'
+		dataType: string
+		lineageTag: 527c3d35-ae6d-45e3-a1d9-d3763af258ab
+		summarizeBy: none
+		sourceColumn: 2017 NAICS code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Meaning of NAICS code'
+		dataType: string
+		lineageTag: 4b096b3e-3c71-4a3b-9990-690715755b15
+		summarizeBy: none
+		sourceColumn: Meaning of NAICS code
+
+		annotation SummarizationSetBy = Automatic
+
+	column '2017 NAICS Footnote'
+		dataType: string
+		lineageTag: 396584aa-5012-49d0-af78-4ceb382257c7
+		summarizeBy: none
+		sourceColumn: 2017 NAICS Footnote
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Employment size of establishments code'
+		dataType: int64
+		formatString: 0
+		lineageTag: ac3af8fb-3f5c-45b7-a954-6fbae6bd22fc
+		summarizeBy: sum
+		sourceColumn: Employment size of establishments code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Meaning of Employment size of establishments code'
+		dataType: string
+		lineageTag: 38f71226-77c2-4bf5-bb41-9bb29232eb1a
+		summarizeBy: none
+		sourceColumn: Meaning of Employment size of establishments code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 09604893-51fb-4b38-87ae-960ee2ea0d0d
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of establishments'
+		dataType: int64
+		formatString: 0
+		lineageTag: c039ba43-7245-4179-9b20-f76d6a1d206d
+		summarizeBy: sum
+		sourceColumn: Number of establishments
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Geography = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\JoséAndrésBarriosJer\Downloads\intermediate-data-modeling-in-power-bi\Datasets\Geography.csv"),[Delimiter=",", Columns=10, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}, {"Column7", type text}, {"Column8", type text}, {"Column9", type text}, {"Column10", type text}}),
+				    #"Removed Top Rows" = Table.Skip(#"Changed Type",1),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Removed Top Rows", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"id", type text}, {"Geo Footnote", type text}, {"Geographic Area Name", type text}, {"2017 NAICS code", type text}, {"Meaning of NAICS code", type text}, {"2017 NAICS Footnote", type text}, {"Employment size of establishments code", Int64.Type}, {"Meaning of Employment size of establishments code", type text}, {"Year", Int64.Type}, {"Number of establishments", Int64.Type}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Changed Type1")
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,198 @@
+table 'Business Establishment by Age'
+	lineageTag: 406c0edd-5306-4e74-ae0a-d62c4058b347
+
+	column id
+		dataType: string
+		lineageTag: f08ee727-962d-407b-b676-57e621ae5302
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Geographic Area Name'
+		dataType: string
+		lineageTag: 950bc02e-fb8e-43df-bd05-7ce5c2699fbb
+		summarizeBy: none
+		sourceColumn: Geographic Area Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column '2012 NAICS Code'
+		dataType: string
+		lineageTag: 858548de-a702-4d41-acc1-7bfa18255e89
+		summarizeBy: none
+		sourceColumn: 2012 NAICS Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Meaning of NAICS code'
+		dataType: string
+		lineageTag: bd072104-e892-45d2-8d60-506ad1ffd8f0
+		summarizeBy: none
+		sourceColumn: Meaning of NAICS code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Establishment age code'
+		dataType: int64
+		formatString: 0
+		lineageTag: 748e24b6-eab6-42b5-b8a6-64c456401660
+		summarizeBy: sum
+		sourceColumn: Establishment age code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Meaning of Establishment age code'
+		dataType: string
+		lineageTag: 55e8791f-fdec-47b9-bc43-2ca7704755de
+		summarizeBy: none
+		sourceColumn: Meaning of Establishment age code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 77f46505-67d0-45cb-b1f7-5cede5296ea4
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of firms'
+		dataType: int64
+		formatString: 0
+		lineageTag: bbc645c4-28d1-4e49-ad83-f1e5f3ed0eff
+		summarizeBy: sum
+		sourceColumn: Number of firms
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of establishments'
+		dataType: int64
+		formatString: 0
+		lineageTag: 49a112c1-f65c-416d-8c39-ac93484047f0
+		summarizeBy: sum
+		sourceColumn: Number of establishments
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of employees'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5a21752b-cbfe-4735-9d1a-e9840052b0f9
+		summarizeBy: sum
+		sourceColumn: Number of employees
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of establishments born during the last 12 months'
+		dataType: int64
+		formatString: 0
+		lineageTag: 542ec7f7-40f5-41e4-8728-bef9927d3016
+		summarizeBy: sum
+		sourceColumn: Number of establishments born during the last 12 months
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Rate of establishments born during the last 12 months'
+		dataType: double
+		lineageTag: ff5bedd8-4db9-4e71-acc7-4068b6396b7d
+		summarizeBy: sum
+		sourceColumn: Rate of establishments born during the last 12 months
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Number of establishments exited during the last 12 months'
+		dataType: int64
+		formatString: 0
+		lineageTag: 70bd2a4f-e956-43e8-a0ad-b94b1f7f1f5b
+		summarizeBy: sum
+		sourceColumn: Number of establishments exited during the last 12 months
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Rate of establishments exited during the last 12 months'
+		dataType: double
+		lineageTag: 36b2ba1f-9d02-406e-8ab6-5d370072d193
+		summarizeBy: sum
+		sourceColumn: Rate of establishments exited during the last 12 months
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Number of net jobs created from expanding/contracting and opening/closing establishments during the last 12 months'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4a1388fa-5fae-4e45-a010-34a5d0f8c2a6
+		summarizeBy: sum
+		sourceColumn: Number of net jobs created from expanding/contracting and opening/closing establishments during the last 12 months
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Rate of net jobs created from expanding/contracting and opening/closing establishments during the last 12 months'
+		dataType: double
+		lineageTag: 6f979214-8549-4072-a419-ff8fafe91650
+		summarizeBy: sum
+		sourceColumn: Rate of net jobs created from expanding/contracting and opening/closing establishments during the last 12 months
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Rate of reallocation during the last 12 months'
+		dataType: double
+		lineageTag: 6f3fcd73-bd61-4081-8e28-07a27a49be16
+		summarizeBy: sum
+		sourceColumn: Rate of reallocation during the last 12 months
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Number of firms that exited during the last 12 months'
+		dataType: int64
+		formatString: 0
+		lineageTag: ec7e6ae1-9b90-4cde-8788-079f91984714
+		summarizeBy: sum
+		sourceColumn: Number of firms that exited during the last 12 months
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of establishments associated with firm deaths during the last 12 months'
+		dataType: int64
+		formatString: 0
+		lineageTag: 59a333d4-7a85-414a-8443-1dc599181fae
+		summarizeBy: sum
+		sourceColumn: Number of establishments associated with firm deaths during the last 12 months
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of employees associated with firm deaths during the last 12 months'
+		dataType: int64
+		formatString: 0
+		lineageTag: de55ff58-c1de-4f44-a986-31273dde9b3f
+		summarizeBy: sum
+		sourceColumn: Number of employees associated with firm deaths during the last 12 months
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Business Establishment by Age' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\JoséAndrésBarriosJer\Downloads\intermediate-data-modeling-in-power-bi\Datasets\Business Establishment by Age.csv"),[Delimiter=",", Columns=20, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}, {"Column7", type text}, {"Column8", type text}, {"Column9", type text}, {"Column10", type text}, {"Column11", type text}, {"Column12", type text}, {"Column13", type text}, {"Column14", type text}, {"Column15", type text}, {"Column16", type text}, {"Column17", type text}, {"Column18", type text}, {"Column19", type text}, {"Column20", type text}}),
+				    #"Removed Top Rows" = Table.Skip(#"Changed Type",1),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Removed Top Rows", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"id", type text}, {"Geographic Area Name", type text}, {"2012 NAICS Code", type text}, {"Meaning of NAICS code", type text}, {"Establishment age code", Int64.Type}, {"Meaning of Establishment age code", type text}, {"Year", Int64.Type}, {"Number of firms", Int64.Type}, {"Number of establishments", Int64.Type}, {"Number of employees", Int64.Type}, {"Number of establishments born during the last 12 months", Int64.Type}, {"Rate of establishments born during the last 12 months", type number}, {"Number of establishments exited during the last 12 months", Int64.Type}, {"Rate of establishments exited during the last 12 months", type number}, {"Number of net jobs created from expanding/contracting and opening/closing establishments during the last 12 months", Int64.Type}, {"Rate of net jobs created from expanding/contracting and opening/closing establishments during the last 12 months", type number}, {"Rate of reallocation during the last 12 months", type number}, {"Number of firms that exited during the last 12 months", Int64.Type}, {"Number of establishments associated with firm deaths during the last 12 months", Int64.Type}, {"Number of employees associated with firm deaths during the last 12 months", Int64.Type}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

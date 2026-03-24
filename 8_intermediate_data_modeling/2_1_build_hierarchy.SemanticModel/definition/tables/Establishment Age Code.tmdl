@@ -1,0 +1,36 @@
+table 'Establishment Age Code'
+	lineageTag: b31e3591-fe1f-4ae8-9ed5-240fa1cd23a2
+
+	column 'Establishment age code'
+		dataType: int64
+		formatString: 0
+		lineageTag: 2bb3c75a-a135-4c4c-ac14-9c5bac1ccdd6
+		summarizeBy: none
+		sourceColumn: Establishment age code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Meaning of Establishment age code'
+		dataType: string
+		lineageTag: d08e814a-7682-408a-aff2-8d9806858cd0
+		summarizeBy: none
+		sourceColumn: Meaning of Establishment age code
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Establishment Age Code-096bc2e0-a0d9-4081-a57a-3664998526e3' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://assets.datacamp.com/production/repositories/6025/datasets/bdc282fafd8ac6ee1fdd20ec3d3502c145018eab/Business%20Establishment%20by%20Age.csv"),[Delimiter=",", Columns=20, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}, {"Column7", type text}, {"Column8", type text}, {"Column9", type text}, {"Column10", type text}, {"Column11", type text}, {"Column12", type text}, {"Column13", type text}, {"Column14", type text}, {"Column15", type text}, {"Column16", type text}, {"Column17", type text}, {"Column18", type text}, {"Column19", type text}, {"Column20", type text}}),
+				    #"Removed Top Rows" = Table.Skip(#"Changed Type",1),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Removed Top Rows", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"id", type text}, {"Geographic Area Name", type text}, {"2012 NAICS Code", type text}, {"Meaning of NAICS code", type text}, {"Establishment age code", Int64.Type}, {"Meaning of Establishment age code", type text}, {"Year", Int64.Type}, {"Number of firms", Int64.Type}, {"Number of establishments", Int64.Type}, {"Number of employees", Int64.Type}, {"Number of establishments born during the last 12 months", Int64.Type}, {"Rate of establishments born during the last 12 months", type number}, {"Number of establishments exited during the last 12 months", Int64.Type}, {"Rate of establishments exited during the last 12 months", type number}, {"Number of net jobs created from expanding/contracting and opening/closing establishments during the last 12 months", Int64.Type}, {"Rate of net jobs created from expanding/contracting and opening/closing establishments during the last 12 months", type number}, {"Rate of reallocation during the last 12 months", type number}, {"Number of firms that exited during the last 12 months", Int64.Type}, {"Number of establishments associated with firm deaths during the last 12 months", Int64.Type}, {"Number of employees associated with firm deaths during the last 12 months", Int64.Type}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type1",{"Establishment age code", "Meaning of Establishment age code"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns", {"Establishment age code"})
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_ResultType = Table
+

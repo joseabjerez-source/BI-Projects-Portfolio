@@ -1,0 +1,82 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "a2ff582890a950b5e9c1",
+  "position": {
+    "x": 404.81927710843377,
+    "y": 26.987951807228917,
+    "z": 1000,
+    "height": 559.03614457831327,
+    "width": 816.06425702811248
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Year"
+                    }
+                  },
+                  "Property": "Decade"
+                }
+              },
+              "queryRef": "Year.Decade",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Business Establishment by Age"
+                        }
+                      },
+                      "Property": "Number of firms"
+                    }
+                  },
+                  "Function": 4
+                }
+              },
+              "queryRef": "Sum(Business Establishment by Age.Number of firms)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Business Establishment by Age"
+                      }
+                    },
+                    "Property": "Number of firms"
+                  }
+                },
+                "Function": 4
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

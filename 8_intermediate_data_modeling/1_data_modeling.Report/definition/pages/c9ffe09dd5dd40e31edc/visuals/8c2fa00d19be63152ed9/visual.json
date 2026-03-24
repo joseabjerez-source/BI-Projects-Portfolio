@@ -1,0 +1,92 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "8c2fa00d19be63152ed9",
+  "position": {
+    "x": 10.440456769983687,
+    "y": 0,
+    "z": 0,
+    "height": 453.11582381729204,
+    "width": 438.49918433931487,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Business Establishment by Age"
+                        }
+                      },
+                      "Property": "Number of firms"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Business Establishment by Age.Number of firms)",
+              "nativeQueryRef": "Sum of Number of firms"
+            }
+          ]
+        },
+        "Rows": {
+          "projections": []
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Business Establishment by Age"
+                      }
+                    },
+                    "Property": "Number of firms"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "277872b3737671d0a640",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Business Establishment by Age"
+                  }
+                },
+                "Property": "Number of firms"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

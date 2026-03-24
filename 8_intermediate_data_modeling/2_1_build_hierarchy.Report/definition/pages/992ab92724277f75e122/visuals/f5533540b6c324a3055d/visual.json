@@ -1,0 +1,366 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "f5533540b6c324a3055d",
+  "position": {
+    "x": 10.078740157480315,
+    "y": 31.916010498687662,
+    "z": 0,
+    "height": 409.86876640419945,
+    "width": 1269.9212598425197,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "treemap",
+    "query": {
+      "queryState": {
+        "Group": {
+          "projections": [
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "NAICS Code"
+                        }
+                      },
+                      "Hierarchy": "NAICS Code hierarchy"
+                    }
+                  },
+                  "Level": "SUBSECTOR"
+                }
+              },
+              "queryRef": "NAICS Code.NAICS Code hierarchy.SUBSECTOR",
+              "nativeQueryRef": "NAICS Code hierarchy SUBSECTOR",
+              "active": true
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "NAICS Code"
+                        }
+                      },
+                      "Hierarchy": "NAICS Code hierarchy"
+                    }
+                  },
+                  "Level": "Industry group"
+                }
+              },
+              "queryRef": "NAICS Code.NAICS Code hierarchy.Industry group",
+              "nativeQueryRef": "NAICS Code hierarchy Industry group",
+              "active": true
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "NAICS Code"
+                        }
+                      },
+                      "Hierarchy": "NAICS Code hierarchy"
+                    }
+                  },
+                  "Level": "2017 NAICS code"
+                }
+              },
+              "queryRef": "NAICS Code.NAICS Code hierarchy.2017 NAICS code",
+              "nativeQueryRef": "NAICS Code hierarchy 2017 NAICS code",
+              "active": false
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Summary Statistics for Manufacturing"
+                        }
+                      },
+                      "Property": "Number of employees"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Summary Statistics for Manufacturing.Number of employees)",
+              "nativeQueryRef": "Number of employees"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "76fb6967e51d590bc8d7",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Summary Statistics for Manufacturing"
+                  }
+                },
+                "Property": "Number of employees"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "b92d59fbee160ca30f3d",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "NAICS Code"
+                  }
+                },
+                "Hierarchy": "NAICS Code hierarchy"
+              }
+            },
+            "Level": "SUBSECTOR"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "n",
+              "Entity": "NAICS Code",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "In": {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "n"
+                              }
+                            },
+                            "Property": "SUBSECTOR"
+                          }
+                        }
+                      ],
+                      "Values": [
+                        [
+                          {
+                            "Literal": {
+                              "Value": "null"
+                            }
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                }
+              },
+              "Annotations": {
+                "filterExpressionMetadata": {
+                  "expressions": [
+                    {
+                      "HierarchyLevel": {
+                        "Expression": {
+                          "Hierarchy": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "NAICS Code"
+                              }
+                            },
+                            "Hierarchy": "NAICS Code hierarchy"
+                          }
+                        },
+                        "Level": "SUBSECTOR"
+                      }
+                    }
+                  ],
+                  "decomposedIdentities": {
+                    "values": [
+                      [
+                        {
+                          "0": [
+                            {
+                              "Literal": {
+                                "Value": "null"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    ],
+                    "columns": [
+                      {
+                        "value": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Entity": "NAICS Code"
+                              }
+                            },
+                            "Property": "SUBSECTOR"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "valueMap": [
+                    {
+                      "0": "(Blank)"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "729db0325c4626024e0a",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "NAICS Code"
+                  }
+                },
+                "Hierarchy": "NAICS Code hierarchy"
+              }
+            },
+            "Level": "Industry group"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "401ce51296f23b2740f5",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "NAICS Code"
+                  }
+                },
+                "Hierarchy": "NAICS Code hierarchy"
+              }
+            },
+            "Level": "2017 NAICS code"
+          }
+        },
+        "type": "Categorical",
+        "objects": {
+          "general": [
+            {
+              "properties": {}
+            }
+          ]
+        }
+      },
+      {
+        "name": "d83d9667ddeedf203ca9",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "NAICS Code"
+                  }
+                },
+                "Hierarchy": "NAICS Code hierarchy"
+              }
+            },
+            "Level": "SUBSECTOR"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "n",
+              "Entity": "NAICS Code",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "n"
+                          }
+                        },
+                        "Property": "SUBSECTOR"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "325L"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "Drill"
+      }
+    ]
+  }
+}

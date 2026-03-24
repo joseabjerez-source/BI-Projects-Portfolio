@@ -1,0 +1,31 @@
+table Year
+	lineageTag: e752921e-98b8-48a4-99a8-6869147a0d90
+
+	column Year
+		formatString: 0
+		lineageTag: 3de39634-f888-4335-afab-2f3d1fbd63f0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [YEAR]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Decade = 'Year'[Year] - MOD('Year'[Year], 10)
+		formatString: 0
+		lineageTag: 2792ea32-c013-4745-8fbe-08741e007079
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Year = calculated
+		mode: import
+		source =
+				// name of the table
+				DISTINCT ( // only keeps unique rows
+				    SELECTCOLUMNS ( // returns a table and creates new column based on expression
+				        CALENDAR ( DATE ( 1961, 1, 1 ), TODAY() ), // creates date range between 1961-01-01 and today
+				        "Year", YEAR([Date]) // creates "Year" column, extracting the years only
+				))
+
+	annotation PBI_Id = cd55616930e64e7898efe2d1c0062a70
+

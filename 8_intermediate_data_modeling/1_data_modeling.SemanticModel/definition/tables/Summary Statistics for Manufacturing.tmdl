@@ -1,0 +1,79 @@
+table 'Summary Statistics for Manufacturing'
+	lineageTag: 7922191d-9341-4c00-8796-4296d915ef2e
+
+	column '2017 NAICS code'
+		dataType: string
+		lineageTag: 7ff2551f-6290-4da7-a876-e1634f954bb7
+		summarizeBy: none
+		sourceColumn: 2017 NAICS code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 79350ba5-6544-4163-b0d2-9ce88c27e5a7
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales, value of shipments, or revenue ($1,000)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 88056112-72c2-4546-9359-111b78a90042
+		summarizeBy: sum
+		sourceColumn: Sales, value of shipments, or revenue ($1,000)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Annual payroll ($1,000)'
+		dataType: int64
+		formatString: 0
+		lineageTag: f6da289b-de5d-4d43-8b7f-872874c4f4dc
+		summarizeBy: sum
+		sourceColumn: Annual payroll ($1,000)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'First-quarter payroll ($1,000)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 361f4cf1-f324-4610-934a-243f0d51aa93
+		summarizeBy: sum
+		sourceColumn: First-quarter payroll ($1,000)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of employees'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5ddcacb0-4f75-4ff8-9449-11f0b4a66037
+		summarizeBy: sum
+		sourceColumn: Number of employees
+
+		annotation SummarizationSetBy = Automatic
+
+	column GEO_ID
+		dataType: string
+		lineageTag: 65ec1316-6101-4844-abbe-e178949fb5ac
+		summarizeBy: none
+		sourceColumn: GEO_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Summary Statistics for Manufacturing' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\JoséAndrésBarriosJer\Downloads\intermediate-data-modeling-in-power-bi\Datasets\Summary Statistics for Manufacturing.txt"),[Delimiter="	", Columns=9, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"GeographySummary", type text}, {"2017 NAICS code", type text}, {"Year", Int64.Type}, {"Sales, value of shipments, or revenue ($1,000)", Int64.Type}, {"Annual payroll ($1,000)", Int64.Type}, {"First-quarter payroll ($1,000)", Int64.Type}, {"Number of employees", Int64.Type}, {"GeographyVariant", type text}, {"GeographyNation", type text}}),
+				    #"Merged Columns" = Table.CombineColumns(#"Changed Type",{"GeographySummary", "GeographyVariant", "GeographyNation"},Combiner.CombineTextByDelimiter("", QuoteStyle.None),"GEO_ID")
+				in
+				    #"Merged Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

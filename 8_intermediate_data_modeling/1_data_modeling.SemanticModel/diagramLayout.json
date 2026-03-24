@@ -1,0 +1,74 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 182,
+            "y": 0
+          },
+          "nodeIndex": "Year",
+          "nodeLineageTag": "e752921e-98b8-48a4-99a8-6869147a0d90",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 595,
+            "y": 25
+          },
+          "nodeIndex": "Business Establishment by Age",
+          "nodeLineageTag": "406c0edd-5306-4e74-ae0a-d62c4058b347",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1098,
+            "y": 0
+          },
+          "nodeIndex": "Summary Statistics for Manufacturing",
+          "nodeLineageTag": "7922191d-9341-4c00-8796-4296d915ef2e",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1116,
+            "y": 298.5
+          },
+          "nodeIndex": "Geography",
+          "nodeLineageTag": "8dd1653f-0d1e-416b-a603-a5eaf5553702",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}
