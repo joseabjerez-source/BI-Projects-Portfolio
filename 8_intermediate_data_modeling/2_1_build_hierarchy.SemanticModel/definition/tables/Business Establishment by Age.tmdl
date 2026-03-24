@@ -1,6 +1,28 @@
 table 'Business Establishment by Age'
 	lineageTag: 73a5d65a-ddab-435b-a2f9-416a046d9869
 
+	measure 'Employees per firm' = DIVIDE(SUM('Business Establishment by Age'[Number of employees]),SUM('Business Establishment by Age'[Number of firms]))
+		lineageTag: c1c8103a-01fd-413d-af2b-23e20ff732d5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Number of Employees by Age' =
+			
+			AVERAGEX(
+				KEEPFILTERS(VALUES('Business Establishment by Age'[Establishment age code])),
+				CALCULATE(SUM('Business Establishment by Age'[Number of employees]))
+			)
+		formatString: 0
+		lineageTag: 8d7a4dce-3551-42ed-bc10-a8e32c797f6d
+
+		extendedProperty MeasureTemplate =
+				{
+				  "version": 0,
+				  "daxTemplateName": "AveragePerCategory"
+				}
+
+		changedProperty = FormatString
+
 	column id
 		dataType: string
 		lineageTag: 2d663d50-70bc-40ea-a111-51a6e9567fa1

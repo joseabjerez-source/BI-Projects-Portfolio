@@ -1,0 +1,196 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "1ed2d73d4af819e94ac9",
+  "position": {
+    "x": 9.9653979238754324,
+    "y": 0,
+    "z": 0,
+    "height": 719.72318339100354,
+    "width": 925.67474048442909,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Business Establishment by Age"
+                    }
+                  },
+                  "Property": "Geographic Area Name"
+                }
+              },
+              "queryRef": "Business Establishment by Age.Geographic Area Name",
+              "nativeQueryRef": "Geographic Area Name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Business Establishment by Age"
+                    }
+                  },
+                  "Property": "Year"
+                }
+              },
+              "queryRef": "Business Establishment by Age.Year",
+              "nativeQueryRef": "Year"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Business Establishment by Age"
+                    }
+                  },
+                  "Property": "Employees per firm"
+                }
+              },
+              "queryRef": "Business Establishment by Age.Employees per firm",
+              "nativeQueryRef": "Employees per firm"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Business Establishment by Age"
+                    }
+                  },
+                  "Property": "Average Number of Employees by Age"
+                }
+              },
+              "queryRef": "Business Establishment by Age.Average Number of Employees by Age",
+              "nativeQueryRef": "Average Number of Employees by Age"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Business Establishment by Age"
+                  }
+                },
+                "Property": "Average Number of Employees by Age"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "aff8b0c1425658794537",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Business Establishment by Age"
+              }
+            },
+            "Property": "Geographic Area Name"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "b",
+              "Entity": "Business Establishment by Age",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "b"
+                          }
+                        },
+                        "Property": "Geographic Area Name"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Montana'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "18d0bc044344ecd48602",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Business Establishment by Age"
+              }
+            },
+            "Property": "Year"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f39329b903bce98da93e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Business Establishment by Age"
+              }
+            },
+            "Property": "Employees per firm"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8984a7d343f19bf88eab",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Business Establishment by Age"
+              }
+            },
+            "Property": "Average Number of Employees by Age"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}
