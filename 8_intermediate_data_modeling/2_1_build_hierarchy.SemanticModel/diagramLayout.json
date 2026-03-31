@@ -70,12 +70,26 @@
         },
         {
           "location": {
-            "x": 828.7,
-            "y": 288.62867647058823
+            "x": 712.7,
+            "y": 475.62867647058823
           },
           "nodeIndex": "Summary Statistics for Manufacturing",
+          "nodeLineageTag": "479162b7-29e7-4b18-adca-f05f3ca8f6a6",
           "size": {
             "height": 285,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 969.7,
+            "y": 226.81433823529414
+          },
+          "nodeIndex": "Establishments",
+          "nodeLineageTag": "e984834e-a3a0-42a0-8695-bdd4ea73238e",
+          "size": {
+            "height": 152,
             "width": 234
           },
           "zIndex": 0
@@ -85,7 +99,8 @@
       "zoomValue": 100,
       "pinKeyFieldsToTop": false,
       "showExtraHeaderInfo": false,
-      "hideKeyFieldsWhenCollapsed": false
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
     }
   ],
   "selectedDiagram": "All tables",

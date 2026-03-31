@@ -7,6 +7,7 @@ relationship 52e34f86-94b2-4701-83fe-923778141c6b
 	toColumn: 'NAICS Code'.'2017 NAICS code'
 
 relationship 99a3d8d6-458b-4166-8f9b-6af83065da57
+	crossFilteringBehavior: bothDirections
 	fromColumn: 'Business Establishment by Age'.id
 	toColumn: Geography.id
 
@@ -15,6 +16,7 @@ relationship 0f15e109-eae1-4bbe-b4d3-cc3c143db903
 	toColumn: Year.Year
 
 relationship 3888212e-43fc-471b-9ec3-35b64262336f
+	crossFilteringBehavior: bothDirections
 	fromColumn: 'Summary Statistics for Manufacturing'.'2017 NAICS code'
 	toColumn: 'NAICS Code'.'2017 NAICS code'
 
