@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "3_2_role_playing"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "32ff2f9d-d8e9-4a5a-b3cd-7fee283ff886"
+  }
+}

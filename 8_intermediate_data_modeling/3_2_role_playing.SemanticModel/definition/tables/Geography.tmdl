@@ -1,0 +1,43 @@
+table Geography
+	lineageTag: cf27617d-9aeb-469e-80bb-810f1996debd
+
+	column id
+		dataType: string
+		lineageTag: b7b56a5e-8c6f-4e57-873b-8108f672907f
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Geo Footnote'
+		dataType: string
+		lineageTag: 67e90da8-d6ec-4def-973a-292c60ed1a4c
+		summarizeBy: none
+		sourceColumn: Geo Footnote
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Geographic Area Name'
+		dataType: string
+		lineageTag: 32d85f8a-da74-49f7-8505-32b98b185e77
+		summarizeBy: none
+		sourceColumn: Geographic Area Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Geography-22bd298a-5b29-49f9-a845-cbaed2991945 = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents(" https://assets.datacamp.com/production/repositories/6025/datasets/78c968f32b7e529f8348b4510c4cbf433e11e3ec/Geography.csv"),[Delimiter=",", Columns=10, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}, {"Column7", type text}, {"Column8", type text}, {"Column9", type text}, {"Column10", type text}}),
+				    #"Removed Top Rows" = Table.Skip(#"Changed Type",1),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Removed Top Rows", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"id", type text}, {"Geo Footnote", type text}, {"Geographic Area Name", type text}, {"2017 NAICS code", type text}, {"Meaning of NAICS code", type text}, {"2017 NAICS Footnote", type text}, {"Employment size of establishments code", Int64.Type}, {"Meaning of Employment size of establishments code", type text}, {"Year", Int64.Type}, {"Number of establishments", Int64.Type}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type1",{"id", "Geo Footnote", "Geographic Area Name"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns", {"id"})
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_ResultType = Table
+

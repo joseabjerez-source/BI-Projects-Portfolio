@@ -1,0 +1,10 @@
+relationship 76480c5c-f245-4101-b48c-a94ef8852faa
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Summary Statistics for Manufacturing'.'2017 NAICS code'
+	toColumn: 'NAICS Code'.'2017 NAICS code'
+
+relationship ea7e4fcc-8fe3-49d2-aeaa-f716c31bcd93
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Summary Statistics for Manufacturing'.GEO_ID
+	toColumn: Geography.id
+

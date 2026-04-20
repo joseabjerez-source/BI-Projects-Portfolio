@@ -1,0 +1,77 @@
+table 'Summary Statistics for Manufacturing'
+	lineageTag: 2f947fe5-c380-4b06-be21-aa1ff534a894
+
+	column '2017 NAICS code'
+		dataType: string
+		lineageTag: 758cef84-da03-4c7a-8794-04a095624f9f
+		summarizeBy: none
+		sourceColumn: 2017 NAICS code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 53863210-113a-4c6f-9e25-716a4906c232
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales, value of shipments, or revenue ($1,000)'
+		dataType: int64
+		formatString: 0
+		lineageTag: c64c79be-081c-47e4-a2b7-8031bc6cc6b0
+		summarizeBy: sum
+		sourceColumn: Sales, value of shipments, or revenue ($1,000)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Annual payroll ($1,000)'
+		dataType: int64
+		formatString: 0
+		lineageTag: a448e6a9-f20a-4e98-bb0f-062bc4f0188a
+		summarizeBy: sum
+		sourceColumn: Annual payroll ($1,000)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'First-quarter payroll ($1,000)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5ec36120-8a69-4f70-ba72-44f64faddcfd
+		summarizeBy: sum
+		sourceColumn: First-quarter payroll ($1,000)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of employees'
+		dataType: int64
+		formatString: 0
+		lineageTag: e11bf979-c604-4681-b6e3-cd3b0b181554
+		summarizeBy: sum
+		sourceColumn: Number of employees
+
+		annotation SummarizationSetBy = Automatic
+
+	column GEO_ID
+		dataType: string
+		lineageTag: b2057d6c-af10-4636-9f26-242e03afeb41
+		summarizeBy: none
+		sourceColumn: GEO_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Summary Statistics for Manufacturing-8995dfbf-6e82-4655-9e04-14ac045e9985' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://assets.datacamp.com/production/repositories/6025/datasets/ef69b718b011efda1bb6babb4ccbeb686748e25e/Summary%20Statistics%20for%20Manufacturing.txt"),[Delimiter="	", Columns=9, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Year", Int64.Type}, {"Sales, value of shipments, or revenue ($1,000)", Int64.Type}, {"Annual payroll ($1,000)", Int64.Type}, {"First-quarter payroll ($1,000)", Int64.Type}, {"Number of employees", Int64.Type}}),
+				    #"Merged Columns" = Table.CombineColumns(#"Changed Type",{"GeographySummary", "GeographyVariant", "GeographyNation"},Combiner.CombineTextByDelimiter("", QuoteStyle.None),"GEO_ID")
+				in
+				    #"Merged Columns"
+
+	annotation PBI_ResultType = Table
+
