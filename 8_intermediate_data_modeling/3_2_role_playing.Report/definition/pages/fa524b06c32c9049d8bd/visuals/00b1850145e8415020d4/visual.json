@@ -1,0 +1,86 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "00b1850145e8415020d4",
+  "position": {
+    "x": 10.368188512518408,
+    "y": 0,
+    "z": 0,
+    "height": 634.34462444771714,
+    "width": 1109.3961708394697,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "NAICS Code"
+                        }
+                      },
+                      "Hierarchy": "NAICS Code"
+                    }
+                  },
+                  "Level": "SUBSECTOR"
+                }
+              },
+              "queryRef": "NAICS Code.NAICS Code.SUBSECTOR",
+              "nativeQueryRef": "NAICS Code SUBSECTOR",
+              "active": true
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Summary Statistics Double NAICS"
+                        }
+                      },
+                      "Property": "Number of employees"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Summary Statistics Double NAICS.Number of employees)",
+              "nativeQueryRef": "Number of employees",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Summary Statistics Double NAICS"
+                    }
+                  },
+                  "Property": "Related Number of employees"
+                }
+              },
+              "queryRef": "Summary Statistics Double NAICS.Related Number of employees",
+              "nativeQueryRef": "Related Number of employees"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

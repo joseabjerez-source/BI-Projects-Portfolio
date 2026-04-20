@@ -6,16 +6,16 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
-annotation PBI_QueryOrder = ["NAICS Code","Geography","Summary Statistics for Manufacturing"]
+annotation PBI_QueryOrder = ["NAICS Code","Geography","Summary Statistics for Manufacturing","Summary Statistics Double NAICS"]
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
 annotation PBI_ProTooling = ["DevMode"]
 
-ref table DateTableTemplate_eefb138d-ddcb-4015-97b4-b5146a8d2535
 ref table 'NAICS Code'
 ref table Geography
 ref table 'Summary Statistics for Manufacturing'
+ref table 'Summary Statistics Double NAICS'
 
 ref cultureInfo en-US
 

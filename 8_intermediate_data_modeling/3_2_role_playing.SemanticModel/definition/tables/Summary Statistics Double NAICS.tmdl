@@ -1,0 +1,106 @@
+table 'Summary Statistics Double NAICS'
+	lineageTag: 0a70f5c1-4595-4639-8cc3-9e70a933d350
+
+	measure 'Related Number of employees' = CALCULATE(SUM('Summary Statistics Double NAICS'[Number of employees]),USERELATIONSHIP('NAICS Code'[2017 NAICS code],'Summary Statistics Double NAICS'[NAICS Code Related]))
+		formatString: 0
+		lineageTag: bdb53357-b473-42da-827d-e2926c77c11a
+
+	column GeographySummary
+		dataType: int64
+		formatString: 0
+		lineageTag: 2acd1f95-e723-400b-b6ef-83227bc24d66
+		summarizeBy: sum
+		sourceColumn: GeographySummary
+
+		annotation SummarizationSetBy = Automatic
+
+	column '2017 NAICS code'
+		dataType: string
+		lineageTag: 72d9c219-84b7-409a-87ca-bebb9a3def1e
+		summarizeBy: none
+		sourceColumn: 2017 NAICS code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NAICS Code Related'
+		dataType: string
+		lineageTag: 602441fe-8200-46b3-a7d5-45deae963356
+		summarizeBy: none
+		sourceColumn: NAICS Code Related
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: ea84be2a-bf37-470f-9c87-be2e23c13174
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales, value of shipments, or revenue ($1,000)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5d961088-9e4b-47f5-964e-09887cfc68a8
+		summarizeBy: sum
+		sourceColumn: Sales, value of shipments, or revenue ($1,000)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Annual payroll ($1,000)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 32270029-a62f-4252-bf46-79c6ed8983a0
+		summarizeBy: sum
+		sourceColumn: Annual payroll ($1,000)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'First-quarter payroll ($1,000)'
+		dataType: int64
+		formatString: 0
+		lineageTag: b156af56-3d93-4803-b215-a366086fb4ad
+		summarizeBy: sum
+		sourceColumn: First-quarter payroll ($1,000)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of employees'
+		dataType: int64
+		formatString: 0
+		lineageTag: acdeb7ba-5e65-4756-aa0f-472b6d77c131
+		summarizeBy: sum
+		sourceColumn: Number of employees
+
+		annotation SummarizationSetBy = Automatic
+
+	column GeographyVariant
+		dataType: int64
+		formatString: 0
+		lineageTag: d072a5d1-585f-4a65-87e4-333def94301d
+		summarizeBy: sum
+		sourceColumn: GeographyVariant
+
+		annotation SummarizationSetBy = Automatic
+
+	column GeographyNation
+		dataType: string
+		lineageTag: c394163a-d614-4847-9290-bb0d6f2b2a3f
+		summarizeBy: none
+		sourceColumn: GeographyNation
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Summary Statistics Double NAICS' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\JoséAndrésBarriosJer\Downloads\intermediate-data-modeling-in-power-bi\Datasets\Summary Statistics Double NAICS.txt"),[Delimiter="	", Columns=10, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"GeographySummary", Int64.Type}, {"2017 NAICS code", type text}, {"NAICS Code Related", type text}, {"Year", Int64.Type}, {"Sales, value of shipments, or revenue ($1,000)", Int64.Type}, {"Annual payroll ($1,000)", Int64.Type}, {"First-quarter payroll ($1,000)", Int64.Type}, {"Number of employees", Int64.Type}, {"GeographyVariant", Int64.Type}, {"GeographyNation", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

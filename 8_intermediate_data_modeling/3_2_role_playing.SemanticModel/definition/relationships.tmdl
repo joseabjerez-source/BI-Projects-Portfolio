@@ -8,3 +8,12 @@ relationship ea7e4fcc-8fe3-49d2-aeaa-f716c31bcd93
 	fromColumn: 'Summary Statistics for Manufacturing'.GEO_ID
 	toColumn: Geography.id
 
+relationship AutoDetected_1c0daf18-ba1c-4b05-a595-be37453c44c0
+	fromColumn: 'Summary Statistics Double NAICS'.'2017 NAICS code'
+	toColumn: 'NAICS Code'.'2017 NAICS code'
+
+relationship bcf39d4e-9b60-2f04-ccf0-e33233d3f65b
+	isActive: false
+	fromColumn: 'Summary Statistics Double NAICS'.'NAICS Code Related'
+	toColumn: 'NAICS Code'.'2017 NAICS code'
+
