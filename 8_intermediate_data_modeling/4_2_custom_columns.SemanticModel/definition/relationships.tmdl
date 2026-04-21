@@ -1,0 +1,24 @@
+relationship bf0eccf1-618f-4a53-b92b-497808075102
+	fromColumn: 'Summary Statistics (computed column)'.Year
+	toColumn: Year.Year
+
+relationship f4289b71-e758-4970-b424-54ef303c622f
+	fromColumn: 'Summary Statistics (computed column)'.'2017 NAICS code'
+	toColumn: 'NAICS Code'.'2017 NAICS code'
+
+relationship AutoDetected_ef92f889-6401-40b5-ba3d-aae46d87a064
+	fromColumn: 'Summary Statistics (calculated column)'.Year
+	toColumn: Year.Year
+
+relationship AutoDetected_e314ce46-71c8-4163-8299-6daf75ff5367
+	fromColumn: 'Summary Statistics (calculated column)'.'2017 NAICS code'
+	toColumn: 'NAICS Code'.'2017 NAICS code'
+
+relationship baa0132d-7653-d11e-213a-35475375a058
+	fromColumn: 'Summary Statistics (computed column)'.id
+	toColumn: Geography.id
+
+relationship f64d7e8a-8055-c963-6406-34eef9310c9d
+	fromColumn: 'Summary Statistics (calculated column)'.id
+	toColumn: Geography.id
+

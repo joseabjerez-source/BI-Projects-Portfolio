@@ -1,0 +1,83 @@
+table 'Summary Statistics'
+	lineageTag: fa90500e-126e-46cb-bdcc-82c6e68b7c19
+
+	measure 'Slicer Summary Stats' = INT(NOT ISEMPTY('Summary Statistics'))
+		formatString: 0
+		lineageTag: 0a547a8f-40e1-43da-b883-4b264e04d8fe
+
+	column 'Industry group'
+		dataType: int64
+		formatString: 0
+		lineageTag: 579354f9-f08f-4457-b33f-ca709022e8a3
+		summarizeBy: none
+		sourceColumn: Industry group
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 09b3138d-a3d1-46f4-8412-f01c4c27b124
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales, value of shipments, or revenue ($1,000)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 92bb0e1b-b7aa-4de3-9c31-0defa8897b57
+		summarizeBy: sum
+		sourceColumn: Sales, value of shipments, or revenue ($1,000)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Annual payroll ($1,000)'
+		dataType: int64
+		formatString: 0
+		lineageTag: cf9479bd-c5cc-447e-80d7-743ffa2d0768
+		summarizeBy: sum
+		sourceColumn: Annual payroll ($1,000)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'First-quarter payroll ($1,000)'
+		dataType: int64
+		formatString: 0
+		lineageTag: a7d7159a-bb95-49c3-988d-93e67e98cd98
+		summarizeBy: sum
+		sourceColumn: First-quarter payroll ($1,000)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of employees'
+		dataType: int64
+		formatString: 0
+		lineageTag: 27bc4f20-7e83-45f0-8843-113db9ac4f3b
+		summarizeBy: sum
+		sourceColumn: Number of employees
+
+		annotation SummarizationSetBy = Automatic
+
+	column Id
+		dataType: string
+		lineageTag: aa605345-cf29-4790-9122-19222ebff1bb
+		summarizeBy: none
+		sourceColumn: Id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Summary Statistics-2caadd43-0aa8-4421-833a-91726c5af60f' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://assets.datacamp.com/production/repositories/6025/datasets/69d1967f2b6b6f70ab844e9dcc68474e46036cf0/Summary%20Statistics%20Many-To-Many.txt"),[Delimiter="	", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Industry group", Int64.Type}, {"Year", Int64.Type}, {"Sales, value of shipments, or revenue ($1,000)", Int64.Type}, {"Annual payroll ($1,000)", Int64.Type}, {"First-quarter payroll ($1,000)", Int64.Type}, {"Number of employees", Int64.Type}, {"GEO_ID", type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"GEO_ID", "Id"}}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Renamed Columns",{"Industry group", "Year", "Id", "Sales, value of shipments, or revenue ($1,000)", "Annual payroll ($1,000)", "First-quarter payroll ($1,000)", "Number of employees"})
+				in
+				    #"Reordered Columns"
+
+	annotation PBI_ResultType = Table
+

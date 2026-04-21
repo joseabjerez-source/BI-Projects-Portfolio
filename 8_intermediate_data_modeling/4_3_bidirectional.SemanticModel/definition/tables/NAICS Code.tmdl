@@ -1,0 +1,92 @@
+table 'NAICS Code'
+	lineageTag: 6aaaac88-dfec-4299-8433-ce1231697dfa
+
+	column '2017 NAICS code'
+		dataType: string
+		lineageTag: 11909c83-3c3e-47f6-9d35-3492794cfe08
+		summarizeBy: none
+		sourceColumn: 2017 NAICS code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Industry group'
+		dataType: int64
+		formatString: 0
+		lineageTag: 973a0392-dec3-47d8-9767-89ab9815fc0e
+		summarizeBy: none
+		sourceColumn: Industry group
+
+		annotation SummarizationSetBy = User
+
+	column 'Meaning of NAICS code'
+		dataType: string
+		lineageTag: 06c609c4-897f-4ca1-b4dd-bba42356bd03
+		summarizeBy: none
+		sourceColumn: Meaning of NAICS code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NAICS economic sector '
+		dataType: int64
+		formatString: 0
+		lineageTag: 3d77ed0a-1b2e-42d3-9ee0-c008a38a7769
+		summarizeBy: none
+		sourceColumn: "NAICS economic sector "
+
+		annotation SummarizationSetBy = User
+
+	column Subsector
+		dataType: int64
+		formatString: 0
+		lineageTag: f1f50c2a-08fb-48cb-b16d-37a506584454
+		summarizeBy: none
+		sourceColumn: Subsector
+
+		annotation SummarizationSetBy = User
+
+	column 'Industry level'
+		dataType: int64
+		formatString: 0
+		lineageTag: f9d4205f-597b-41d6-842f-ace10ed5f5c9
+		summarizeBy: none
+		sourceColumn: Industry level
+
+		annotation SummarizationSetBy = User
+
+	hierarchy 'NAICS Code'
+		lineageTag: 5617e45d-fc69-4479-9db3-65971c32df07
+
+		level 'NAICS economic sector '
+			lineageTag: 0669bd60-9a8f-4f6c-815b-e802f2fc4b60
+			column: 'NAICS economic sector '
+
+		level Subsector
+			lineageTag: 896b0876-fd8e-4f8b-8b25-28b78433dd26
+			column: Subsector
+
+		level 'Industry group'
+			lineageTag: 4aff39cc-c680-4909-aa0f-41c947f055f7
+			column: 'Industry group'
+
+		level '2017 NAICS code'
+			lineageTag: c7a4babc-4c2b-4009-b854-861368d9e7cf
+			column: '2017 NAICS code'
+
+	partition 'NAICS Code-46beb843-644c-4273-aafc-abb9c55d504c' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://assets.datacamp.com/production/repositories/6025/datasets/4491b55cb209c9babaed3f9bd1ea1600fefe64c2/NAICS%20Code.csv"),[Delimiter=",", Columns=19, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}, {"Column7", type text}, {"Column8", type text}, {"Column9", type text}, {"Column10", type text}, {"Column11", type text}, {"Column12", type text}, {"Column13", type text}, {"Column14", type text}, {"Column15", type text}, {"Column16", type text}, {"Column17", type text}, {"Column18", type text}, {"Column19", type text}}),
+				    #"Removed Top Rows" = Table.Skip(#"Changed Type",1),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Removed Top Rows", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"id", type text}, {"Geographic Area Name", type text}, {"Geo Footnote", type text}, {"2017 NAICS code", type text}, {"Industry group", Int64.Type}, {"2017 NAICS Footnote", type text}, {"Meaning of NAICS code", type text}, {"NAICS economic sector ", Int64.Type}, {"SUBSECTOR", Int64.Type}, {"Industry level", Int64.Type}, {"Year", Int64.Type}, {"Sales, value of shipments, or revenue ($1,000)", Int64.Type}, {"Relative standard error for estimate of sales, value of shipments, or revenue (%)", type number}, {"Annual payroll ($1,000)", Int64.Type}, {"First-quarter payroll ($1,000)", Int64.Type}, {"Number of employees", Int64.Type}, {"Production workers for pay period including March 12", Int64.Type}, {"Range indicating percent of total annual payroll imputed", type text}, {"Range indicating percent of total employees imputed", type text}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type1",{"2017 NAICS code", "Industry group", "2017 NAICS Footnote", "Meaning of NAICS code", "NAICS economic sector ", "SUBSECTOR", "Industry level"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns", {"2017 NAICS code"}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Removed Duplicates",{"2017 NAICS Footnote"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{{"SUBSECTOR", "Subsector"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+

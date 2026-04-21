@@ -1,0 +1,93 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "532ed2d4c042137aa04a",
+  "position": {
+    "x": 10.207336523125996,
+    "y": 0,
+    "z": 0,
+    "height": 649.18660287081332,
+    "width": 378.69218500797444,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Summary Statistics (computed column)"
+                    }
+                  },
+                  "Property": "id"
+                }
+              },
+              "queryRef": "Summary Statistics (computed column).id",
+              "nativeQueryRef": "id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Summary Statistics (computed column)"
+                    }
+                  },
+                  "Property": "Year"
+                }
+              },
+              "queryRef": "Summary Statistics (computed column).Year",
+              "nativeQueryRef": "Year"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Summary Statistics (computed column)"
+                        }
+                      },
+                      "Property": "Number of employees"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Summary Statistics (computed column).Number of employees)",
+              "nativeQueryRef": "Number of employees"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Summary Statistics (computed column)"
+                      }
+                    },
+                    "Property": "Number of employees"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

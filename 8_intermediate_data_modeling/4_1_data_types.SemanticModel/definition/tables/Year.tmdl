@@ -1,0 +1,39 @@
+table Year
+	lineageTag: db6ba32e-7784-456a-b1fa-91bc7196fe00
+
+	column Year
+		formatString: 0
+		lineageTag: cb3dc3a5-2fb3-480f-814e-efd89b831614
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Decade = 'Year'[Year] - MOD('Year'[Year], 10)
+		formatString: 0
+		lineageTag: 68571396-5baf-493e-8700-7fe0b401f327
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Century = 'Year'[Year] - MOD('Year'[Year], 100)
+		formatString: 0
+		lineageTag: cb0742f0-99f5-4477-9918-06f5751e0856
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Year-b81b25fa-09f9-484d-bd48-afd9fa54a1e0 = calculated
+		mode: import
+		source =
+				
+				DISTINCT (
+				    SELECTCOLUMNS (
+				        CALENDAR ( DATE ( YEAR ( TODAY() ) - 60, 1, 1), TODAY() ),
+				        "Year", YEAR([Date])
+				    )
+				)
+
+	annotation PBI_Id = 34ad2522e507432e91c666f6397eeeb3
+

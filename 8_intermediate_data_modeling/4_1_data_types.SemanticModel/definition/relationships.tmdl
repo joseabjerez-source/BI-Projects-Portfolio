@@ -1,0 +1,16 @@
+relationship 218842ea-1ebf-43d4-a2a8-8bfa37259527
+	fromColumn: 'Business Establishments'.'Establishment age code'
+	toColumn: 'Establishment Age'.'Establishment age code'
+
+relationship 1c264dca-81a5-41e1-8296-fb725f54c7a2
+	fromColumn: 'Business Establishments'.'2017 NAICS Code'
+	toColumn: 'NAICS Code'.'2017 NAICS code'
+
+relationship 9a79192a-feee-44a1-8bf7-e500d9e7f327
+	fromColumn: 'Business Establishments'.id
+	toColumn: Geography.id
+
+relationship b4d51a34-c207-4e2d-adab-dd69cb290bfe
+	fromColumn: 'Business Establishments'.Year
+	toColumn: Year.Year
+

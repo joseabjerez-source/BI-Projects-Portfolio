@@ -1,0 +1,52 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "8312a4fc5d431a002832",
+  "position": {
+    "x": 10.36055923473142,
+    "y": 290.09565857247975,
+    "z": 1,
+    "height": 279.73509933774835,
+    "width": 731.83222958057388,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Business Establishments"
+                    }
+                  },
+                  "Property": "Rowguid"
+                }
+              },
+              "queryRef": "Business Establishments.Rowguid",
+              "nativeQueryRef": "Rowguid"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Business Establishments"
+                    }
+                  },
+                  "Property": "Sum Employees (text)"
+                }
+              },
+              "queryRef": "Business Establishments.Sum Employees (text)",
+              "nativeQueryRef": "Sum Employees (text)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 634.065934065934,
+            "y": 509.89010989010984
+          },
+          "nodeIndex": "Geography",
+          "size": {
+            "height": 132.79120879120876,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "NAICS Code",
+          "size": {
+            "height": 231.86813186813191,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 508.33736263736262
+          },
+          "nodeIndex": "Year",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 328.40769230769234,
+            "y": 43.758241758241759
+          },
+          "nodeIndex": "Summary Statistics (computed column)",
+          "size": {
+            "height": 309.1868131868132,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "Summary Statistics (calculated column)",
+          "nodeLineageTag": "b42298a6-f07e-4aeb-a9c3-f57c8a0fff01",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 91,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

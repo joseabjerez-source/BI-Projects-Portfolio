@@ -1,0 +1,14 @@
+relationship ac04fd4e-ea74-4c59-8505-bf8bfc507743
+	fromColumn: 'Summary Statistics'.Year
+	toColumn: Year.Year
+
+relationship 30c829cb-15a9-4b20-8db4-ec021b82606c
+	fromColumn: 'Summary Statistics'.Id
+	toColumn: Geography.id
+
+relationship e8fb4d80-a5f2-4758-9d68-d448fbb7bf5d
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: 'Summary Statistics'.'Industry group'
+	toColumn: 'NAICS Code'.'Industry group'
+

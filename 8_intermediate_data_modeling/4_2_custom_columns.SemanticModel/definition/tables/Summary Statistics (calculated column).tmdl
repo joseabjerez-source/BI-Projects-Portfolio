@@ -1,0 +1,105 @@
+table 'Summary Statistics (calculated column)'
+	lineageTag: b42298a6-f07e-4aeb-a9c3-f57c8a0fff01
+
+	column GeographySummary
+		dataType: int64
+		formatString: 0
+		lineageTag: 84fd0be9-0cd1-4d46-8c2d-f17384b8f631
+		summarizeBy: sum
+		sourceColumn: GeographySummary
+
+		annotation SummarizationSetBy = Automatic
+
+	column GeographyVariant
+		dataType: int64
+		formatString: 0
+		lineageTag: 34a59d47-457c-42a8-b547-9454165ed853
+		summarizeBy: sum
+		sourceColumn: GeographyVariant
+
+		annotation SummarizationSetBy = Automatic
+
+	column GeographyNation
+		dataType: string
+		lineageTag: 9f4958d6-eaed-42d1-8923-5cf13c76ba18
+		summarizeBy: none
+		sourceColumn: GeographyNation
+
+		annotation SummarizationSetBy = Automatic
+
+	column '2017 NAICS code'
+		dataType: string
+		lineageTag: 95071bfc-4798-48cf-946e-729403b3ee03
+		summarizeBy: none
+		sourceColumn: 2017 NAICS code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: b014409f-66fc-4a1d-a9c3-edc33f56f7b3
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales, value of shipments, or revenue ($1,000)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 09fb03a9-31ce-4b7a-b5ce-8312dc28662a
+		summarizeBy: sum
+		sourceColumn: Sales, value of shipments, or revenue ($1,000)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Annual payroll ($1,000)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 083049fd-a746-48ce-9b10-ad29acbf2a63
+		summarizeBy: sum
+		sourceColumn: Annual payroll ($1,000)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'First-quarter payroll ($1,000)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 39bd80d3-a88d-48c0-9cbd-674ee3685526
+		summarizeBy: sum
+		sourceColumn: First-quarter payroll ($1,000)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of employees'
+		dataType: int64
+		formatString: 0
+		lineageTag: 07aae2ab-9ceb-4dd4-be7d-d7a4a1ff77b6
+		summarizeBy: sum
+		sourceColumn: Number of employees
+
+		annotation SummarizationSetBy = Automatic
+
+	column id
+		dataType: string
+		lineageTag: 8452f676-2f71-46da-bffa-b19d85881897
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Summary Statistics (calculated column)' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://s3.amazonaws.com/assets.datacamp.com/production/repositories/6025/datasets/Summary+Statistics+for+Manufacturing+Big.txt"),[Delimiter="	", Columns=9, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"GeographySummary", Int64.Type}, {"GeographyVariant", Int64.Type}, {"GeographyNation", type text}, {"2017 NAICS code", type text}, {"Year", Int64.Type}, {"Sales, value of shipments, or revenue ($1,000)", Int64.Type}, {"Annual payroll ($1,000)", Int64.Type}, {"First-quarter payroll ($1,000)", Int64.Type}, {"Number of employees", Int64.Type}}),
+				    #"Inserted Merged Column" = Table.AddColumn(#"Changed Type", "id", each Text.Combine({Text.From([GeographySummary], "es-MX"), Text.From([GeographyVariant], "es-MX"), [GeographyNation]}, ""), type text)
+				in
+				    #"Inserted Merged Column"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,69 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 465.16995432902536,
+            "y": 0
+          },
+          "nodeIndex": "NAICS Code",
+          "size": {
+            "height": 173,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 448.819512195122,
+            "y": 591.30337187834039
+          },
+          "nodeIndex": "Geography",
+          "size": {
+            "height": 197,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 66.423836361869661,
+            "y": 228.32018268389854
+          },
+          "nodeIndex": "Year",
+          "size": {
+            "height": 174.26829268292687,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 428.17073170731703,
+            "y": 242.46526090758917
+          },
+          "nodeIndex": "Summary Statistics",
+          "size": {
+            "height": 275.92682926829269,
+            "width": 354
+          },
+          "zIndex": 4
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 85.4734219269103,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

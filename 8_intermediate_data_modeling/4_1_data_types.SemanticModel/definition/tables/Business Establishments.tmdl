@@ -1,0 +1,120 @@
+table 'Business Establishments'
+	lineageTag: 81a57484-9f82-4ff3-b62c-224f98b61486
+
+	measure 'Sum Employees (text)' = SUMX('Business Establishments', VALUE('Business Establishments'[Number of employees (text)]))
+		lineageTag: eff11e2b-c774-4008-b915-65319d7eaf45
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column '2017 NAICS Code'
+		dataType: string
+		lineageTag: 4855bf5e-93d6-4db6-afb6-99537300c77b
+		summarizeBy: none
+		sourceColumn: 2017 NAICS Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Establishment age code'
+		dataType: int64
+		formatString: 0
+		lineageTag: d62788eb-7398-4e87-9f7e-188b09326009
+		summarizeBy: none
+		sourceColumn: Establishment age code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 24653b13-5cc9-4713-ba96-6c1f9e87fde9
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of firms'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5bb367e9-a0ba-4d5b-9295-91f9265bfa35
+		summarizeBy: sum
+		sourceColumn: Number of firms
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of establishments'
+		dataType: int64
+		formatString: 0
+		lineageTag: e9d8a6cd-2a58-4051-a457-65faca47a1cd
+		summarizeBy: sum
+		sourceColumn: Number of establishments
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of employees'
+		dataType: int64
+		formatString: 0
+		lineageTag: ad42a6d0-7f05-4636-b8e7-2ebb73d4a3c5
+		summarizeBy: sum
+		sourceColumn: Number of employees
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of establishments born during the last 12 months'
+		dataType: int64
+		formatString: 0
+		lineageTag: 37e9993b-35e5-40a7-89c5-236e2eafafd2
+		summarizeBy: sum
+		sourceColumn: Number of establishments born during the last 12 months
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of establishments exited during the last 12 months'
+		dataType: int64
+		formatString: 0
+		lineageTag: 85772538-b717-4950-af1a-fa21e3d6a549
+		summarizeBy: sum
+		sourceColumn: Number of establishments exited during the last 12 months
+
+		annotation SummarizationSetBy = Automatic
+
+	column id
+		dataType: string
+		lineageTag: 925b3efc-0db3-4138-a7ac-48eb89095b07
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rowguid
+		dataType: string
+		lineageTag: d80b808a-383c-487a-b5d8-b57c45f9b81c
+		summarizeBy: none
+		sourceColumn: Rowguid
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of employees (text)'
+		dataType: string
+		lineageTag: 9039a4be-6771-42da-a592-8a2e929bb565
+		summarizeBy: none
+		sourceColumn: Number of employees (text)
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Business Establishments-7a05a28d-e32c-41e3-ad20-5e3cb1ba99ef' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://s3.amazonaws.com/assets.datacamp.com/production/repositories/6025/datasets/Business+Establishments+by+Age+Big.txt"),[Delimiter="	", Columns=10, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"2017 NAICS Code", type text}, {"Establishment age code", Int64.Type}, {"Year", Int64.Type}, {"Number of firms", Int64.Type}, {"Number of establishments", Int64.Type}, {"Number of employees", Int64.Type}, {"Number of establishments born during the last 12 months", Int64.Type}, {"Number of establishments exited during the last 12 months", Int64.Type}, {"id", type text}, {"Rowguid", type text}}),
+				    #"Duplicated Column" = Table.DuplicateColumn(#"Changed Type", "Number of employees", "Number of employees - Copy"),
+				    #"Renamed Columns" = Table.RenameColumns(#"Duplicated Column",{{"Number of employees - Copy", "Number of employees (text)"}}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Renamed Columns",{{"Number of employees (text)", type text}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

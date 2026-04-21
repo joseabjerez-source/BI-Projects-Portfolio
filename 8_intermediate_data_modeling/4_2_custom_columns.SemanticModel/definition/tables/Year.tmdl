@@ -1,0 +1,42 @@
+table Year
+	lineageTag: c0491ae2-a4d3-446f-a9e4-29941de2f69f
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 4755b16d-7989-478f-85ef-042c6119704c
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Decade
+		dataType: int64
+		formatString: 0
+		lineageTag: 20413023-2896-459d-b8b6-4809bb1cc717
+		summarizeBy: sum
+		sourceColumn: Decade
+
+		annotation SummarizationSetBy = Automatic
+
+	column Century
+		dataType: int64
+		formatString: 0
+		lineageTag: 0c3580a6-d8ba-441c-8e92-68cdc0270e65
+		summarizeBy: sum
+		sourceColumn: Century
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Year-cd38eb28-39cc-4071-b124-560fab51ce97 = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://assets.datacamp.com/production/repositories/6025/datasets/c423b79d2b52ef3d7c2c36c71d95d79dc6453190/Year.txt"),[Delimiter="	", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Year", Int64.Type}, {"Decade", Int64.Type}, {"Century", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

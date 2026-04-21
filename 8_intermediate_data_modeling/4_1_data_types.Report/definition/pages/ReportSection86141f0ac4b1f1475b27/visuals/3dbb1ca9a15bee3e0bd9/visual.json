@@ -1,0 +1,75 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "3dbb1ca9a15bee3e0bd9",
+  "position": {
+    "x": 10.36055923473142,
+    "y": 0,
+    "z": 0,
+    "height": 279.73509933774835,
+    "width": 731.83222958057388,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Business Establishments"
+                    }
+                  },
+                  "Property": "Rowguid"
+                }
+              },
+              "queryRef": "Business Establishments.Rowguid",
+              "nativeQueryRef": "Rowguid"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Business Establishments"
+                        }
+                      },
+                      "Property": "Number of employees"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Business Establishments.Number of employees)",
+              "nativeQueryRef": "Number of employees"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "409.9849113148324D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Business Establishments.Rowguid"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

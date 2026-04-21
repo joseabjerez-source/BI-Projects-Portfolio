@@ -1,0 +1,71 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "c46b427f066e01a7b0cc",
+  "position": {
+    "x": 399,
+    "y": 0,
+    "z": 1,
+    "height": 649,
+    "width": 379,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Summary Statistics (calculated column)"
+                    }
+                  },
+                  "Property": "id"
+                }
+              },
+              "queryRef": "Summary Statistics (calculated column).id",
+              "nativeQueryRef": "id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Summary Statistics (calculated column)"
+                    }
+                  },
+                  "Property": "Year"
+                }
+              },
+              "queryRef": "Summary Statistics (calculated column).Year",
+              "nativeQueryRef": "Year"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Summary Statistics (calculated column)"
+                        }
+                      },
+                      "Property": "Number of employees"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Summary Statistics (calculated column).Number of employees)",
+              "nativeQueryRef": "Number of employees"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
