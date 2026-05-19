@@ -32,6 +32,44 @@ table 'Calculations YoY'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure 'Retail Price average per Delivery Date Key' =
+			
+			AVERAGEX(
+				KEEPFILTERS(VALUES('Dim_DeliveryDate'[Delivery Date Key])),
+				CALCULATE(SUM('Fact_Sales'[Retail Price]))
+			)
+		lineageTag: 02fa1cff-7046-4ee7-9304-51bd49613256
+
+		extendedProperty MeasureTemplate =
+				{
+				  "version": 0,
+				  "daxTemplateName": "AveragePerCategory"
+				}
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Retail Price YoY%' =
+			
+			IF(
+				ISFILTERED('Dim_DeliveryDate'[Delivery Date Key]),
+				ERROR("Time intelligence quick measures can only be grouped or filtered by the Power BI-provided date hierarchy or primary date column."),
+				VAR __PREV_YEAR =
+					CALCULATE(
+						[Average Retail Price],
+						DATEADD('Dim_DeliveryDate'[Delivery Date Key].[Date], -1, YEAR)
+					)
+				RETURN
+					DIVIDE([Average Retail Price] - __PREV_YEAR, __PREV_YEAR)
+			)
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: b8ccfc4d-73dd-46c3-b909-e4af7b2fe35c
+
+		extendedProperty MeasureTemplate =
+				{
+				  "version": 0,
+				  "daxTemplateName": "YearOverYear"
+				}
+
 	column Column
 		formatString: 0
 		lineageTag: 0adcfd7f-778b-45c5-b383-cd7279b9a5a6

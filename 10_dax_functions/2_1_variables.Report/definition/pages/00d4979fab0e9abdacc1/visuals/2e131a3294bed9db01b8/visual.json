@@ -1,0 +1,146 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "2e131a3294bed9db01b8",
+  "position": {
+    "x": 566.26292466765142,
+    "y": 188.12407680945347,
+    "z": 2,
+    "height": 481.18168389955684,
+    "width": 713.73707533234858,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_DeliveryDate"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "Delivery Date Key"
+                        }
+                      },
+                      "Hierarchy": "Date Hierarchy"
+                    }
+                  },
+                  "Level": "Year"
+                }
+              },
+              "queryRef": "Dim_DeliveryDate.Delivery Date Key.Variation.Date Hierarchy.Year",
+              "nativeQueryRef": "Delivery Date Key Year",
+              "active": true
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_DeliveryDate"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "Delivery Date Key"
+                        }
+                      },
+                      "Hierarchy": "Date Hierarchy"
+                    }
+                  },
+                  "Level": "Quarter"
+                }
+              },
+              "queryRef": "Dim_DeliveryDate.Delivery Date Key.Variation.Date Hierarchy.Quarter",
+              "nativeQueryRef": "Delivery Date Key Quarter",
+              "active": false
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_DeliveryDate"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "Delivery Date Key"
+                        }
+                      },
+                      "Hierarchy": "Date Hierarchy"
+                    }
+                  },
+                  "Level": "Month"
+                }
+              },
+              "queryRef": "Dim_DeliveryDate.Delivery Date Key.Variation.Date Hierarchy.Month",
+              "nativeQueryRef": "Delivery Date Key Month",
+              "active": false
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Dim_DeliveryDate"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "Delivery Date Key"
+                        }
+                      },
+                      "Hierarchy": "Date Hierarchy"
+                    }
+                  },
+                  "Level": "Day"
+                }
+              },
+              "queryRef": "Dim_DeliveryDate.Delivery Date Key.Variation.Date Hierarchy.Day",
+              "nativeQueryRef": "Delivery Date Key Day",
+              "active": false
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Calculations YoY"
+                    }
+                  },
+                  "Property": "Average Retail Price YoY%"
+                }
+              },
+              "queryRef": "Calculations YoY.Average Retail Price YoY%",
+              "nativeQueryRef": "Average Retail Price YoY%"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
