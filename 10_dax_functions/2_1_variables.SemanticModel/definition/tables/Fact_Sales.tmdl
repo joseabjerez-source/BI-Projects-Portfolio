@@ -1,0 +1,230 @@
+table Fact_Sales
+	lineageTag: c784d0d8-43eb-44ef-8333-65af230becb0
+
+	column 'Sale Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: 99badf4f-5a2d-4810-8d31-8ec0f1496254
+		summarizeBy: count
+		sourceColumn: Sale Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'City Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: 585ac0b4-8944-45c9-a71e-3e406ec293c1
+		summarizeBy: none
+		sourceColumn: City Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: 76a5f920-cef6-4c34-b48a-b122e0c85f50
+		summarizeBy: none
+		sourceColumn: Customer Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Bill To Customer Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: fc5bcb66-fd06-4b09-bda4-bc2479d5ac2a
+		summarizeBy: count
+		sourceColumn: Bill To Customer Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Stock Item Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: ff0b6678-8844-47cb-ae25-408713f27289
+		summarizeBy: none
+		sourceColumn: Stock Item Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Invoice Date Key'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9a0c9004-b46a-4a62-9176-3455d23b22ab
+		summarizeBy: none
+		sourceColumn: Invoice Date Key
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Delivery Date Key'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1288420e-6123-43a6-bdfb-de155e3d6380
+		summarizeBy: none
+		sourceColumn: Delivery Date Key
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Salesperson Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5d1ed921-ff5a-406c-a2e9-f3c4321ad1e3
+		summarizeBy: none
+		sourceColumn: Salesperson Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'WWI Invoice ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: e115a801-3f32-4513-8486-720ea2bd716e
+		summarizeBy: count
+		sourceColumn: WWI Invoice ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: a0477904-7729-4aaa-a08a-f04d7dcf9106
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column Package
+		dataType: string
+		lineageTag: 0a66ea0b-acac-4248-b6fc-06fa8bde0f5c
+		summarizeBy: none
+		sourceColumn: Package
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: e663ba56-9821-446c-bda3-11b94d2af160
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unit Price'
+		dataType: int64
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 732e2bd4-51b0-413d-bc4a-a10af5da5132
+		summarizeBy: sum
+		sourceColumn: Unit Price
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tax Rate'
+		dataType: int64
+		formatString: 0
+		lineageTag: 002090e0-23fb-4e9f-9738-71bedf5aada0
+		summarizeBy: sum
+		sourceColumn: Tax Rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Excluding Tax'
+		dataType: int64
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: c2bb20f1-f648-46bd-9cc9-a3d50ad2fc20
+		summarizeBy: sum
+		sourceColumn: Total Excluding Tax
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tax Amount'
+		dataType: double
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: d5c35d9a-743f-4f94-92f0-e7f20c800e98
+		summarizeBy: sum
+		sourceColumn: Tax Amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column Profit
+		dataType: double
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 7d1e3ac0-f22c-4fb3-b4a2-5a32e64aa5b5
+		summarizeBy: sum
+		sourceColumn: Profit
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Including Tax'
+		dataType: double
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: c3693a27-8f53-4e9c-9201-b2a1977b95b3
+		summarizeBy: sum
+		sourceColumn: Total Including Tax
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Dry Items'
+		dataType: int64
+		formatString: 0
+		lineageTag: f1e2f09a-3651-41c2-b307-faf7d6cca05d
+		summarizeBy: sum
+		sourceColumn: Total Dry Items
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Chiller Items'
+		dataType: int64
+		formatString: 0
+		lineageTag: 81a22d04-b6cf-4ee0-b58c-ba633a5f6764
+		summarizeBy: sum
+		sourceColumn: Total Chiller Items
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Lineage Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: fd1b0015-5cc3-4040-ae7d-047c92a49d38
+		summarizeBy: count
+		sourceColumn: Lineage Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column Costs = Fact_Sales[Total Excluding Tax] - Fact_Sales[Profit]
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: a978b5e4-785c-4097-a722-e02d8dd1533a
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Retail Price' = RELATED(Dim_StockItem[Retail Price Clean])
+		dataType: double
+		lineageTag: e7c5db4e-e9a8-42be-994b-d9cd0049a188
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Fact_Sales-00692278-6718-470b-a966-948487b8a2b7 = m
+		mode: import
+		source =
+				let
+				    Source = WorldWideImportersDW,
+				    #"C:\Users\lukeb\Documents\DataCamp\sme-dax-in-power-bi\datasets\WorldWideImportersDW\_FactSale csv" = Source{[#"Folder Path"="C:\Users\Public\Documents\Datasets\Ch 1,3 & 4\",Name="FactSale.csv"]}[Content],
+				    #"Imported CSV" = Csv.Document(#"C:\Users\lukeb\Documents\DataCamp\sme-dax-in-power-bi\datasets\WorldWideImportersDW\_FactSale csv",[Delimiter=",", Columns=21, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Imported CSV", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Sale Key", Int64.Type}, {"City Key", Int64.Type}, {"Customer Key", Int64.Type}, {"Bill To Customer Key", Int64.Type}, {"Stock Item Key", Int64.Type}, {"Invoice Date Key", type date}, {"Delivery Date Key", type date}, {"Salesperson Key", Int64.Type}, {"WWI Invoice ID", Int64.Type}, {"Description", type text}, {"Package", type text}, {"Quantity", Int64.Type}, {"Unit Price", Int64.Type}, {"Tax Rate", Int64.Type}, {"Total Excluding Tax", Int64.Type}, {"Tax Amount", type number}, {"Profit", type number}, {"Total Including Tax", type number}, {"Total Dry Items", Int64.Type}, {"Total Chiller Items", Int64.Type}, {"Lineage Key", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

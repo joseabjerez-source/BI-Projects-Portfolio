@@ -1,0 +1,139 @@
+table Dim_Customer
+	lineageTag: 4c3e1292-4660-4a8e-a48a-933e761b5e4f
+
+	column 'Customer Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: 45e89f25-aac3-42c0-8c5d-5f55aa85ba3a
+		summarizeBy: none
+		sourceColumn: Customer Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'WWI Customer ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: e9702fca-4d77-4814-a07c-c17349457fdf
+		summarizeBy: none
+		sourceColumn: WWI Customer ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Customer
+		dataType: string
+		lineageTag: 8513e9f4-80b3-4a94-b754-6042452f8943
+		summarizeBy: none
+		sourceColumn: Customer
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Bill To Customer'
+		dataType: string
+		lineageTag: dbf01b6d-267c-4121-a6e4-e1ead23f86b1
+		summarizeBy: none
+		sourceColumn: Bill To Customer
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column Category
+		dataType: string
+		lineageTag: e30ed102-a444-4246-9ef5-7c389ce075c7
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Buying Group'
+		dataType: string
+		lineageTag: b740a242-9899-47a2-a7f4-446514090680
+		summarizeBy: none
+		sourceColumn: Buying Group
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Primary Contact'
+		dataType: string
+		lineageTag: 784eac7d-9e9d-4b55-bd13-135fe6bbb34e
+		summarizeBy: none
+		sourceColumn: Primary Contact
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Postal Code'
+		dataType: string
+		lineageTag: 339bd9ef-307c-4b11-98be-d13395049dc7
+		summarizeBy: none
+		sourceColumn: Postal Code
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Valid From'
+		dataType: string
+		lineageTag: 7eee9ecc-7ac8-4c43-98ae-0f4aee7149c8
+		summarizeBy: none
+		sourceColumn: Valid From
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Valid To'
+		dataType: string
+		lineageTag: ed880459-1ad4-4ee4-b602-e2d7540fff2c
+		summarizeBy: none
+		sourceColumn: Valid To
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Lineage Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: d86b9671-64c0-4d83-9a91-5f1d18c5953d
+		summarizeBy: none
+		sourceColumn: Lineage Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Credit Limit'
+		dataType: string
+		lineageTag: 61e655a8-616e-4350-bba5-c1558191acaa
+		summarizeBy: none
+		sourceColumn: Credit Limit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	partition Dim_Customer-6ac9d06b-93be-4634-9440-06efa83da9d7 = m
+		mode: import
+		source =
+				let
+				    Source = WorldWideImportersDW,
+				    #"C:\Users\lukeb\Documents\DataCamp\sme-dax-in-power-bi\datasets\WorldWideImportersDW\_DimCustomer csv" = Source{[#"Folder Path"="C:\Users\Public\Documents\Datasets\Ch 1,3 & 4\",Name="DimCustomer.csv"]}[Content],
+				    #"Imported CSV" = Csv.Document(#"C:\Users\lukeb\Documents\DataCamp\sme-dax-in-power-bi\datasets\WorldWideImportersDW\_DimCustomer csv",[Delimiter=",", Columns=12, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Imported CSV",{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}, {"Column7", type text}, {"Column8", type text}, {"Column9", type text}, {"Column10", type text}, {"Column11", type text}, {"Column12", type text}}),
+				    #"Removed Top Rows" = Table.Skip(#"Changed Type",1),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Removed Top Rows", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"Customer Key", Int64.Type}, {"WWI Customer ID", Int64.Type}, {"Customer", type text}, {"Bill To Customer", type text}, {"Category", type text}, {"Buying Group", type text}, {"Primary Contact", type text}, {"Postal Code", type text}, {"Credit Limit", type text}, {"Valid From", type text}, {"Valid To", type text}, {"Lineage Key", Int64.Type}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type1", each ([Customer Key] <> 0))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

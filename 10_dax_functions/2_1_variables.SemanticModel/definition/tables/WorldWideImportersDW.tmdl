@@ -1,0 +1,85 @@
+table WorldWideImportersDW
+	lineageTag: 4d3cca42-403a-4740-afd2-cc6cb68a0daa
+
+	column Name
+		dataType: string
+		lineageTag: 72da6dd4-5bc6-40b9-8d92-c14097ff8496
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column Extension
+		dataType: string
+		lineageTag: a53c931b-41bb-4cbb-8914-d8f4f0072767
+		summarizeBy: none
+		sourceColumn: Extension
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Date accessed'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 36099c80-bf8b-4e1c-8a13-fae5d2bf240d
+		summarizeBy: none
+		sourceColumn: Date accessed
+
+		variation Variation
+			isDefault
+			relationship: 6ffc1f43-2675-44f5-8255-cf4f04061881
+			defaultHierarchy: LocalDateTable_b9c17a98-3f04-4366-b4ad-6a73d5d0373e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date modified'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ad730599-0ba4-4cc6-8197-bcd4c56726e6
+		summarizeBy: none
+		sourceColumn: Date modified
+
+		variation Variation
+			isDefault
+			relationship: ec80c691-537e-49d0-8d42-b32c06177400
+			defaultHierarchy: LocalDateTable_37da4fa0-0f4a-414f-91bc-e1b622c6c556.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date created'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: bb1619e0-876a-4659-babc-c3cbda77b686
+		summarizeBy: none
+		sourceColumn: Date created
+
+		variation Variation
+			isDefault
+			relationship: 8306acb2-0972-42d6-b28d-13d77c84a896
+			defaultHierarchy: LocalDateTable_c7d2b337-fcc1-469f-a352-65b202f6a2dd.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Folder Path'
+		dataType: string
+		lineageTag: 233d477c-0ea0-44fd-a1d8-4c39177aeb56
+		summarizeBy: none
+		sourceColumn: Folder Path
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	partition WorldWideImportersDW-3acc2abc-5931-44c1-b32f-facb2cdfa136 = m
+		mode: import
+		source =
+				let
+				    Source = Folder.Files("C:\Users\Public\Documents\Datasets\Ch 1,3 & 4")
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

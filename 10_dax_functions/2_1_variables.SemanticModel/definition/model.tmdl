@@ -1,0 +1,33 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["WorldWideImportersDW","Dim_City","Dim_Customer","Dim_InvoiceDate","Dim_Employee","Dim_StockItem","Fact_Sales"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table WorldWideImportersDW
+ref table DateTableTemplate_61a934e7-cd2d-4ac1-bab4-89cb2e60a7c3
+ref table LocalDateTable_b9c17a98-3f04-4366-b4ad-6a73d5d0373e
+ref table LocalDateTable_37da4fa0-0f4a-414f-91bc-e1b622c6c556
+ref table LocalDateTable_c7d2b337-fcc1-469f-a352-65b202f6a2dd
+ref table Dim_City
+ref table Dim_Customer
+ref table Dim_InvoiceDate
+ref table LocalDateTable_6e578cfe-1314-4fd2-8044-fe88e447e119
+ref table Dim_Employee
+ref table LocalDateTable_e9f5b08b-c4ba-48bc-b2e8-0003823c7d61
+ref table Dim_StockItem
+ref table Fact_Sales
+ref table Dim_DeliveryDate
+ref table LocalDateTable_4b641dc4-b70b-4175-bfec-444fa84f7fc1
+ref table 'Calculations YoY'
+
+ref cultureInfo en-US
+

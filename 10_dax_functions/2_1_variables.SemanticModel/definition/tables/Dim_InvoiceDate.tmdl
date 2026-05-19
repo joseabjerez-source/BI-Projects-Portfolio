@@ -1,0 +1,158 @@
+table Dim_InvoiceDate
+	lineageTag: a0f56cf1-4bf0-4f46-a737-d2c166262ec1
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 33cb6f7a-1551-4cfa-b0af-574e14fb5005
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: 01d0c7e7-4a94-462d-bafe-8e2176e286bf
+			defaultHierarchy: LocalDateTable_6e578cfe-1314-4fd2-8044-fe88e447e119.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Day Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 2755e840-c6e0-4ddd-a805-de4204673cb8
+		summarizeBy: sum
+		sourceColumn: Day Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day
+		dataType: int64
+		formatString: 0
+		lineageTag: 0b189448-56e9-403f-b45a-219b443f020e
+		summarizeBy: sum
+		sourceColumn: Day
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: 722a6dd2-112c-49c4-b989-67378d9e0e5c
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Short Month'
+		dataType: string
+		lineageTag: af7419a4-b187-46e4-8c86-b7124542da5d
+		summarizeBy: none
+		sourceColumn: Short Month
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Calendar Month Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 87f0a02f-8416-49f1-bc0b-cc43395f3adf
+		summarizeBy: sum
+		sourceColumn: Calendar Month Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Calendar Month Label'
+		dataType: string
+		lineageTag: b432aa21-0d77-4c1e-8c47-c680296a1925
+		summarizeBy: none
+		sourceColumn: Calendar Month Label
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Calendar Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: 69fcc5de-6878-4016-a988-9600ee2f66f7
+		summarizeBy: sum
+		sourceColumn: Calendar Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Calendar Year Label'
+		dataType: string
+		lineageTag: 1010fbad-4e4f-43ed-bf7d-d45653923226
+		summarizeBy: none
+		sourceColumn: Calendar Year Label
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Fiscal Month Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 732120bc-d791-4e87-92d6-efe9e023db16
+		summarizeBy: sum
+		sourceColumn: Fiscal Month Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Month Label'
+		dataType: string
+		lineageTag: 27d51811-9175-40ba-9777-d6d325907800
+		summarizeBy: none
+		sourceColumn: Fiscal Month Label
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Fiscal Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: e8f7b44b-0fa1-4f56-a3dd-4fed5d463a3a
+		summarizeBy: sum
+		sourceColumn: Fiscal Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Year Label'
+		dataType: string
+		lineageTag: 38436513-c097-4888-890a-a0422bf5d519
+		summarizeBy: none
+		sourceColumn: Fiscal Year Label
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'ISO Week Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 9228cd42-f7d6-4fd0-914e-b0d4c35b6448
+		summarizeBy: sum
+		sourceColumn: ISO Week Number
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_InvoiceDate-4f99d4ac-8eaa-441f-9788-f7dd8e8561ee = m
+		mode: import
+		source =
+				let
+				    Source = WorldWideImportersDW,
+				    #"C:\Users\lukeb\Documents\DataCamp\sme-dax-in-power-bi\datasets\WorldWideImportersDW\_DimDate csv" = Source{[#"Folder Path"="C:\Users\Public\Documents\Datasets\Ch 1,3 & 4\",Name="DimDate.csv"]}[Content],
+				    #"Imported CSV" = Csv.Document(#"C:\Users\lukeb\Documents\DataCamp\sme-dax-in-power-bi\datasets\WorldWideImportersDW\_DimDate csv",[Delimiter=",", Columns=14, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Imported CSV", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Date", type date}, {"Day Number", Int64.Type}, {"Day", Int64.Type}, {"Month", type text}, {"Short Month", type text}, {"Calendar Month Number", Int64.Type}, {"Calendar Month Label", type text}, {"Calendar Year", Int64.Type}, {"Calendar Year Label", type text}, {"Fiscal Month Number", Int64.Type}, {"Fiscal Month Label", type text}, {"Fiscal Year", Int64.Type}, {"Fiscal Year Label", type text}, {"ISO Week Number", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,129 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 674.13076527637259,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 49.655497997657307,
+            "y": 683.25965244776421
+          },
+          "nodeIndex": "Dim_City",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 898.68711561827308,
+            "y": 265.34336897049536
+          },
+          "nodeIndex": "Dim_Customer",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 919.78852933772441,
+            "y": 622.87673463372164
+          },
+          "nodeIndex": "Dim_Employee",
+          "size": {
+            "height": 349.62793783746986,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 317.04818178548868,
+            "y": 681.98546456534154
+          },
+          "nodeIndex": "Dim_StockItem",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 77.139074176586462,
+            "y": 0
+          },
+          "nodeIndex": "Fact_Sales",
+          "size": {
+            "height": 591.97432822622488,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 1512.6826588711269,
+            "y": 41.162339542864856
+          },
+          "nodeIndex": "WorldWideImportersDW",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 610.36172453210213,
+            "y": 680.4633322309104
+          },
+          "nodeIndex": "Dim_InvoiceDate",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 423.20749991009438,
+            "y": 17.875979279156621
+          },
+          "nodeIndex": "Dim_DeliveryDate",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1908.9,
+            "y": 0
+          },
+          "nodeIndex": "Calculations YoY",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 50.346892102823105,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

@@ -1,0 +1,22 @@
+table Dim_DeliveryDate
+	lineageTag: f8c99bce-0925-44ea-98a6-09641a52a799
+
+	column 'Delivery Date Key'
+		formatString: General Date
+		lineageTag: bc43210f-7c80-4bb6-b0a3-e6afaf979cbb
+		summarizeBy: none
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 7053936f-8b99-43a5-9961-88e2ae2abf25
+			defaultHierarchy: LocalDateTable_4b641dc4-b70b-4175-bfec-444fa84f7fc1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_DeliveryDate-22bc55c1-f46b-4d56-9be9-76697b76f2c0 = calculated
+		mode: import
+		source = CALENDAR(min(Fact_Sales[Delivery Date Key]), max(Fact_Sales[Delivery Date Key]))
+
+	annotation PBI_Id = 855d515d9fbb4e37bd435f562ff9b329
+

@@ -1,0 +1,54 @@
+relationship 6ffc1f43-2675-44f5-8255-cf4f04061881
+	joinOnDateBehavior: datePartOnly
+	fromColumn: WorldWideImportersDW.'Date accessed'
+	toColumn: LocalDateTable_b9c17a98-3f04-4366-b4ad-6a73d5d0373e.Date
+
+relationship ec80c691-537e-49d0-8d42-b32c06177400
+	joinOnDateBehavior: datePartOnly
+	fromColumn: WorldWideImportersDW.'Date modified'
+	toColumn: LocalDateTable_37da4fa0-0f4a-414f-91bc-e1b622c6c556.Date
+
+relationship 8306acb2-0972-42d6-b28d-13d77c84a896
+	joinOnDateBehavior: datePartOnly
+	fromColumn: WorldWideImportersDW.'Date created'
+	toColumn: LocalDateTable_c7d2b337-fcc1-469f-a352-65b202f6a2dd.Date
+
+relationship 01d0c7e7-4a94-462d-bafe-8e2176e286bf
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_InvoiceDate.Date
+	toColumn: LocalDateTable_6e578cfe-1314-4fd2-8044-fe88e447e119.Date
+
+relationship d132b47c-8015-43de-8f3a-af961341bd33
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Employee.'Valid From'
+	toColumn: LocalDateTable_e9f5b08b-c4ba-48bc-b2e8-0003823c7d61.Date
+
+relationship f8ab2174-4e08-4109-97bc-24d7076e9e7c
+	fromColumn: Fact_Sales.'City Key'
+	toColumn: Dim_City.'City Key'
+
+relationship 3a677f06-6346-44a3-9fa6-a5765eb5c010
+	fromColumn: Fact_Sales.'Stock Item Key'
+	toColumn: Dim_StockItem.'Stock Item Key'
+
+relationship 6ac63b03-0a24-4f37-95b9-e52d29cf4745
+	fromColumn: Fact_Sales.'Customer Key'
+	toColumn: Dim_Customer.'Customer Key'
+
+relationship 5ca1c6a0-554a-4ed9-b58b-1e9609ae4a2a
+	fromColumn: Fact_Sales.'Invoice Date Key'
+	toColumn: Dim_InvoiceDate.Date
+
+relationship eb2b65f0-838b-4d5c-a70e-84d4d036dd0c
+	fromColumn: Fact_Sales.'Salesperson Key'
+	toColumn: Dim_Employee.'Employee Key'
+
+relationship 7053936f-8b99-43a5-9961-88e2ae2abf25
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_DeliveryDate.'Delivery Date Key'
+	toColumn: LocalDateTable_4b641dc4-b70b-4175-bfec-444fa84f7fc1.Date
+
+relationship f6e5b278-47d8-43b6-bcb6-ba29dd504bce
+	fromColumn: Fact_Sales.'Delivery Date Key'
+	toColumn: Dim_DeliveryDate.'Delivery Date Key'
+

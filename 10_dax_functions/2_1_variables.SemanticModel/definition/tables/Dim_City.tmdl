@@ -1,0 +1,168 @@
+table Dim_City
+	lineageTag: f2af3fe0-83ec-4801-998f-176304b0dae3
+
+	column 'City Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: 676464a6-fd36-4eb2-bdde-3e5cf5eb0090
+		summarizeBy: none
+		sourceColumn: City Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'WWI City ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5c9fbd40-8c31-4efe-bb29-05e1bdfebd89
+		summarizeBy: none
+		sourceColumn: WWI City ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: eb10c9e6-305b-441b-855c-1d36a2cdb1e4
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'State Province'
+		dataType: string
+		lineageTag: 4b4752f1-6e1f-4b19-a83e-11d24bb50b9c
+		summarizeBy: none
+		sourceColumn: State Province
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column Country
+		dataType: string
+		lineageTag: 8863d11a-bdaf-4b2c-bcf5-56a17e2e1a5a
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column Continent
+		dataType: string
+		lineageTag: 967f1f1c-af51-45db-af3c-1a302db263a2
+		summarizeBy: none
+		sourceColumn: Continent
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Sales Territory'
+		dataType: string
+		lineageTag: 7304fe7a-e014-4fb8-b8e9-ceef86173ce0
+		summarizeBy: none
+		sourceColumn: Sales Territory
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column Region
+		dataType: string
+		lineageTag: 60f2ab5d-318c-4eb1-9b98-763666c26504
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column Subregion
+		dataType: string
+		lineageTag: 3589e8fa-0348-4899-9679-2db4ec7802eb
+		summarizeBy: none
+		sourceColumn: Subregion
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column Location
+		dataType: string
+		lineageTag: 1022b8b9-86f9-4101-bff4-c1484cc612d9
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column Latitude
+		dataType: string
+		lineageTag: 48f7516c-bd34-4470-ac13-091f146df6ff
+		summarizeBy: none
+		sourceColumn: Latitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Latest Recorded Population'
+		dataType: int64
+		formatString: 0
+		lineageTag: 99f151ab-e9e6-499d-8dba-b2cc220e0820
+		summarizeBy: none
+		sourceColumn: Latest Recorded Population
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Valid From'
+		dataType: string
+		lineageTag: ba771ee8-3285-4bc2-85da-872e41bf0dbe
+		summarizeBy: none
+		sourceColumn: Valid From
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Valid To'
+		dataType: string
+		lineageTag: 43783f2c-a844-47de-8e71-7394f2adf1e2
+		summarizeBy: none
+		sourceColumn: Valid To
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Lineage Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: ac84370e-8467-437c-93b1-1b835786a583
+		summarizeBy: none
+		sourceColumn: Lineage Key
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_City-a639052b-e150-4744-9e63-05f33b9905b8 = m
+		mode: import
+		source =
+				let
+				    Source = WorldWideImportersDW,
+				    #"C:\Users\lukeb\Documents\DataCamp\sme-dax-in-power-bi\datasets\WorldWideImportersDW\_DimCity csv" = Source{[#"Folder Path"="C:\Users\Public\Documents\Datasets\Ch 1,3 & 4\",Name="DimCity.csv"]}[Content],
+				    #"Imported CSV" = Csv.Document(#"C:\Users\lukeb\Documents\DataCamp\sme-dax-in-power-bi\datasets\WorldWideImportersDW\_DimCity csv",[Delimiter=",", Columns=15, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Imported CSV",{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}, {"Column7", type text}, {"Column8", type text}, {"Column9", type text}, {"Column10", type text}, {"Column11", type text}, {"Column12", type text}, {"Column13", type text}, {"Column14", type text}, {"Column15", type text}}),
+				    #"Removed Top Rows" = Table.Skip(#"Changed Type",1),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Removed Top Rows", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"City Key", Int64.Type}, {"WWI City ID", Int64.Type}, {"City", type text}, {"State Province", type text}, {"Country", type text}, {"Continent", type text}, {"Sales Territory", type text}, {"Region", type text}, {"Subregion", type text}, {"Location", type text}, {"Latitude", type text}, {"Latest Recorded Population", Int64.Type}, {"Valid From", type text}, {"Valid To", type text}, {"Lineage Key", Int64.Type}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type1", each ([City Key] <> 0))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

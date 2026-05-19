@@ -1,0 +1,42 @@
+table 'Calculations YoY'
+	lineageTag: 788569a8-7960-44ac-b947-bd3f50a64168
+
+	measure Sales = SUM(Fact_Sales[Total including Tax])
+		formatString: 0
+		lineageTag: a4346b6e-7c53-451e-866e-bc6c0efbeeed
+
+	measure 'Sales YoY % Old' =
+			
+			DIVIDE(
+			    ( [sales] - CALCULATE([Sales], SAMEPERIODLASTYEAR('Dim_DeliveryDate'[Delivery Date Key]))),
+			    CALCULATE([Sales], SAMEPERIODLASTYEAR('Dim_DeliveryDate'[Delivery Date Key]))
+			)
+		lineageTag: 2760ce23-747a-4400-9442-487aaba861bd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales YoY % New' =
+			
+			VAR SalesPriorYear = CALCULATE([Sales], SAMEPERIODLASTYEAR(Dim_DeliveryDate[Delivery Date Key]))
+			RETURN
+			DIVIDE(([Sales] - SalesPriorYear), SalesPriorYear)
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: f3b07a4d-8833-484f-9301-27c42c5e4cbe
+
+	column Column
+		formatString: 0
+		lineageTag: 0adcfd7f-778b-45c5-b383-cd7279b9a5a6
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Calculations YoY-dade90b1-1c91-406a-b8f6-732bbd17dcc0' = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = 4c7298d1f3504e3ba2d845a9eebcf372
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

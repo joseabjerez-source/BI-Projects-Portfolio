@@ -1,0 +1,112 @@
+table Dim_Employee
+	lineageTag: 9f9d7320-b27e-4eea-ab3b-9382877f1504
+
+	column 'Employee Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: a4805083-e87a-4dd0-9608-df1e7872feb6
+		summarizeBy: none
+		sourceColumn: Employee Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'WWI Employee ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6e171466-8c24-425a-a7c2-ec78e98f4ff7
+		summarizeBy: count
+		sourceColumn: WWI Employee ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Employee
+		dataType: string
+		lineageTag: 03ea6607-9a59-4ccb-b098-adf134349fe2
+		summarizeBy: none
+		sourceColumn: Employee
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Preferred Name'
+		dataType: string
+		lineageTag: f7f01a73-fa63-48f2-9693-a8ba374a6280
+		summarizeBy: none
+		sourceColumn: Preferred Name
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Is Salesperson'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 89149b5a-c2d6-4630-aa19-c9e3b25b124f
+		summarizeBy: none
+		sourceColumn: Is Salesperson
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Photo
+		dataType: string
+		lineageTag: 928a97de-7dfa-4bca-a739-8189b6cf9a31
+		summarizeBy: none
+		sourceColumn: Photo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Valid From'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4c27d8ef-0b5b-47fa-a35a-1750d82ac398
+		summarizeBy: none
+		sourceColumn: Valid From
+
+		variation Variation
+			isDefault
+			relationship: d132b47c-8015-43de-8f3a-af961341bd33
+			defaultHierarchy: LocalDateTable_e9f5b08b-c4ba-48bc-b2e8-0003823c7d61.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Valid To'
+		dataType: string
+		lineageTag: 69067864-fd6f-484e-ab14-76a4524d521d
+		summarizeBy: none
+		sourceColumn: Valid To
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column 'Lineage Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: a9c5a2c8-28e6-49b3-802f-32c19072adb1
+		summarizeBy: count
+		sourceColumn: Lineage Key
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Employee-4620c428-0b90-426c-a98a-c33cc6d02ff4 = m
+		mode: import
+		source =
+				let
+				    Source = WorldWideImportersDW,
+				    #"C:\Users\lukeb\Documents\DataCamp\sme-dax-in-power-bi\datasets\WorldWideImportersDW\_DimEmployee xlsx" = Source{[#"Folder Path"="C:\Users\Public\Documents\Datasets\Ch 1,3 & 4\",Name="DimEmployee.xlsx"]}[Content],
+				    #"Imported Excel" = Excel.Workbook(#"C:\Users\lukeb\Documents\DataCamp\sme-dax-in-power-bi\datasets\WorldWideImportersDW\_DimEmployee xlsx"),
+				    DimEmployee_Sheet = #"Imported Excel"{[Item="DimEmployee",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(DimEmployee_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Employee Key", Int64.Type}, {"WWI Employee ID", Int64.Type}, {"Employee", type text}, {"Preferred Name", type text}, {"Is Salesperson", Int64.Type}, {"Photo", type text}, {"Valid From", type datetime}, {"Valid To", type any}, {"Lineage Key", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+
