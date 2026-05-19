@@ -23,6 +23,15 @@ table 'Calculations YoY'
 		formatString: 0.00\ %;-0.00\ %;0.00\ %
 		lineageTag: f3b07a4d-8833-484f-9301-27c42c5e4cbe
 
+	measure 'Number of Invoices' = DISTINCTCOUNT(Fact_Sales[WWI Invoice ID])
+		formatString: #,0
+		lineageTag: 68dabc5a-bfc1-47d4-b655-42645429abf7
+
+	measure 'Average Retail Price' = AVERAGE(Fact_Sales[Retail Price])
+		lineageTag: a243ec2d-72ba-4efa-b378-dcca5f22dd9a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column Column
 		formatString: 0
 		lineageTag: 0adcfd7f-778b-45c5-b383-cd7279b9a5a6

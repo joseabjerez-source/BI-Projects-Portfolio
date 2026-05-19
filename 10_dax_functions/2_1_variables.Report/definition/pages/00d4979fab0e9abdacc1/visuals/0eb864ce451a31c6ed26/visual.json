@@ -1,0 +1,83 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
+  "name": "0eb864ce451a31c6ed26",
+  "position": {
+    "x": 19.352051835853132,
+    "y": 187.99136069114471,
+    "z": 1,
+    "height": 481.036717062635,
+    "width": 652.44060475161984,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_City"
+                    }
+                  },
+                  "Property": "Sales Territory"
+                }
+              },
+              "queryRef": "Dim_City.Sales Territory",
+              "nativeQueryRef": "Sales Territory"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Calculations YoY"
+                    }
+                  },
+                  "Property": "Number of Invoices"
+                }
+              },
+              "queryRef": "Calculations YoY.Number of Invoices",
+              "nativeQueryRef": "Number of Invoices"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Calculations YoY"
+                    }
+                  },
+                  "Property": "Average Retail Price"
+                }
+              },
+              "queryRef": "Calculations YoY.Average Retail Price",
+              "nativeQueryRef": "Average Retail Price"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Calculations YoY"
+                  }
+                },
+                "Property": "Number of Invoices"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
