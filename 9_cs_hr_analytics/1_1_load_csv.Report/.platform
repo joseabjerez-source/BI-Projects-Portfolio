@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "1_1_load_csv"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "efe24d78-2cbe-43b9-aa70-3a889e6b7f2d"
+  }
+}

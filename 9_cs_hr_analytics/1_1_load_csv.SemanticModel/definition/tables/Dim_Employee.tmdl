@@ -1,0 +1,216 @@
+table Dim_Employee
+	lineageTag: 6df71414-5e2e-4cb4-8c9f-92c0b26750fc
+
+	column EmployeeID
+		dataType: string
+		lineageTag: cbaf004b-b8f6-4405-a8fb-94137e2968d3
+		summarizeBy: none
+		sourceColumn: EmployeeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstName
+		dataType: string
+		lineageTag: 5c8ad270-4884-4323-8dd9-7a8852140673
+		summarizeBy: none
+		sourceColumn: FirstName
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastName
+		dataType: string
+		lineageTag: 68c25d14-111d-4f49-b20f-5f3121d74764
+		summarizeBy: none
+		sourceColumn: LastName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Gender
+		dataType: string
+		lineageTag: f964d3cb-6a32-42ce-8ae9-38287df4538b
+		summarizeBy: none
+		sourceColumn: Gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column Age
+		dataType: int64
+		formatString: 0
+		lineageTag: 54995dcd-45ca-4dbe-b6c2-5f335731236e
+		summarizeBy: sum
+		sourceColumn: Age
+
+		annotation SummarizationSetBy = Automatic
+
+	column BusinessTravel
+		dataType: string
+		lineageTag: 8d5539d6-e273-48ea-9189-26c06c486502
+		summarizeBy: none
+		sourceColumn: BusinessTravel
+
+		annotation SummarizationSetBy = Automatic
+
+	column Department
+		dataType: string
+		lineageTag: fa9b208e-ac31-4895-ac66-efcce9d765b0
+		summarizeBy: none
+		sourceColumn: Department
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'DistanceFromHome (KM)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 658c18f3-b081-4263-8361-e6867bce9985
+		summarizeBy: sum
+		sourceColumn: DistanceFromHome (KM)
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: string
+		lineageTag: fb5d447b-1bc6-4282-b13d-bb5c2a49ef6e
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ethnicity
+		dataType: string
+		lineageTag: 0f8601c3-e76a-44cf-9da1-f1caa9605b4f
+		summarizeBy: none
+		sourceColumn: Ethnicity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Education
+		dataType: int64
+		formatString: 0
+		lineageTag: 086ce981-0cb6-41aa-b087-0202893bec2e
+		summarizeBy: sum
+		sourceColumn: Education
+
+		annotation SummarizationSetBy = Automatic
+
+	column EducationField
+		dataType: string
+		lineageTag: 0a22e700-1c0a-41a5-863a-d6f0cdf4d4e9
+		summarizeBy: none
+		sourceColumn: EducationField
+
+		annotation SummarizationSetBy = Automatic
+
+	column JobRole
+		dataType: string
+		lineageTag: 3a8b3ece-2c1c-4506-8cf5-46576ee9163d
+		summarizeBy: none
+		sourceColumn: JobRole
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaritalStatus
+		dataType: string
+		lineageTag: 612535aa-9729-4881-8db3-22fb5bce680d
+		summarizeBy: none
+		sourceColumn: MaritalStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column Salary
+		dataType: int64
+		formatString: 0
+		lineageTag: f04bb3af-e376-468d-83e2-b5b17f89ff0d
+		summarizeBy: sum
+		sourceColumn: Salary
+
+		annotation SummarizationSetBy = Automatic
+
+	column StockOptionLevel
+		dataType: int64
+		formatString: 0
+		lineageTag: c31ae413-2ce7-47ec-adf1-69bcc2195bbc
+		summarizeBy: sum
+		sourceColumn: StockOptionLevel
+
+		annotation SummarizationSetBy = Automatic
+
+	column OverTime
+		dataType: string
+		lineageTag: ef988a65-37c3-4ec9-9fce-3afe05ae83c7
+		summarizeBy: none
+		sourceColumn: OverTime
+
+		annotation SummarizationSetBy = Automatic
+
+	column HireDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 020f671f-1273-4207-ab93-defcaad0f4a9
+		summarizeBy: none
+		sourceColumn: HireDate
+
+		variation Variation
+			isDefault
+			relationship: a3c50f53-0f52-4a55-953c-8424f537eb9d
+			defaultHierarchy: LocalDateTable_13f2d342-d65c-4614-9600-2206301f83ce.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Attrition
+		dataType: string
+		lineageTag: 28c5c42a-841a-4a5f-ab7d-5544efce8060
+		summarizeBy: none
+		sourceColumn: Attrition
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearsAtCompany
+		dataType: int64
+		formatString: 0
+		lineageTag: 1ce405b8-3fa5-483d-89e3-7e050203a0a1
+		summarizeBy: sum
+		sourceColumn: YearsAtCompany
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearsInMostRecentRole
+		dataType: int64
+		formatString: 0
+		lineageTag: 35909815-d763-4887-a137-1e3cb513faca
+		summarizeBy: sum
+		sourceColumn: YearsInMostRecentRole
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearsSinceLastPromotion
+		dataType: int64
+		formatString: 0
+		lineageTag: 4a75a802-4a20-4daa-8503-0eccd9ea174f
+		summarizeBy: sum
+		sourceColumn: YearsSinceLastPromotion
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearsWithCurrManager
+		dataType: int64
+		formatString: 0
+		lineageTag: e5caf094-f972-4401-8a1d-1e1daf1fbed4
+		summarizeBy: sum
+		sourceColumn: YearsWithCurrManager
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Employee = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(File.Contents("C:\Users\JoséAndrésBarriosJer\Downloads\case-study-hr-analytics-in-power-bi\Datasets\Employee.csv"), [Delimiter = ",", Columns = 23, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"EmployeeID", type text}, {"FirstName", type text}, {"LastName", type text}, {"Gender", type text}, {"Age", Int64.Type}, {"BusinessTravel", type text}, {"Department", type text}, {"DistanceFromHome (KM)", Int64.Type}, {"State", type text}, {"Ethnicity", type text}, {"Education", Int64.Type}, {"EducationField", type text}, {"JobRole", type text}, {"MaritalStatus", type text}, {"Salary", Int64.Type}, {"StockOptionLevel", Int64.Type}, {"OverTime", type text}, {"HireDate", type date}, {"Attrition", type text}, {"YearsAtCompany", Int64.Type}, {"YearsInMostRecentRole", Int64.Type}, {"YearsSinceLastPromotion", Int64.Type}, {"YearsWithCurrManager", Int64.Type}}, "en-US")
+				in
+				  #"Changed column type"
+
+	annotation PBI_ResultType = Table
+

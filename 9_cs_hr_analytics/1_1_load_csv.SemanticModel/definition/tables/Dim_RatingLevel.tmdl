@@ -1,0 +1,32 @@
+table Dim_RatingLevel
+	lineageTag: 062303a3-a195-48b1-ad28-8f3dbee57859
+
+	column RatingID
+		dataType: int64
+		formatString: 0
+		lineageTag: a3b46f73-35c7-4570-863d-633f37af3554
+		summarizeBy: count
+		sourceColumn: RatingID
+
+		annotation SummarizationSetBy = Automatic
+
+	column RatingLevel
+		dataType: string
+		lineageTag: 9a479480-4f79-4dec-8e93-d392d64fbd67
+		summarizeBy: none
+		sourceColumn: RatingLevel
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_RatingLevel = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(File.Contents("C:\Users\JoséAndrésBarriosJer\Downloads\case-study-hr-analytics-in-power-bi\Datasets\RatingLevel.csv"), [Delimiter = ",", Columns = 2, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"RatingID", Int64.Type}, {"RatingLevel", type text}}, "en-US")
+				in
+				  #"Changed column type"
+
+	annotation PBI_ResultType = Table
+

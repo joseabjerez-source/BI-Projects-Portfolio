@@ -1,0 +1,14 @@
+relationship a3c50f53-0f52-4a55-953c-8424f537eb9d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Employee.HireDate
+	toColumn: LocalDateTable_13f2d342-d65c-4614-9600-2206301f83ce.Date
+
+relationship 88e19f9b-c514-489d-984a-100811cbaa61
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fact_PerformanceRating.ReviewDate
+	toColumn: LocalDateTable_dc789ef1-b1bb-43cd-8a5f-539bf32fa24b.Date
+
+relationship AutoDetected_7cd88d3b-192f-4893-8fc1-eb68d60877fb
+	fromColumn: Fact_PerformanceRating.EmployeeID
+	toColumn: Dim_Employee.EmployeeID
+
