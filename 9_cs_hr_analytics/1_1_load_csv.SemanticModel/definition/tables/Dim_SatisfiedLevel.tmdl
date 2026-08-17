@@ -5,7 +5,7 @@ table Dim_SatisfiedLevel
 		dataType: int64
 		formatString: 0
 		lineageTag: ced0a1f6-456d-42a5-866a-1c9f8ac9ec3a
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: SatisfactionID
 
 		annotation SummarizationSetBy = Automatic

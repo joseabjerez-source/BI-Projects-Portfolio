@@ -1,14 +1,70 @@
-relationship a3c50f53-0f52-4a55-953c-8424f537eb9d
-	joinOnDateBehavior: datePartOnly
-	fromColumn: Dim_Employee.HireDate
-	toColumn: LocalDateTable_13f2d342-d65c-4614-9600-2206301f83ce.Date
-
-relationship 88e19f9b-c514-489d-984a-100811cbaa61
-	joinOnDateBehavior: datePartOnly
-	fromColumn: Fact_PerformanceRating.ReviewDate
-	toColumn: LocalDateTable_dc789ef1-b1bb-43cd-8a5f-539bf32fa24b.Date
-
 relationship AutoDetected_7cd88d3b-192f-4893-8fc1-eb68d60877fb
 	fromColumn: Fact_PerformanceRating.EmployeeID
 	toColumn: Dim_Employee.EmployeeID
+
+relationship 9a3317fd-6d11-4ef7-bb9b-a01cec0f7a34
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Date.Date
+	toColumn: LocalDateTable_77647ce2-d9d5-4577-b890-58bea22a1028.Date
+
+relationship 9714ef77-0a5e-4180-becd-4a218c7c7434
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Date.'Year Start'
+	toColumn: LocalDateTable_5c801a29-a5c0-49fc-8dda-7e4f21212d3b.Date
+
+relationship a02d1678-ae10-4a50-94ea-f7241bd01d05
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Date.YearEnd
+	toColumn: LocalDateTable_a794cd76-18e7-4afd-8f24-c92324d4c1c0.Date
+
+relationship b0f337c6-caab-41ae-a870-efbbbc7b1279
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Date.MonthStart
+	toColumn: LocalDateTable_ef4ea52e-7130-451c-8433-18eb16a87db0.Date
+
+relationship fe0a073b-2897-4a35-87b0-9e350b9e6909
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Date.MonthEnd
+	toColumn: LocalDateTable_24976878-a709-4664-9a53-d187b96516f5.Date
+
+relationship 2e15aca3-cd91-4a6d-8f2f-f9e7a3c0e449
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Date.QuarterStart
+	toColumn: LocalDateTable_f579c912-83d6-40ca-984a-c8ca0e10d1a1.Date
+
+relationship 98765fd2-582a-4223-bc29-cf8f7faa0a4e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Date.QuarterEnd
+	toColumn: LocalDateTable_9a254602-2e52-4d80-9262-e703869b3c92.Date
+
+relationship 9e0f5486-3714-4876-9370-df72247ba4b2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Date.WeekStart
+	toColumn: LocalDateTable_517d9580-ab6e-4d0d-b71a-f87200706ece.Date
+
+relationship 6400ea69-ac68-4dd1-918a-600ffa32286c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Date.WeekEnd
+	toColumn: LocalDateTable_68ece763-3c2a-423a-ab5f-e55f55f8a321.Date
+
+relationship 26ecd999-507c-d1f3-bd73-c58977cc0255
+	fromColumn: Fact_PerformanceRating.ReviewDate
+	toColumn: Dim_Date.Date
+
+relationship deba1f9b-c98e-a01c-45d3-3262abbb4251
+	isActive: false
+	fromColumn: Dim_Employee.HireDate
+	toColumn: Dim_Date.Date
+
+relationship 7d9a5755-dbd6-4a2e-f7ba-39439a7357f9
+	fromColumn: Dim_Employee.Education
+	toColumn: Dim_EducationLevel.EducationLevelID
+
+relationship 656b03ad-425d-b048-4af3-496dee8b12df
+	fromColumn: Fact_PerformanceRating.EnvironmentSatisfaction
+	toColumn: Dim_SatisfiedLevel.SatisfactionID
+
+relationship 11e859a2-1347-d7ac-94f9-6443094582bf
+	fromColumn: Fact_PerformanceRating.SelfRating
+	toColumn: Dim_RatingLevel.RatingID
 
